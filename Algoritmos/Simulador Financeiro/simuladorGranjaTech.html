@@ -27,27 +27,12 @@
                     <label>Preço médio de venda do ovo</label>
                     <input type="number" id="input_preco_ovo">
                 </div>
+            </div>
 
-                <div class="input_grupo3">
-                    <label>Qual a área total em m² dos galpões?</label>
-                    <input type="number" id="input_area_total">
-
-                    <label>Há quantos nebulizadores?</label>
-                    <input type="number" id="input_nebulizador">
-
-                    <label>Qual tipo de sensor será utilizado?</label>
-                    <select name="" id="select_sensor">
-                        <option value="Selecione seu sensor" disabled selected> SELECIONE O SEU SENSOR </option>
-                        <option value="Sensor de temperatura e umidade" >SENSOR DE TEMPERATURA E UMIDADE</option>
-                        <option value="Sensor de temperatura">SENSOR DE TEMPERATURA</option>
-                        <option value="Sensor de umidade">SENSOR DE UMIDADE</option>
-                    </select>
-                </div>
-
-                <div class="botoes">
-                    <button onclick="calcular()">Calcular</button>
-                    <button onclick="limparGalinha()">Limpar</button>
-                </div>
+            <div class="botoes">
+                <button onclick="calcular()">Calcular</button>
+                <button onclick="limparGalinha()">Limpar</button>
+            </div>
             </div>
         </section>
 
@@ -75,93 +60,33 @@
 </html>
 
 <script>
-    var galinhas = Number(input_galinhas.value);
-    var galinhasMortas = Number(input_galinhas_morte.value);
-    var qtdOvo = Number(input_qtd_ovo.value);
-    var precoOvo = Number(input_preco_ovo.value);
-    var areaGalpao = Number(input_area_total.value);
-    var nebulizador = Number(input_nebulizador.value);
-    var sensorUtilizado = select_sensor.value;
-
-    // inputs do simulador
-    var galinhasPerdidas = (galinhasMortas / galinhas) * 100 // Média de galinhas perdidas
-    var ovoPorGalinha = qtdOvo / galinhas  // Ovos gerados por galinha
-    var ovoPorGalinhaPerdido = ovoPorGalinha * galinhasMortas // Quantidade de ovos perdidos por galinha 
-    var lucro = qtdOvo * precoOvo // Lucro em cima da quantidade de ovos e do preço do ovo
-    var lucroPerdido = ovoPorGalinhaPerdido * precoOvo  // média de ovos por galinha perdidas pelo preço do ovo unitário gera o lucro perdido
-    var sensor = 2; // Range de 2m do sensor
-    var sensorTemperatura = areaGalpao / sensor; // A divisão deles, graças ao range do sensor determina a qtd
-    var sensorUmidade = nebulizador; // Eles são iguais, há 1 sensor em cada nebulizador
-    var sensorTotal = sensorTemperatura + sensorUmidade; // A soma da quantidade dos dois sensores
-    // Variáveis dos sensores
 
     function calcular() {
-
+        var galinhas = Number(input_galinhas.value);
+        var galinhasMortas = Number(input_galinhas_morte.value);
+        var qtdOvo = Number(input_qtd_ovo.value);
+        var precoOvo = Number(input_preco_ovo.value);
+        // variáveis dos inputs
+        var galinhasPerdidas = (galinhasMortas / galinhas) * 100 // Média de galinhas perdidas
+        var ovoPorGalinha = qtdOvo / galinhas  // Ovos gerados por galinha
+        var ovoPorGalinhaPerdido = ovoPorGalinha * galinhasMortas // Quantidade de ovos perdidos por galinha 
+        var lucro = qtdOvo * precoOvo // Lucro em cima da quantidade de ovos e do preço do ovo
+        var lucroPerdido = ovoPorGalinhaPerdido * precoOvo  // média de ovos por galinha perdidas pelo preço do ovo unitário gera o lucro perdido
         div_html.innerHTML = `
         <div class = 'baixo_simulador'>
         <span class ='texto_simulador'> 
-            De suas <b style="color: #9c4303;"> ${galinhas} </b> galinhas, em média <b style="color: #9c4303;"> ${(galinhasPerdidas).toFixed(3)}%. </b> delas morrem por falta de monitoramento de regulação da temperatura e umidade, com <b style="color: #9c4303;"> ${galinhasMortas} </b> galinhas a menos, devido a perda de <b style="color: #9c4303;">${(ovoPorGalinhaPerdido).toFixed(0)} </b> ovos, isso faz você deixar de ganhar:
+            De suas <b style="color: #4A3D33;"> ${galinhas} </b> galinhas, em média <b style="color: #4A3D33;"> ${(galinhasPerdidas).toFixed(3)}%. </b> delas morrem por falta de monitoramento de regulação da temperatura e umidade, com <b style="color: #4A3D33;"> ${galinhasMortas} </b> galinhas a menos, devido a perda de <b style="color: #4A3D33;">${(ovoPorGalinhaPerdido).toFixed(0)} </b> ovos, isso faz você deixar de ganhar:
         </span>
-        <h2 style="color: #9c4303;">R$ ${(lucroPerdido).toFixed(2)} mensalmente </h2> 
-        <h2 style="color: #9c4303;">R$ ${(lucroPerdido * 6).toFixed(2)} a cada 6 meses </h2>
-        <h2 style="color: #9c4303;">R$ ${(lucroPerdido * 12).toFixed(2)} anualmente </h2>
-        <h2 style="color: #9c4303;">R$ ${((lucroPerdido * 12) * 5).toFixed(2)} a cada 5 anos </h2>
-        
-        <button onclick = "calcularSensores()" class="botao_ovo">Seguir</button>
+        <h2 style="color: #4A3D33;">R$ ${(lucroPerdido).toFixed(2)} mensalmente </h2> 
+        <h2 style="color: #4A3D33;">R$ ${(lucroPerdido * 6).toFixed(2)} a cada 6 meses </h2>
+        <h2 style="color: #4A3D33;">R$ ${(lucroPerdido * 12).toFixed(2)} anualmente </h2>
+        <h2 style="color: #4A3D33;">R$ ${((lucroPerdido * 12) * 5).toFixed(2)} a cada 5 anos </h2>
+        <div>
+                <img src="./galinha.png" alt="Icone da galinha" id="galinhaAnimada">
+            </div>
         </div>
         `
     }
-    function calcularSensores() {
-        var areaGalpao = Number(input_area_total.value);
-        var nebulizador = Number(input_nebulizador.value);
-        var sensorUtilizado = select_sensor.value;
-        // Recolocando para armazenar o valor preenchido pelo usuário
-        if (sensorUtilizado == "Sensor de temperatura") {
-            var sensorTemperatura = areaGalpao / sensor;
-            div_html.innerHTML = `
-        <div class = 'baixo_simulador'>
-        <span class ='texto_simulador'> 
-            Seu sensor selecionado foi o de <h3 style="color: #9c4303;"> ${sensorUtilizado} </h3>
-            Baseado no tamanho do seu galpão de <b style = "color: #9c4303;"> ${areaGalpao}m² </b>, você necessitará de <b style = "color: #9c4303;"> ${sensorTemperatura} </b> sensores de temperatura.
-            <div>
-                <img src="./galinha.png" alt="Icone da galinha" id="galinhaAnimada">
-            </div>
-        </span>        
-        </div>
-        `
-        }
-        if (sensorUtilizado == "Sensor de umidade") {
-            var sensorUmidade = nebulizador 
-            div_html.innerHTML = `
-        <div class = 'baixo_simulador'>
-        <span class ='texto_simulador'> 
-            Seu sensor selecionado foi o de <h3 style="color: #9c4303;"> ${sensorUtilizado} </h3>
-            Baseado na quantidade de nebulizadores de <b style = "color: #9c4303;"> ${nebulizador} </b>, você necessitará de <b style = "color: #9c4303;"> ${sensorUmidade} </b> sensores de umidade.
-            <div>
-                <img src="./galinha.png" alt="Icone da galinha" id="galinhaAnimada">
-            </div>
-        </span>        
-        </div>
-            `
-        }
-        if (sensorUtilizado == "Sensor de temperatura e umidade") {
-            var sensorTemperatura = Number(areaGalpao / sensor);
-            var sensorUmidade = Number(nebulizador);
-            var sensorTotal = sensorTemperatura + sensorUmidade;
-            div_html.innerHTML = `
-        <div class = 'baixo_simulador'>
-        <span class ='texto_simulador'> 
-            Seu sensor selecionado foi o de <h3 style="color: #9c4303;"> ${sensorUtilizado} </h3>
-            Baseado no tamanho do seu galpão de <b style = "color: #9c4303;"> ${areaGalpao}m² </b>, você necessitará de <b style = "color: #9c4303;"> ${sensorTemperatura} </b> sensores de temperatura. Baseado na quantidade de nebulizadores de <b style = "color: #9c4303;"> ${nebulizador} </b>, você necessitará de <b style = "color: #9c4303;"> ${sensorUmidade} </b> sensores de umidade. Você precisará de <b style = "color: #9c4303;"> ${sensorTotal} </b> sensores.
-            <div>
-                <img src="./galinha.png" alt="Icone da galinha" id="galinhaAnimada">
-            </div>
-        </span>        
-        </div>
-            `
-        }
-    }
-
     function limparGalinha() {
         galinhas = '';
         galinhasMortas = '';
@@ -180,6 +105,5 @@
             </div>
         `
     }
-
 
 </script>

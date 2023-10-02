@@ -176,31 +176,3 @@ h1 {
     transition-duration: 5s;
     width: 15%;
 }
-
-select {
-    width: 75%;
-    text-align: center;
-}
-
-.botao_ovo {
-    border-radius: 100% / 125% 125% 80% 80%;
-    height: 5em;
-    width: 4em;
-    font-size: 2em;
-    vertical-align: center;
-    background-color: #9c4303;
-    color: white;
-    line-height: 150px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-left: 270px;
-}
-option{
-    color: black;
-    font-weight: bolder;
-}
-select {
-    color: black;
-    font-weight: bolder;
-}
