@@ -1,0 +1,192 @@
+@font-face {
+    font-family: Roxborough CF;
+    src: url(font/Roxborough-CF/Roxborough\ CF.ttf);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Roxborough CF;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+}
+
+.header-logo {
+    display: flex;
+    font-size: 20px;
+    color: rgb(74, 61, 51);
+    align-items: center;
+}
+
+.header-logo:hover {
+    cursor: pointer;
+}
+
+header>div>img {
+    width: 35px;
+    display: flex;
+    transition: 0.3s;
+}
+
+
+header>a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    padding: 10px;
+    border-radius: 40px;
+    color: white;
+    background-color: rgb(74, 61, 51);
+    text-decoration: none;
+}
+
+header > div > img:hover {
+    width: 40px;
+}
+
+header>nav>a {
+    display: inline-flex;
+    color: rgb(74, 61, 51);
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+header > nav > a:hover {
+    font-size: 19px;
+}
+
+section > a {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    text-decoration: none;
+    float: right;
+    width: 550px;
+    height: 300px;
+    border: 5px solid black;
+
+    background-image: linear-gradient(to right, rgb(74, 61, 51) 37%, rgba(74, 61, 51, 0.5) 68%, transparent 90%);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.412);
+
+    transition: 0.3s;
+}
+
+section > a:hover {
+    margin: 25px 0;
+    width: 620px;
+    height: 340px;
+}
+
+
+section > a > div > h1 {
+    width: 250px;
+    margin: 0px -20px 0px 10px;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
+
+section > a > div > p {
+    width: 300px;
+    color: white;
+    justify-content: center;
+    margin: 20px;
+    font-size: 17px;
+}
+
+section > a > img {
+    position: relative;
+    right: 210px;
+    width: 78%;
+    z-index: -1;
+
+}
+
+/*--------------------------*/
+
+.opções {
+    width: 100%; 
+
+    background-color: rgb(74, 61, 51);
+    padding: 40px 0;
+}
+
+.opções > h1 {
+    margin-bottom: 50px;
+    color: white;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.opções > div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 450px;
+}
+
+.opções > div > .content {
+    width: 300px;
+    height: 450px;
+    transition: 0.3s;
+    text-decoration: none;
+    color: black;
+}
+
+.opções > div > .content > .tri-top {
+    width: 0;
+    height: 0;
+    border: 0 solid transparent;
+    border-bottom: 10px solid white;
+    border-width: 0px 150px 20px;
+}
+
+.opções > div > .content > img {
+    background-color: white;
+    width: 100%;
+    height: 33%;
+    padding: 20px 10px 0px 10px;
+    text-align: center;
+    border: 0px 20px solid white;
+    margin-bottom: -4px;
+}
+
+.opções > div > .content > p {
+    width: 100%;
+    height: 40%;
+    background-color: white;
+    padding: 20px 15px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.opções > div > .content > .tri-bott {
+    width: 0;
+    height: 0;
+    border: 0 solid transparent;
+    border-top: 10px solid white;
+    border-width: 20px 150px 0px;
+}
+
+.opções > div > .content:hover {
+    cursor: pointer;
+    height: 480px;
+}
