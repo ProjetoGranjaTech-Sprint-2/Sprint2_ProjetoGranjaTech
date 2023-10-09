@@ -51,6 +51,12 @@ header>a {
     color: white;
     background-color: rgb(74, 61, 51);
     text-decoration: none;
+    transition: .3s;
+}
+
+header > a:hover {
+    width: 107px;
+    height: 47px;
 }
 
 header > div > img:hover {
@@ -70,52 +76,130 @@ header > nav > a:hover {
     font-size: 19px;
 }
 
-section > a {
+
+
+section > .container {
+    margin: 70px auto;
+    height: 30vw;
+    width: 65vw;
+    box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.358);
+    overflow: hidden;
+}
+
+@keyframes animação {
+    0% { margin-left: 0px;}
+    30% { margin-left: 0px;}
+    33% { margin-left: -100%;}
+    63% { margin-left: -100%;}
+    66% { margin-left: -200%;}
+    96% { margin-left: -200%;}
+    100% { margin-left: 0px;}
+}
+
+section > .container > .carrossel {
+    display: flex;
+    width: 300%;
+    animation: animação 20s infinite;
+}
+
+section > .container > .carrossel > a {
     display: flex;
     align-items: center;
-    margin: 20px;
     text-decoration: none;
-    float: right;
-    width: 550px;
-    height: 300px;
-    border: 5px solid black;
+    width: 33.3%;
+    height: 30vw;
 
+}
+
+section > .container > .carrossel > .first{
     background-image: linear-gradient(to right, rgb(74, 61, 51) 37%, rgba(74, 61, 51, 0.5) 68%, transparent 90%);
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.412);
-
-    transition: 0.3s;
 }
 
-section > a:hover {
-    margin: 25px 0;
-    width: 620px;
-    height: 340px;
+section > .container > .carrossel > .conheça{
+    display: flex;
+    justify-content: space-around;
+    background-image: linear-gradient(to left, rgb(74, 61, 51) 40%, rgba(74, 61, 51, 0.737) 70%, transparent);
+}
+
+section > .container > .carrossel > .simule{
+    background-image: linear-gradient(to right, rgb(74, 61, 51) 37%, rgba(74, 61, 51, 0.5) 68%, transparent 90%);
 }
 
 
-section > a > div > h1 {
-    width: 250px;
-    margin: 0px -20px 0px 10px;
-    font-size: 30px;
+section > .container > .carrossel > a > div > h1 {
+    width: 25vw;
+    font-size: 3.5vw;
+    margin-left: 4vw;
     text-align: center;
     color: white;
 }
 
-section > a > div > p {
-    width: 300px;
+section > .container > .carrossel > a > div > p {
+    width: 30vw;
     color: white;
     justify-content: center;
-    margin: 20px;
-    font-size: 17px;
+    margin: 3.5vw;
+    font-size: 2vw;
 }
 
-section > a > img {
+
+section > .container > .carrossel > a > img {
     position: relative;
-    right: 210px;
-    width: 78%;
+    height: 29.2vw;
     z-index: -1;
-
 }
+
+section > .container > .carrossel > .first > img {
+    right: 26vw;
+}
+
+section > .container > .carrossel > .conheça > img {
+    right: -2.7vw;
+} 
+
+section > .container > .carrossel > .simule > img {
+    right: 25vw;
+}
+
+/*section > input {
+    display: none;
+}
+
+.manual-navigation {
+    position: absolute;
+    width: 800px;
+    margin-top: -60px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid rgb(0, 0, 0);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+
+.manual-btn:hover {
+    background-color: white;
+}
+
+#radio1:checked ~ .carrossel {
+    margin-right: 0;
+}
+
+#radio2:checked ~ .carrossel {
+    margin-right: 100px;
+}
+
+#radio3:checked ~ .carrossel {
+    margin-right: 200px;
+}*/
 
 /*--------------------------*/
 
