@@ -9,6 +9,7 @@
     padding: 0px;
     font-family: Roxborough CF;
     box-sizing: border-box;
+    z-index: 1;
 }
 
 html {
@@ -22,6 +23,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 5vw;
+    display: flex;
+    z-index: 2;
+    position: fixed;
+    background-color: white;
 }
 
 .header-logo {
@@ -37,6 +42,7 @@ header {
 
 header > div > img {
     width: 50px;
+    height: 50px;
     display: flex;
     transition: 0.3s;
 }
@@ -85,34 +91,125 @@ main {
     align-items: center;
     width: 100%;
     background-color: rgb(74, 61, 51);
+    height: 700px;
+    padding-top: 5.5%;
 }
 
 .contexto > img {
-    height: 50vw;
-    max-height: 400px;
-    margin-right: 10px;
+    width: 100%;
+    max-height: 100%;
+    filter: blur(2px) brightness(25%);
 }
 
 .contexto > article {
-    width: 40vw;
-    max-width: 450px;
-    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: whitesmoke;
+    position: absolute;
+    height: 75%;
+    width: 75%;
 }
 .contexto > article > h1 {
-    font-size: 24px;
+    font-size: 55px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin: 20px 15px;
+    margin: 20px 10px;
+    margin-bottom: 50px;
 }
 
 .contexto > article > p {
-    font-size: 16px;
+        width: 75%;
+    justify-content: center;
+}
+
+.contexto > article > p {
+    font-size: 22px;
     line-height: 1.6;
     text-align: justify;
+    text-align: center;
+}
+
+.botao_contexto {
+    width: 50%;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 25px;
+    background-color: #ffd890;
+    font-size: 20px;
+}
+.contexto > article > p > b {
+    color: #ffd890;
 }
 
 /*--------------------------*/
+.quem-somos {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    border: 5px solid purple;
+}
+.quem-somos > img {
+    position: static;
+    width: 100%;
+    max-height: 100%;
+    filter: brightness(25%);
+    z-index: -3;
+}
+.quem-somos > .nossa-missao {
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid red;
+}
 
+.quem-somos > .nossa-missao > h1 {
+    color: #ffd890;
+    text-align: center;
+    font-size: 75px;
+}
+.quem-somos > .nossa-missao > p {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+.quem-somos > .nossa-missao > .objetivos {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    color: white;
+    border: 5px solid blue;
+}
+
+.quem-somos > .nossa-missao > .objetivos > .objetivo1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.quem-somos > .nossa-missao > .objetivos > .objetivo2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.quem-somos > .nossa-missao > .objetivos > .objetivo3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/*--------------------------*/
 .opções {
     width: 100%;
     background-color: rgb(74, 61, 51);
@@ -167,7 +264,24 @@ main {
     border-top: 10px solid white;
     border-width: 20px 150px;
 }
-
+.localizacao {
+    background-color: white;
+}
+.localizacao > .maps {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+.localizacao > .maps > iframe {
+    border: 5px solid rgb(74, 61, 51);
+    padding: 5px;
+}
+.localizacao > div > p {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    color: rgb(74, 61, 51);
+}
 /*--------------------------*/
 
 footer {
@@ -275,5 +389,9 @@ footer > .rede-social > a > img {
     margin-right: 5px;
 
 }
+
+
+
+
 
 
