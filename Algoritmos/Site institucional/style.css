@@ -93,6 +93,7 @@ main {
     background-color: rgb(74, 61, 51);
     height: 700px;
     padding-top: 5.5%;
+    border: 5px solid white;
 }
 
 .contexto > img {
@@ -120,7 +121,7 @@ main {
 }
 
 .contexto > article > p {
-        width: 75%;
+    width: 75%;
     justify-content: center;
 }
 
@@ -139,6 +140,11 @@ main {
     margin-top: 25px;
     background-color: #ffd890;
     font-size: 20px;
+    transition: 2s;
+}
+.botao_contexto:hover {
+    width: 200px;
+    cursor: pointer;
 }
 .contexto > article > p > b {
     color: #ffd890;
@@ -149,7 +155,6 @@ main {
     display: flex;
     align-items: start;
     justify-content: center;
-    border: 5px solid purple;
 }
 .quem-somos > img {
     position: static;
@@ -164,7 +169,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 5px solid red;
 }
 
 .quem-somos > .nossa-missao > h1 {
@@ -179,11 +183,12 @@ main {
 }
 
 .quem-somos > .nossa-missao > .objetivos {
+    margin-top: 5%;
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 100%;
     color: white;
-    border: 5px solid blue;
+    font-size: 25px;
 }
 
 .quem-somos > .nossa-missao > .objetivos > .objetivo1{
@@ -193,6 +198,7 @@ main {
     align-items: center;
     text-align: center;
 }
+
 .quem-somos > .nossa-missao > .objetivos > .objetivo2{
     display: flex;
     flex-direction: column;
@@ -221,6 +227,7 @@ main {
     color: white;
     letter-spacing: 2px;
     text-align: center;
+    font-size: 50px;
 }
 
 .opções > div {
@@ -255,6 +262,7 @@ main {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 1.5;
+    color: rgb(74, 61, 51);
 }
 
 .opções > div > .content > .tri-bott {

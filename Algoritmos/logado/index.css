@@ -40,8 +40,29 @@ header>div>img {
     transition: 0.3s;
 }
 
-
-header>a {
+header > .botões {
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+header > .botões > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    width: 100px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 40px;
+    color: white;
+    background-color: rgb(74, 61, 51);
+    text-decoration: none;
+    text-align: center;
+    transition: .3s;
+}
+/* header> a {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -52,14 +73,15 @@ header>a {
     background-color: rgb(74, 61, 51);
     text-decoration: none;
     transition: .3s;
-}
+    border: 5px solid red;
+} */
 
-header > a:hover {
+header > .botões> a:hover {
     width: 107px;
     height: 47px;
 }
 
-header > div > img:hover {
+header > .botões > img:hover {
     width: 40px;
 }
 
@@ -215,7 +237,7 @@ section > .container > .carrossel > .simule > img {
     color: white;
     letter-spacing: 2px;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 50px;
 }
 
 .opções > div {
@@ -230,7 +252,8 @@ section > .container > .carrossel > .simule > img {
     height: 450px;
     transition: 0.3s;
     text-decoration: none;
-    color: black;
+    color: rgb(74, 61, 51);
+    font-weight: bold;
 }
 
 .opções > div > .content > .tri-top {
