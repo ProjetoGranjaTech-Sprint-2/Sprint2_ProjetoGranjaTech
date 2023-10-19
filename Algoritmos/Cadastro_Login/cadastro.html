@@ -1,74 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="c_index.css">
+    <title>Cadastro - GranjaTech</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
-    <div id="div_container" class="container">
-        <div class="img-galinha">
-            <img src="../imagens/imagem logado.png">
+    <section class="cadastro">
+        <div class="dados">
+            <h2>Dados</h2>
+
+            <span style="color: red;">*</span> <input class="input" type="text" id="input_nome_empresarial"
+                placeholder="Nome Empresarial"><br> <br>
+            <span style="color: red;">*</span> <input class="input" type="text" id="input_nome_fantasia"
+                placeholder="Nome Fantasia"> <br> <br>
+            <span style="color: red;">*</span> <input class="input" id="input_cnpj" placeholder="CNPJ"> <br> <br>
+            <span style="color: red;">*</span> <input class="input" type="email" id="input_email" placeholder="Email">
+            <br>
+            <br>
+            <span style="color: red;">*</span> <input class="input" type="password" id="input_senha"
+                class="material-symbols-outlined" placeholder="Senha"> <button onclick="mostrar()"
+                class="material-symbols-outlined" id="olhinho">visibility</button><br> <br>
+            <input class="input" type="text" id="input_telefone" placeholder="Telefone"><br> <br>
+            <button onclick="prosseguir()" id="botao_prosseguir">Prosseguir</button>
+            <br><br>
+
         </div>
-        <div class="form">
-            <section>
-                <div class="form-header">
-                    <div class="titulo">
-                        <h1>Cadastre-se</h1>
-                    </div>
-                    <div class="login-botao">
-                        <button><a href="login.html">Entrar</a></button>
-                    </div>
-                </div>
+    </section>
 
-                <div class="input-grupo">
-                    <div class="input-box">
-                        <label for="nome_empresarial">Nome Empresarial</label>
-                        <input id="input_nome_empresarial" name="nome_empresarial" placeholder="Nome Empresarial">
-                    </div>
+    <div id="div_cadastro"></div>
+    <div id="div_confirmacao"></div>
 
-                    <div class="input-box">
-                        <label for="nome_fantasia">Nome Fantasia</label>
-                        <input id="input_nome_fantasia" name="nome_fantasia" placeholder="Nome Fantasia">
-                    </div>
-
-                    <div class="input-box">
-                        <label for="cnpj">CNPJ</label>
-                        <input id="input_cnpj" name="cnpj" placeholder="CNPJ">
-                    </div>
-
-                    <div class="input-box">
-                        <label for="email">Email</label>
-                        <input id="input_email" name="email" placeholder="Email">
-                    </div>
-
-                    <div class="input-box">
-                        <label for="Senha">Senha</label>
-                        <input class="input" type="password" id="input_senha" class="material-symbols-outlined"
-                            placeholder="Senha"> <button onclick="mostrar()" class="material-symbols-outlined"
-                            id="olhinho">visibility</button>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="telefone">Telefone</label>
-                        <input id="input_telefone" name="telefone" placeholder="Telefone">
-                    </div>
-                </div>
-
-                <div class="continuar-botao">
-                    <button onclick="prosseguir()">Prosseguir</button>
-                </div>
-
-            </section>
-        </div>
 </body>
 
 </html>
+
 <script>
     var nome_empresarial = input_nome_empresarial.value;
     var nome_fantasia = input_nome_fantasia.value;
@@ -87,7 +57,6 @@
             senha.type = "password"
         }
     }
-
     function prosseguir() {
         nome_empresarial = input_nome_empresarial.value;
         nome_fantasia = input_nome_fantasia.value;
@@ -97,16 +66,16 @@
         telefone = input_telefone.value;
 
         if (nome_empresarial == "") { // validação para que o campo nome empresarial não esteja vazio, porém, se a pessoa der espaço no campo, a validação é falha.
-            alert(`Por favor, preencha o campo "Nome Empresarial (Responsável/Empresário)".`);
+            div_cadastro.innerHTML = `Por favor, preencha o campo "Nome Empresarial (Responsável/Empresário)".`
         } else {
             if (nome_fantasia == "") { // validação para que o campo nome fantasia não esteja vazio, porém, se a pessoa der espaço no campo, a validação é falha.
-                alert(`Por favor, preencha o campo "Nome Fantasia".`);
+                div_cadastro.innerHTML = `Por favor, preencha o campo "Nome Fantasia".`
             } else {
                 if (cnpj == "") {
-                    alert(`Por favor, preencha o campo "CNPJ".`);
+                    div_cadastro.innerHTML = `Por favor, preencha o campo "CNPJ".`
                 } else if (cnpj.length >= 14 & cnpj.length <= 18) { // o cnpj pode ser tanto com "." e "-" como somente os números, por isso essa quantidade de caracteres "barrada".
                     if (email == "") {
-                        alert(`Por favor, preencha o campo "Email".`);
+                        div_cadastro.innerHTML = `Por favor, preencha o campo "Email".`
                     } else if (email.indexOf('.com') >= 0) { // validação para que o email tem ".com", se não, o usuário não segue em frente.
                         var possuiEmailVálido =
                             email.indexOf('@gmail') >= 0 ||
@@ -127,84 +96,48 @@
                                     senha.indexOf('*') >= 0;
 
                                 if (possui_especial) { // validação para que o usuário coloque na sua senha pelo menos 1 caracter especial ditados na variável acima. 
-                                    div_container.innerHTML = "";
-                                    div_container.innerHTML =
 
-                                        ` <div class="container">
-        <div class="img-galinha">
-            <img src="../imagens/imagem logado.png">
-        </div>
-        <div class="form">
-            <form method="get" action=".">
-                <div class="form-header">
-                    <div class="titulo">
-                        <h1>Endereço</h1>
-                    </div>
-                </div>
+                                    div_cadastro.innerHTML =
 
-                <div class="input-grupo">
-                    <div class="input-box">
-                        <label for="cep">CEP</label>
-                        <input id="cep" name="cep" placeholder="CEP">
-                    </div>
-
-                    <div class="input-box">
-                        <label for="uf">Estado</label>
-                        <input id="uf" name="uf" placeholder="Estado">
-                    </div>
-
-                    <div class="input-box">
-                        <label for="cidade">Cidade</label>
-                        <input id="cidade" name="cidade" placeholder="Cidade">
-                    </div>
-
-                    <div class="input-box">
-                        <label for="bairro">Bairro</label>
-                        <input id="bairro" name="bairro" placeholder="Bairro">
-                    </div>
-
-                    <div class="input-box">
-                        <label for="rua">Rua</label>
-                        <input id="rua" name="rua" placeholder="Rua">
-                    </div>
-
-                    <div class="input-box">
-                        <label for="numero">Número</label>
-                        <input id="numero" name="numero" placeholder="Número">
-                    </div>
-
-                    <div class="input-box">
-                        <label for="complemento">Complemento</label>
-                        <input id="complemento" name="complemento" placeholder="Complemento">
-                    </div>
-                </div>
-            </form>
-
-            <div class="prosseguir-botao">
-                <button onclick="prosseguir()"><a href="#">Prosseguir</a></button>
-            </div>
-            <div class="limpar-botao">
-                <button onclick="limpar()">Limpar</button>
-            </div>
-
-            <div id="div_cadastro"></div>
-        </div>
-    </div>`
+                                        `<section class="endereco">
+                                        <div class="dados">
+        <h2>Endereço</h2>
+        <form method="get" action=".">
+            <span style="color: red;">*</span> <input type="text" name="cep" type="text" id="cep" value="" size="10"
+                maxlength="9" onblur="pesquisacep(this.value);" placeholder="CEP">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="uf" name="uf" placeholder="Estado">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="cidade" name="cidade" placeholder="Cidade">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="bairro" name="bairro" placeholder="Bairro">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="rua" name="rua" placeholder="Rua">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="input_numero" name="numero" placeholder="Número">
+            <br><br>
+            <input type="text" id="complemento" name="complemento" placeholder="Complemento">
+            <br> <br>
+        </form>
+        <button onclick="limpar()" id="limpar">Limpar</button>
+        <button onclick="confirmacao()" id="botao_prosseguir">Prosseguir</button>
+    </div>
+    </section>`
                                 } else {
-                                    alert(`Sua senha não contém caracteres especiais! Por favor, insira uma senha com um ou mais caracteres especiais (!, @, #, $, %, &, *).`);
+                                    div_cadastro.innerHTML = `Sua senha não contém caracteres especiais! Por favor, insira uma senha com um ou mais caracteres especiais (!, @, #, $, %, &, *).`
                                 }
                             } else {
-                                alert(`Senha com quantidade de caracteres inválido! Por favor, insira uma senha com 10 ou mais caracteres.`);
+                                div_cadastro.innerHTML = `Senha com quantidade de caracteres inválido! Por favor, insira uma senha com 10 ou mais caracteres.`
                             }
                         } else {
-                            alert(`Email inválido! Insira um email que tenha um dos seguintes endereços: "@outlook", "@gmail" ou "@hotmail"`);
+                            div_cadastro.innerHTML = `Email inválido! Insira um email que tenha um dos seguintes endereços: "@outlook", "@gmail" ou "@hotmail"`
 
                         }
                     } else {
-                        alert(`Email inválido!`);
+                        div_cadastro.innerHTML = `Email inválido!`
                     }
                 } else {
-                    alert(`CNPJ inválido!`);
+                    div_cadastro.innerHTML = `CNPJ inválido!`
                 }
             }
         }
@@ -212,12 +145,12 @@
 
     function confirmacao() {
         var numero = input_numero.value;
-        rua = rua.value;
-        bairro = bairro.value;
-        cidade = cidade.value;
-        uf = uf.value;
-        cep = cep.value;
-        complemento = complemento.value;
+        var rua = rua.value;
+        var bairro = bairro.value;
+        var cidade = cidade.value;
+        var uf = uf.value;
+        var cep = cep.value;
+        var complemento = complemento.value;
 
 
         if (telefone == "") {
@@ -322,4 +255,5 @@
         }
 
     }
+
 </script>
