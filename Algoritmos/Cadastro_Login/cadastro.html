@@ -103,20 +103,20 @@
                                         <div class="dados">
         <h2>Endereço</h2>
         <form method="get" action=".">
-            <span style="color: red;">*</span> <input type="text" name="cep" type="text" id="cep" value="" size="10"
+            <span style="color: red;">*</span> <input type="text" name="cep" type="text" id="input_cep" value="" size="10"
                 maxlength="9" onblur="pesquisacep(this.value);" placeholder="CEP">
             <br><br>
-            <span style="color: red;">*</span> <input type="text" id="uf" name="uf" placeholder="Estado">
+            <span style="color: red;">*</span> <input type="text" id="input_uf" name="uf" placeholder="Estado">
             <br><br>
-            <span style="color: red;">*</span> <input type="text" id="cidade" name="cidade" placeholder="Cidade">
+            <span style="color: red;">*</span> <input type="text" id="input_cidade" name="cidade" placeholder="Cidade">
             <br><br>
-            <span style="color: red;">*</span> <input type="text" id="bairro" name="bairro" placeholder="Bairro">
+            <span style="color: red;">*</span> <input type="text" id="input_bairro" name="bairro" placeholder="Bairro">
             <br><br>
-            <span style="color: red;">*</span> <input type="text" id="rua" name="rua" placeholder="Rua">
+            <span style="color: red;">*</span> <input type="text" id="input_rua" name="rua" placeholder="Rua">
             <br><br>
             <span style="color: red;">*</span> <input type="text" id="input_numero" name="numero" placeholder="Número">
             <br><br>
-            <input type="text" id="complemento" name="complemento" placeholder="Complemento">
+            <input type="text" id="input_complemento" name="complemento" placeholder="Complemento">
             <br> <br>
         </form>
         <button onclick="limpar()" id="limpar">Limpar</button>
@@ -145,12 +145,12 @@
 
     function confirmacao() {
         var numero = input_numero.value;
-        var rua = rua.value;
-        var bairro = bairro.value;
-        var cidade = cidade.value;
-        var uf = uf.value;
-        var cep = cep.value;
-        var complemento = complemento.value;
+        var rua = input_rua.value;
+        var bairro = input_bairro.value;
+        var cidade = input_bairro.value;
+        var uf = input_uf.value;
+        var cep = input_cep.value;
+        var complemento = input_complemento.value;
 
 
         if (telefone == "") {
@@ -162,32 +162,32 @@
             div_confirmacao.innerHTML =
                 `<section class="confirmacao">
                 <div class="dados">
-        <h2>Confirme seus dados:</h2>
-        <p>Nome Empresarial: ${nome_empresarial}</p><br>
-        <p>Nome Fantasia: ${nome_fantasia}</p> <br>
-        <p>CNPJ: ${cnpj}</p> <br>
-        <p>Email: ${email}</p> <br>
-        <p>Telefone: ${telefone}</p> <br>
-        <p>CEP: ${cep}</p> <br>
-        <p>Estado: ${uf}</p> <br>
-        <p>Cidade: ${cidade}</p> <br>
-        <p>Bairro: ${bairro}</p> <br>
-        <p>Rua: ${rua}</p> <br>
-        <p>Número: ${numero}</p> <br>
-        <p>Complemento: ${complemento}</p>
-        <br> <br>
-        <button class="botao"><a href="login.html" class="botao-confirmar">Confirmar</a></button>
+                <h2>Confirme seus dados:</h2>
+                <p>Nome Empresarial: ${nome_empresarial}</p><br>
+                <p>Nome Fantasia: ${nome_fantasia}</p> <br>
+                <p>CNPJ: ${cnpj}</p> <br>
+                <p>Email: ${email}</p> <br>
+                <p>Telefone: ${telefone}</p> <br>
+                <p>CEP: ${cep}</p> <br>
+                <p>Estado: ${uf}</p> <br>
+                <p>Cidade: ${cidade}</p> <br>
+                <p>Bairro: ${bairro}</p> <br>
+                <p>Rua: ${rua}</p> <br>
+                <p>Número: ${numero}</p> <br>
+                <p>Complemento: ${complemento}</p>
+                <br> <br>
+                <button class="botao"><a href="login.html" class="botao-confirmar">Confirmar</a></button>
     </div>`
         }
     }
     function limpar() {
-        rua.value = "";
-        bairro.value = "";
-        cidade.value = "";
-        uf.value = "";
-        cep.value = "";
-        complemento.value = "";
-        numero.value = "";
+        input_rua.value = "";
+        input_bairro.value = "";
+        input_cidade.value = "";
+        input_uf.value = "";
+        input_cep.value = "";
+        input_complemento.value = "";
+        input_numero.value = "";
     }
 
     function limpa_formulário_cep() {
