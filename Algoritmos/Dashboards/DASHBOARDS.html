@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<html>
+
+<head>
+    <title>Gráfico de Temperatura e Umidade</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="dash.css">
+</head>
+
+<body>
+    
+    <section class="perfil">
+        <div class="foto"></div>
+        <div class="lista">
+                <ul>
+                    <li><a href="">Dashboard</a></li>
+                    <li><a href="">Galpão</a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+
+                </ul>
+        </div>
+    </section>
+    
+    <section class="hidden">
+
+        <div class="navbar"></div>
+        
+        <div class="dash">
+
+            <div class="TempUmi">
+                <div class="div_temp">
+                    <canvas id="GraficoTemp"></canvas>
+                </div>
+                <div class="div_umid">
+                    <canvas id="GraficoUmid"></canvas>
+                </div>
+            </div>
+
+            <div class="div_hist">
+                <canvas id="GraficoHist"></canvas>
+            </div>
+            
+        </div>
+
+    </section>
+    <script>
+
+        const dadosHistTemp = [20, 21, 33, 18, 29, 10, 23];
+        const dadosHistUmi = [50, 62, 74, 49, 54, 32, 77];
+        const rotulosHist = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+
+        const ctxHist = document.getElementById('GraficoHist').getContext('2d');
+        const GraficoHist = new Chart(ctxHist, {
+            type: 'bar',
+            data: {
+                labels: rotulosHist,
+                datasets: [
+                    {
+                        label: 'Temperatura (°C)',
+                        data: dadosHistTemp,
+                        borderColor: '#215784',
+                        backgroundColor: '#215784',
+                    },
+                    {
+                        label: 'Umidade (%)',
+                        data: dadosHistUmi,
+                        borderColor: '#ffA500',
+                        backgroundColor: '#ffA500',
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Histórico'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        const dadosTemp = [20, 22, 20, 25, 19, 23, 20, 16];
+        const rotulosTemp = ['0', '30', '60', '90', '120', '150', '180', '210'];
+
+        const ctxTemp = document.getElementById('GraficoTemp').getContext('2d');
+        const GraficoTemp = new Chart(ctxTemp, {
+            type: 'line',
+            data: {
+                labels: rotulosTemp,
+                datasets: [
+                    {
+                        label: 'Temperatura (°C)',
+
+                        data: dadosTemp,
+                        borderColor: '#215784',
+                        backgroundColor: '#215784',
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Temperatura'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        const dadosUmidade = [42, 46, 44, 40, 19, 23, 20, 16];
+        const rotulosUmid = ['0', '30', '60', '90', '120', '150', '180', '210'];
+
+        const ctxUmid = document.getElementById('GraficoUmid').getContext('2d');
+        const GraficoUmid = new Chart(ctxUmid, {
+            type: 'line',
+            data: {
+                labels: rotulosUmid,
+                datasets: [
+                    {
+                        label: 'UMIDADE (°C)',
+
+                        data: dadosUmidade,
+                        borderColor: '#ffA500',
+                        backgroundColor: '#ffA500',
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Umidade'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

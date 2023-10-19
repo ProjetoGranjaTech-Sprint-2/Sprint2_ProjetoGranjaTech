@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.perfil {
+    height: 100vh;
+    width: 10%;
+    border: 5px solid green;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.hidden {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-end;
+    border: 5px solid blue;
+    justify-content: flex-end;
+}
+
+.dash {
+    display: flex;
+    width: 100%;
+    height: 70%;
+    justify-content: flex-end;
+    border: 5px solid red;
+    flex-direction:row;
+    
+
+}
+
+.TempUmi {
+    display: flex;
+    border: 5px solid purple;
+}
+
+.div_umid {
+    width: 400px;
+
+}
+
+.div_temp {
+    width: 400px;
+}
+
+.div_hist {    
+    width: 400px;
+    border: 5px solid pink;
+    
+}
