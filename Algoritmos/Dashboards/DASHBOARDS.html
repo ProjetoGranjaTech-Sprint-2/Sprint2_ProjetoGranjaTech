@@ -9,25 +9,53 @@
 </head>
 
 <body>
-    
-    <section class="perfil">
-        <div class="foto"></div>
-        <div class="lista">
-                <ul>
-                    <li><a href="">Dashboard</a></li>
-                    <li><a href="">Galpão</a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
 
+    <section class="perfil">
+        <navbar>
+            <h3>GRANJATECH</h3>
+            <div class="div-h3">
+                <ul>
+                    <li>
+                        <a href="">Bem-vindo(a), Fernanda!</a>
+                    </li>
                 </ul>
-        </div>
+
+                <ul>
+                    <li>
+
+                        <a href="">Perfil</a>
+                    </li>
+                </ul>
+
+            </div>
+        </navbar>
+
     </section>
+
     
+    <div class="seletor">
+
+        <h1 class="tituloSeletor">GALPÃO</h1><br>
+
+        <!-- Selecione o galpão: <input type="text" id="input_galpao">
+        <button onclick="verificar()">Verificar</button> -->
+        
+        <label for="galpaoSelect">Selecione o Galpão:</label>
+        <select id="galpaoSelect">
+            <option value="galpao1">Galpão 1</option>
+            <option value="galpao2">Galpão 2</option>
+            <option value="galpao2">Galpão 3</option>
+            <option value="galpao2">Galpão 4</option>
+            <option value="galpao2">Galpão 5</option>            
+        </select>
+    </div>
+
     <section class="hidden">
 
-        <div class="navbar"></div>
-        
+        <h2 class="titulo">MONITORAMENTO DO GALPÃO,</h2>
+
+        </div>
+
         <div class="dash">
 
             <div class="TempUmi">
@@ -42,16 +70,58 @@
             <div class="div_hist">
                 <canvas id="GraficoHist"></canvas>
             </div>
-            
-        </div>
 
+            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\image-removebg-preview (4).png" alt="">
+
+            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\image-removebg-preview (3).png" alt="">
+
+            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\image-removebg-preview (2).png" alt="">
+
+            <div class="alertas">
+
+                <!-- Legenda -->
+                
+                <div class="alertaVerm">
+                    <!-- <h5>ALERTA</h5> -->
+                    Acima de 30°C ou abaixo de 15°C <br>
+                    Acima de 70% ou abaixo de 40%
+                </div>
+
+                <div class="alertaAma">
+                    <!-- <h5>ATENÇÃO</h5> -->
+                    Entre 26°C e 29°C <br>
+                    Entre 60% e 65% ou 45% e 40%
+                </div>
+
+                <div class="alertaVerde">
+                    <!-- <h5>ESTÁVEL</h5> -->
+                    Entre 15°C e 25°C <br>
+                    Entre 40% e 70%
+                </div>
+
+            </div>
     </section>
-    <script>
+    <!-- <script>
+        function verificar() {
+            var galpao = input_galpao.value;
+            div_resultado.innerHTML = "";
 
-        const dadosHistTemp = [20, 21, 33, 18, 29, 10, 23];
+            if (galpao === "1") {
+                div_resultado.innerHTML += `Você selecionou o galpão ${galpao}<br><br>
+                Total de sensores: 10<br><br>
+                Estável: Sensor 1, Sensor 2, Sensor 3, Sensor 4, <br> Sensor 5, Sensor 6<br><br>
+                Atenção: Sensor 7, Sensor 8, Sensor 9 <br><br>
+                Alerta: Sensor 10
+                `
+            }
+        }
+    </script> -->
+    <script>
+        
+        const dadosHistTemp = [20, 21, 33, 18, 29, 30, 23];
         const dadosHistUmi = [50, 62, 74, 49, 54, 32, 77];
         const rotulosHist = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
-
+        
         const ctxHist = document.getElementById('GraficoHist').getContext('2d');
         const GraficoHist = new Chart(ctxHist, {
             type: 'bar',
@@ -87,7 +157,7 @@
             }
         });
 
-        const dadosTemp = [20, 22, 20, 25, 19, 23, 20, 16];
+        const dadosTemp = [29, 34, 36, 28, 27, 32, 33, 29];
         const rotulosTemp = ['0', '30', '60', '90', '120', '150', '180', '210'];
 
         const ctxTemp = document.getElementById('GraficoTemp').getContext('2d');
@@ -114,7 +184,7 @@
                 },
                 scales: {
                     y: {
-                        beginAtZero: false
+                        beginAtZero: true
                     }
                 }
             }
@@ -154,6 +224,7 @@
         });
 
     </script>
+
 
 </body>
 
