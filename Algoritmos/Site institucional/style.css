@@ -16,6 +16,15 @@ html {
     scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(74, 61, 51);
+}
 header {
     width: 100%;
     height: 75px;
@@ -118,6 +127,7 @@ main {
     text-align: center;
     margin: 20px 10px;
     margin-bottom: 50px;
+    text-shadow: 2px 2px 2px black;
 }
 
 .contexto > article > p {
@@ -152,8 +162,8 @@ main {
 
 /*--------------------------*/
 .quem-somos {
+    height: 100%;
     display: flex;
-    align-items: start;
     justify-content: center;
 }
 .quem-somos > img {
@@ -165,16 +175,15 @@ main {
 }
 .quem-somos > .nossa-missao {
     height: 100%;
+    width: 100%;
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .quem-somos > .nossa-missao > h1 {
     color: #ffd890;
     text-align: center;
     font-size: 75px;
+    text-shadow: 2px 2px 2px black;
 }
 .quem-somos > .nossa-missao > p {
     color: white;
@@ -183,10 +192,10 @@ main {
 }
 
 .quem-somos > .nossa-missao > .objetivos {
-    margin-top: 5%;
+    margin-top: 10%;
     display: flex;
-    flex-direction: row;
     width: 100%;
+    height: 525px;
     color: white;
     font-size: 25px;
 }
@@ -194,7 +203,6 @@ main {
 .quem-somos > .nossa-missao > .objetivos > .objetivo1{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
 }
@@ -202,20 +210,158 @@ main {
 .quem-somos > .nossa-missao > .objetivos > .objetivo2{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
 }
+
 .quem-somos > .nossa-missao > .objetivos > .objetivo3{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
 }
 
+.quem-somos > .nossa-missao > .objetivos > .objetivo4{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
 /*--------------------------*/
+.processo {
+    background-image: url(../imagens/fundoProcesso.png);
+    background-position: center;
+}
+
+.processo h1{
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 100px;
+    color: rgb(74, 61, 51);
+    text-shadow: 2px 2px 2px white;
+}
+
+/* .processo > .passo-a-passo {
+} */
+
+.processo > .passo-a-passo > .passo1 > img{
+    border: 5px solid   rgb(74, 61, 51);
+    background-color: #ffd890;
+    border-radius: 15%;
+}
+
+.processo > .passo-a-passo > .passo1 > div {
+    display: flex;
+    align-items: center;
+    border: 5px solid red;
+    font-size: 23px;
+    height: 75px;
+    border: 5px solid rgb(74, 61, 51);
+    border-right-width: 25px;
+    background-color: #ffd890;
+}
+
+.processo >.passo-a-passo >.passo1 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.processo > .passo-a-passo > .passo2 > img{
+    border: 5px solid   rgb(74, 61, 51);
+    background-color: #ffd890;
+    border-radius: 15%;
+}
+
+.processo > .passo-a-passo > .passo2 > div {
+    display: flex;
+    align-items: center;
+    border: 5px solid red;
+    font-size: 23px;
+    height: 75px;
+    border: 5px solid rgb(74, 61, 51);
+    border-right-width: 25px;
+    background-color: #ffd890;
+}
+
+.processo >.passo-a-passo >.passo2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.processo > .passo-a-passo > .passo3 > img{
+    border: 5px solid   rgb(74, 61, 51);
+    background-color: #ffd890;
+    border-radius: 15%;
+}
+
+.processo > .passo-a-passo > .passo3 > div {
+    display: flex;
+    align-items: center;
+    border: 5px solid red;
+    font-size: 23px;
+    height: 75px;
+    border: 5px solid rgb(74, 61, 51);
+    border-right-width: 25px;
+    background-color: #ffd890;
+}
+
+.processo >.passo-a-passo >.passo3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.processo > .passo-a-passo > .passo4 > img{
+    border: 5px solid   rgb(74, 61, 51);
+    background-color: #ffd890;
+    border-radius: 15%;
+}
+
+.processo > .passo-a-passo > .passo4 > div {
+    display: flex;
+    align-items: center;
+    border: 5px solid red;
+    font-size: 23px;
+    height: 75px;
+    border: 5px solid rgb(74, 61, 51);
+    border-right-width: 25px;
+    background-color: #ffd890;
+}
+
+.processo >.passo-a-passo >.passo4 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.processo > .passo-a-passo > .passo5 > img{
+    border: 5px solid   rgb(74, 61, 51);
+    background-color: #ffd890;
+    border-radius: 15%;
+}
+
+.processo > .passo-a-passo > .passo5 > div {
+    display: flex;
+    align-items: center;
+    border: 5px solid red;
+    font-size: 23px;
+    height: 75px;
+    border: 5px solid rgb(74, 61, 51);
+    border-right-width: 25px;
+    background-color: #ffd890;
+}
+
+.processo >.passo-a-passo >.passo5 {
+    display: flex;
+    align-items: center;
+}
+/*--------------------------*/
+
 .opções {
     width: 100%;
     background-color: rgb(74, 61, 51);
@@ -228,6 +374,7 @@ main {
     letter-spacing: 2px;
     text-align: center;
     font-size: 50px;
+    text-shadow: 2px 2px 2px black;
 }
 
 .opções > div {
@@ -272,6 +419,9 @@ main {
     border-top: 10px solid white;
     border-width: 20px 150px;
 }
+
+/*--------------------------*/
+
 .localizacao {
     background-color: white;
 }
@@ -284,11 +434,21 @@ main {
     border: 5px solid rgb(74, 61, 51);
     padding: 5px;
 }
-.localizacao > div > p {
+.localizacao > div > h1 {
     display: flex;
     justify-content: center;
     font-size: 50px;
     color: rgb(74, 61, 51);
+    text-shadow: 1px 1px 1px black;
+    
+}
+
+.localizacao > div > h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(74, 61, 51);
+    padding-top: 25px;
 }
 /*--------------------------*/
 
@@ -378,8 +538,6 @@ footer > .rede-social > a {
     align-items: center;
     width: 225px;
     height: 20px;
- 
-
     margin-top: 30px;
     color: white;
     text-decoration: none;
@@ -397,9 +555,3 @@ footer > .rede-social > a > img {
     margin-right: 5px;
 
 }
-
-
-
-
-
-
