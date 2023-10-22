@@ -23,6 +23,14 @@ body {
     background-color: white;
 }
 
+.textgalpao {
+    display: flex;
+    position: relative;
+    top: 10px;
+    flex-direction: column;
+    align-items: start;
+}
+
 .hidden {
     display: flex;
     width: 100%;
@@ -30,6 +38,8 @@ body {
     /* border: 5px solid blue; */
     justify-content: flex-start;
     align-items: flex-end;
+    position: relative;
+    top: -120px;
 }
 
 .titulo {
@@ -50,7 +60,7 @@ body {
     /* border: 5px solid red; */
     flex-direction:column;  
     align-items: center;  
-    background-color: white;
+    background-color: rgb(239, 239, 239);
     border-radius: 40px;
     margin-left: 10px;
     top: -8%;
