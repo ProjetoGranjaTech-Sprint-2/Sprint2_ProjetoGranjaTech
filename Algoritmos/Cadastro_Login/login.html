@@ -16,7 +16,7 @@
         <input type="password" id="input_senha" placeholder="Insira sua senha" onkeydown="checkEnter(event)">
         <br><br>
         <button onclick="entrar()">Entrar</button>
-        <div id="mensagem_erro"></div>
+        <div id="mensagem"></div>
     </div>
     <img src="https://th.bing.com/th/id/R.192537ebd8918980e3110232edf10e35?rik=zvnfWULIbo9maw&riu=http%3a%2f%2fclipart-library.com%2fimages_k%2fchicken-silhouette-images%2fchicken-silhouette-images-4.png&ehk=372CBtdQ2PxGFki8upVSkxdCtUyatFd2Mpgm1h2AP7A%3d&risl=&pid=ImgRaw"
         id="img_galinha">
@@ -25,30 +25,39 @@
         function entrar() {
             var login = input_login.value;
             var senha = input_senha.value;
-            var texto_login = "Por favor, preencha todos os campos"
-            if (login === "123" && senha === "123") {
-                img_galinha.style.display = 'block'; // Mostra a imagem da galinha
-                setTimeout(function () {
-                    img_galinha.style.animation = 'spin 2s linear infinite'; // Adicione a animação
-                    setTimeout(function () {
-                        window.location.href = 'logado.html';
-                    }, 900); // Redireciona após a animação ter girado por um tempo
-                }, 10); // Aguarde um curto período antes de mostrar e animar a galinha
-            } else {
+            if (login.indexOf('.com') >= 0) {
+                var possuiEmailVálido =
+                    login.indexOf('@gmail') >= 0 ||
+                    login.indexOf('@hotmail') >= 0 ||
+                    login.indexOf('@outlook') >= 0;
+
+                if (possuiEmailVálido) {
+                    if (senha.length >= 8) {
+                        var possui_especial =
+                            senha.indexOf('#') >= 0 ||
+                            senha.indexOf('@') >= 0 ||
+                            senha.indexOf('!') >= 0 ||
+                            senha.indexOf('%') >= 0 ||
+                            senha.indexOf('$') >= 0 ||
+                            senha.indexOf('&') >= 0 ||
+                            senha.indexOf('*') >= 0;
+                            setTimeout(function () {
+                window.location.href= '../logado/logado.html'
+            }, 1)
+                    }
+                }
+            } else if (login == "" || senha == "") {
                 input_login.value = '';
                 input_senha.value = '';
                 input_login.focus();
                 mensagem_erro.innerHTML = `Usuário ou senha incorretos.`;
             }
+            
 
-            if (login == "" || senha == "") {
-                mensagem_erro.innerHTML = `${texto_login}`
-            }
-        }
-
-        function checkEnter(event) {
-            if (event.key === "Enter") {
-                entrar();
+            function checkEnter(event) {
+                if (event.key === "Enter") {
+                    entrar();
+                }
             }
         }
     </script>

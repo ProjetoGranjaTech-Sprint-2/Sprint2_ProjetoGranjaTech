@@ -17,62 +17,67 @@
     <header>
         <div class="header-logo" id="header-logo"><img src="../imagens/galinha.png" alt="logomarca">GRANJATECH</div>
         <nav>
-            <a href="#header-logo">Início</a>
-            <a href="#footer-logo">Sobre nós</a>
-            <a href="">Dashboard</a>
+            <a href="inicio_logado.html">Início</a>
+            <a href="#footer-logo">Endereço</a>
+            <a href="../Dashboards/DASHBOARDS.html">Dashboard</a>
         </nav>
         <div class="botões">
-            <a href="perfil.html">
+            <a href="">
                 Perfil
                 <span class="material-symbols-outlined">account_circle</span>
-            </a>
-            <a href="">
-                Sair?
-                <span class="fa fa-sign-out"></span>
             </a>
         </div>
     </header>
     <section>
         <section class="container">
+
             <div class="carrossel">
-                <a href="" class="first">
+
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+
+                <a href="../Dashboards/DASHBOARDS.html" class="slide first">
                     <div>
                         <h1>Seja bem vinda! Fernanda</h1>
                         <p>Gostaria de dar uma espiadinha no Dashboard!?</p>
                     </div>
                     <img src="https://www.hashtagtreinamentos.com/wp-content/uploads/2021/02/image-15.png" alt="">
                 </a>
-                <a href="" class="conheça">
+
+                <a href="" class="slide conheça">
                     <img src="../imagens/rosto-galinha.jpg" alt="">
                     <div>
-                        <h1>Nos conheça</h1>
-                        <p>Quem somos, como surgimos, nosso valores e um pouco mais.</p>
+                        <h1>Relatório atual</h1>
+                        <p>Acesse o relatório de suas granjas mais rapidamente.</p>
                     </div>
                 </a>
-                <a href="" class="simule">
+
+                <a href="inicio_logado.html#simulador" class="slide simule">
                     <div>
                         <h1>Simulador financeiro</h1>
                         <p>Simule conosco o quanto você ganhará investindo em nosso projeto</p>
                     </div>
                     <img src="../imagens/simuladorFinanceiroGranjaTech.png" alt="">
                 </a>
+
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+        
+                </div>
+                <div class="manual-navigation">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                </div>
+
             </div>
+
+    
+
         </section>
-        <!--<input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio2">
-        <input type="radio" name="radio-btn" id="radio3">
-
-        <div class="navigation-auto">
-            <div class="auto-btn1"></div>
-            <div class="auto-btn2"></div>
-            <div class="auto-btn3"></div>
-        </div>
-
-        <div class="manual-navigation">
-            <label for="radio1" class="manual-btn"></label>
-            <label for="radio2" class="manual-btn"></label>
-            <label for="radio3" class="manual-btn"></label>
-        </div>-->
         <!-- <section class="opções" id="opções">
             <h1>Benefícios do uso de nossos sensores</h1>
             <div>
@@ -109,6 +114,83 @@
             </div>
         </section> -->
     </section>
+    <section class="localizacao" id="endereço">
+        <div>
+            <h1>Conheça a nossa localização</h1>
+            <h2>
+                Estamos localizados na avenida paulista, a avenida mais movimentada do Brasil e a alma de São
+                Paulo.
+            </h2>
+        </div>
+        <div class="maps">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7314.391677463444!2d-46.65703388798397!3d-23.56140890049954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1697405282152!5m2!1spt-BR!2sbr"
+                width="1000" height="550" style="border:3;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-logo" id="footer-logo">
+            <img src="../imagens/galinha branca.png" alt="logomarca">GRANJATECH
+        </div>
+        <div class="sobre" id="contato">
+            <nav>
+                <a href="#inicio">Início</a>
+                <a href="#sobre_nos">Endereço</a>
+            </nav>
+            <div>
+                <p>Telefone</p>
+                <ul>
+                    <li>(11) 4002-8922</li>
+                    <li>(11) 2567-1172</li>
+                    <li>(11) 3325-5274</li>
+                </ul>
+            </div>
+        </div>
+        <div class="rede-social">
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="../imagens/logo facebook.png" alt="logo-facebook">facebook.com/granjatech
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="../imagens/logo instagram.png" alt="logo-instagram">instagram.com/granjatech
+            </a>
+        </div>
+    </footer>
 </body>
 
 </html>
+
+<script>
+
+var count;
+
+document.getElementById("radio1").checked = true;
+
+setInterval(function () {
+    nextImage();
+}, 5000)
+
+function nextImage() {
+
+    var radio_1 = document.getElementById("radio1").checked;
+    var radio_2 = document.getElementById("radio2").checked;
+    var radio_3 = document.getElementById("radio3").checked;
+
+    if (radio_1 == true) {
+        count = 1
+    } else if (radio_2 == true) {
+        count = 2
+    } else if (radio_3 == true) {
+        count = 3
+    }
+
+    count++;
+    if (count > 3) {
+        count = 1;
+    }
+
+    document.getElementById("radio" + count).checked = true;
+
+}
+
+</script>
