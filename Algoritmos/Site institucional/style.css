@@ -156,6 +156,12 @@ main {
     width: 200px;
     cursor: pointer;
 }
+ .botao_contexto > a {
+    text-decoration: none;
+    color: rgb(74, 61, 51);
+    font-weight: 700;
+ }
+
 .contexto > article > p > b {
     color: #ffd890;
 }

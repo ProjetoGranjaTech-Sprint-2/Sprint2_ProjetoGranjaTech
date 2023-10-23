@@ -301,7 +301,7 @@ section > .container > .carrossel > input {
 footer {
     height: 250px;
     width: 100%;
-    background-image: url(../imagens/footer.png);
+    background-image: url(../../imagens/footer.png);
     background-size: 1500px;
     position: absolute;
     z-index: -2;
