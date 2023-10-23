@@ -5,67 +5,35 @@
 <head>
     <title>Gráfico de Temperatura e Umidade</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="dash.css">
+    <link rel="stylesheet" href="DASHS.css">
 </head>
 
 <body>
 
-    <section class="perfil">
+    <header class="perfil">
         <navbar>
             <h3>GRANJATECH</h3>
             <div class="div-h3">
                 <ul>
                     <li>
-                        <a href="">Bem-vindo(a), Fernanda!</a>
+                        <span> Bem-vindo(a), Fernanda! </span>
                     </li>
                 </ul>
 
                 <ul>
                     <li>
-
-                        <a href="">Perfil</a>
+                        <a style="color: rgba(74, 61, 51);" href="">Início</a>
                     </li>
                 </ul>
-
             </div>
         </navbar>
+    </header>
 
-    </section>
-
-    
-    <div class="seletor">
-
-        <h1 style="font-weight: bold; color: #ffA500;" class="tituloSeletor">GALPÃO</h1><br>
-
-        <!-- Selecione o galpão: <input type="text" id="input_galpao">
-        <button onclick="verificar()">Verificar</button> -->
-        
-        <label style="font-weight: bold;" for="galpaoSelect">Selecione o Galpão:</label>
-        <select id="galpaoSelect">
-            <option value="galpao" onchange="">Galpão</option>
-            <option value="galpao1">Galpão 1</option>
-            <option value="galpao2">Galpão 2</option>
-            <option value="galpao2">Galpão 3</option>
-            <option value="galpao2">Galpão 4</option>
-            <option value="galpao2">Galpão 5</option>            
-        </select>
-        <div class="textgalpao" id="texto-galpao">
-         Galpão 1 possui 5 sensores <br><br>
-         <span style="color: green; font-weight: bold;">Estável: <span style="color: black; font-weight: lighter;">Sensor 1, Sensor 2, Sensor 3</span></span> 
-        <span style="color: rgb(235, 215, 0); font-weight: bold;"> Atenção: <span style="color: black; font-weight: lighter;">Sensor 4 </span></span>
-        <span style="color: red; font-weight: bold;"> Alerta: <span style="color: black; font-weight: lighter;">Sensor 5</span></span>
-
-
-        </div>
-    </div>
-
-    <section class="hidden">
-
-        <h2 class="titulo">MONITORAMENTO DO GALPÃO</h2>
-
-        </div>
+    <main class="hidden">
 
         <div class="dash">
+
+            <h2 class="titulo">MONITORAMENTO DO GALPÃO</h2>
 
             <div class="TempUmi">
                 <div class="div_temp">
@@ -75,71 +43,104 @@
                     <canvas id="GraficoUmid"></canvas>
                 </div>
             </div>
-
             <div class="div_hist">
                 <canvas id="GraficoHist"></canvas>
             </div>
+<!-- 
+            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha vermelha.png" alt="">
 
-            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\image-removebg-preview (4).png" alt="">
+            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha amarela.png" alt="">
 
-            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\image-removebg-preview (3).png" alt="">
-
-            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\image-removebg-preview (2).png" alt="">
+            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha verde.png" alt="">
 
             <div class="alertas">
-
-                <!-- Legenda -->
-                
+                                
                 <div class="alertaVerm">
-                    <!-- <h5>ALERTA</h5> -->
-                    Alerta - 
+                    Alerta: 
                      30°C 
                      70%
                 </div>
                 <br>
                 <div class="alertaAma">
-                    <!-- <h5>ATENÇÃO</h5> -->
-                    Moderado -
+                    Moderado:
                      26°C a 29°C 
                     60% 
                 </div>
                 <br>
                 <div class="alertaVerde">
-                    <!-- <h5>ESTÁVEL</h5> -->
-                    Adequado -
+                    Adequado:
                      15°C 
                     40%
-                </div>
+                </div> -->
 
+        </div>
+
+        <div class="controle">
+            <h1> GALPÃO </h1>
+            <div class="botoes">
+                <img src="https://i.pinimg.com/originals/d5/2d/75/d52d75338d7b34496a3d00b08de65451.png" height="30px" width="30px" style="transform: rotate(180deg);"  alt="">
+                <button class="G1">G1</button>
+                <img src="https://i.pinimg.com/originals/d5/2d/75/d52d75338d7b34496a3d00b08de65451.png" height="30px" width="30px" alt="">
+                <!-- <button class="G2">II</button>
+                <button class="G3">III</button> -->
             </div>
-    </section>
+            <div class="sensores">
+                <div class="sensores1">
+                    <button class="S1">S1</button>
+                    <button class="S2">S2</button>
+                </div>
+                <div class="sensores2">
+                    <button class="S3">S3</button>
+                    <button class="S4">S4</button>
+                </div>
+            </div>
+            <div class="legenda">
+                <h1 style="color: #215784;">°C</h1>
+                <h1 style="color:  #215784;">%</h1>
+            </div>
+        </div>
+        <div class="controle2">
+            <div class="galinha1">
+                <img src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha vermelha.png" alt=""> 
+                <span class="vermelho"> Alerta: 30°C 70%</span>
+            </div>
+               <div class="galinha2">
+                <img src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha amarela.png" alt="" >
+                <span class="amarelo">Moderado: 26°C a 29°C  60%</span>
+               </div>
+               <div class="galinha3">
+                <img src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha verde.png" alt="" >
+                <span class="verde">Adequado: 15°C 40%</span>
+               </div>               
+        </div>
+    </main>  
     <script>
-     console.log(select);
-     let text = select.options[select.selectedIndex].text;
+        console.log(select);
+        let text = select.options[select.selectedIndex].text;
 
 
-     function atualizouSelect() {
-     let select = document.querySelector('#Galpão');
-     let Optionvalue = select.options[select.selectedIndex].value;
-     let value = Optionvalue.value;
-     let text = Optionvalue.text;
+        function atualizouSelect() {
+            let select = document.querySelector('#Galpão');
+            let Optionvalue = select.options[select.selectedIndex].value;
+            let value = Optionvalue.value;
+            let text = Optionvalue.text;
 
-     console.log(value, text);
-     }
+            console.log(value, text);
+        }
 
-     
-     function atualizouSelect() {
 
-     }
+        function atualizouSelect() {
+
+        }
 
     </script>
 
     <script>
-        
+
         const dadosHistTemp = [20, 21, 33, 18, 29, 30, 23];
         const dadosHistUmi = [50, 62, 74, 49, 54, 32, 77];
         const rotulosHist = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
-        
+
         const ctxHist = document.getElementById('GraficoHist').getContext('2d');
         const GraficoHist = new Chart(ctxHist, {
             type: 'bar',
@@ -164,19 +165,22 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Histórico'
+                        text: 'Histórico',
+                        font: {
+                            size: 15
+                        }
                     }
                 },
                 scales: {
                     y: {
-                        beginAtZero: false
+                        beginAtZero: true
                     }
                 }
             }
         });
 
         const dadosTemp = [29, 34, 36, 28, 27, 32, 33, 29];
-        const rotulosTemp = ['0', '30', '60', '90', '120', '150', '180', '210'];
+        const rotulosTemp = ['06:00', '09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00'];
 
         const ctxTemp = document.getElementById('GraficoTemp').getContext('2d');
         const GraficoTemp = new Chart(ctxTemp, {
@@ -190,9 +194,10 @@
                         data: dadosTemp,
                         borderColor: '#215784',
                         backgroundColor: '#215784',
-                    }
+                    },
                 ]
             },
+
             options: {
                 plugins: {
                     title: {
@@ -209,7 +214,7 @@
         });
 
         const dadosUmidade = [42, 46, 44, 40, 19, 23, 20, 16];
-        const rotulosUmid = ['0', '30', '60', '90', '120', '150', '180', '210'];
+        const rotulosUmid = ['06:00', '09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00'];
 
         const ctxUmid = document.getElementById('GraficoUmid').getContext('2d');
         const GraficoUmid = new Chart(ctxUmid, {
@@ -218,7 +223,7 @@
                 labels: rotulosUmid,
                 datasets: [
                     {
-                        label: 'UMIDADE (°C)',
+                        label: 'UMIDADE (%)',
 
                         data: dadosUmidade,
                         borderColor: '#ffA500',
@@ -235,7 +240,7 @@
                 },
                 scales: {
                     y: {
-                        beginAtZero: false
+                        beginAtZero: true
                     }
                 }
             }
