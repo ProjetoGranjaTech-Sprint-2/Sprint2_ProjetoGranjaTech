@@ -29,40 +29,43 @@
 
 
                     <div class="input-box">
-                        <span style="color: red;">*</span> <input class="input" type="text" id="input_nome_empresarial"
-                            placeholder="Nome Empresarial"><br> <br>
+                        <span style="color: white;"> <span style="color: red;">*</span> Nome Empresarial </span> <input
+                            class="input" type="text" id="input_nome_empresarial" placeholder="Nome Empresarial"><br>
+                        <br>
                     </div>
 
 
                     <div class="input-box">
-                        <span style="color: red;">*</span> <input class="input" type="text" id="input_nome_fantasia"
-                            placeholder="Nome Fantasia"> <br> <br>
+                        <span style="color: white;"> <span style="color: red;">*</span> Nome Fantasia </span> <input
+                            class="input" type="text" id="input_nome_fantasia" placeholder="Nome Fantasia"> <br> <br>
                     </div>
 
 
                     <div class="input-box">
-                        <span style="color: red;">*</span> <input class="input" id="input_cnpj" placeholder="CNPJ">
+                        <span style="color: white;"><span style="color: red;">* </span> CNPJ </span> <input
+                            class="input" id="input_cnpj" placeholder="CNPJ">
                         <br><br>
                     </div>
 
 
                     <div class="input-box">
-                        <span style="color: red;">*</span> <input class="input" type="email" id="input_email"
-                            placeholder="Email"><br><br>
+                        <span style="color: white;"><span style="color: red;">*</span> E-mail</span> <input
+                            class="input" type="email" id="input_email" placeholder="Email"><br><br>
                     </div>
 
 
-                    <div class="input-box">
-                        <span style="color: red;">*</span> <input class="input" type="password" id="input_senha"
-                            class="material-symbols-outlined" placeholder="Senha">
+                    <div class="input-box" onkeydown="checkEnter(event)">
+                        <span style="color: white;"><span style="color: red;">* </span> Senha</span><input class="input"
+                            type="password" id="input_senha" class="material-symbols-outlined" placeholder="Senha">
                         <button onclick="mostrar()" class="material-symbols-outlined"
                             id="olhinho">visibility</button><br>
                     </div>
 
 
                     <div class="input-box">
-                        <span style="color: transparent;">*</span>
-                        <input class="input" type="text" id="input_telefone" placeholder="Telefone"><br><br>
+                        <span style="color: white;"><span style="color: transparent;">*</span> Telefone</span>
+                        <input class="input" type="number" id="input_telefone" placeholder="Telefone"
+                            onkeydown="checkEnter(event)"><br><br>
                     </div>
 
 
@@ -172,5 +175,9 @@
             }
         }
     }
-
+    function checkEnter(event) {
+        if (event.key === "Enter") {
+            prosseguir();
+        }
+    }
 </script>

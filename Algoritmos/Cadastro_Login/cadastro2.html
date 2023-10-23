@@ -27,43 +27,45 @@
                 <form method="get" action="." class="input-grupo">
 
                     <div class="input-box-endereco">
-                        <span style="color: red;">*</span> <input type="text" name="cep" type="text" id="input_cep"
-                            value="" maxlength="9" onblur="pesquisacep(this.value);" placeholder="CEP">
+                        <span style="color: white;"> <span style="color: red;">*</span> CEP </span> <input type="text"
+                            name="cep" type="text" id="input_cep" value="" maxlength="9"
+                            onblur="pesquisacep(this.value);" placeholder="CEP">
                         <br><br>
                     </div>
 
 
                     <div class="input-box-endereco">
-                        <span style="color: red;">*</span> <input type="text" id="input_uf" name="uf"
-                            placeholder="Estado">
+                        <span style="color: white;"> <span style="color: red;">*</span> Estado </span> <input
+                            type="text" id="input_uf" name="uf" placeholder="Estado">
                         <br><br>
                     </div>
 
 
                     <div class="input-box-endereco">
-                        <span style="color: red;">*</span> <input type="text" id="input_cidade" name="cidade"
-                            placeholder="Cidade">
+                        <span style="color: white;"> <span style="color: red;">*</span> Cidade </span> <input
+                            type="text" id="input_cidade" name="cidade" placeholder="Cidade">
                         <br><br>
                     </div>
 
 
                     <div class="input-box-endereco">
-                        <span style="color: red;">*</span> <input type="text" id="input_bairro" name="bairro"
-                            placeholder="Bairro">
+                        <span style="color: white;"> <span style="color: red;">*</span> Bairro </span> <input
+                            type="text" id="input_bairro" name="bairro" placeholder="Bairro">
                         <br><br>
                     </div>
 
 
                     <div class="input-box-endereco">
-                        <span style="color: red;">*</span> <input type="text" id="input_rua" name="rua"
-                            placeholder="Rua">
+                        <span style="color: white;"> <span style="color: red;">*</span> Rua </span> <input type="text"
+                            id="input_rua" name="rua" placeholder="Rua">
                         <br><br>
                     </div>
 
 
                     <div class="input-box-endereco">
-                        <span style="color: red;">*</span> <input type="text" id="input_numero" name="numero"
-                            placeholder="Número">
+                        <span style="color: white;"> <span style="color: red;">*</span> Numero </span> <input
+                            type="text" id="input_numero" name="numero" placeholder="Número"
+                            onkeydown="checkEnter(event)">
                         <br><br>
                     </div>
 
@@ -193,6 +195,10 @@
             //cep sem valor, limpa formulário.
             limpa_formulário_cep();
         }
-
+    }
+    function checkEnter(event) {
+        if (event.key === "Enter") {
+            confirmacao();
+        }
     }
 </script>

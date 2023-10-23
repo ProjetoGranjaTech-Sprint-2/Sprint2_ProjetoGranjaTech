@@ -1,91 +1,116 @@
 body {
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
     margin: 0;
-    font-family: 'Roxborough CF', sans-serif;
+    padding: 0;
+    height: 100vh;
 }
 
+header {
+    width: 90%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    display: flex;
+    background-color: rgb(74, 61, 51);
+}
+
+.header-logo {
+    display: flex;
+    font-size: 25px;
+    color: white;
+    align-items: center;
+}
+
+.header-logo:hover {
+    cursor: pointer;
+}
+
+header>div>img {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    transition: 0.3s;
+}
+
+header>div>img:hover {
+    width: 55px;
+}
+
+header>nav>a {
+    display: inline-flex;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+header>nav>a:hover {
+    font-size: 19px;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 120px;
+
+}
+
+a {
+    color: rgb(74, 61, 51);
+}
+
+
+
 .container {
-    position: relative;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
     text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 40px;
+    width: 350px;
+
 }
 
 h1 {
-    color: #4A3D33;
+    color: #54392f;
     font-size: 24px;
+    margin-bottom: 20px;
 }
 
-input {
-    width: 100%;
-    padding: 3px;
-    margin: 8px 0;
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 5px;
+    margin: 5px 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: transform 0.3s;
-
-}
-
-input:hover {
-    transform: scale(1.05);
-
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 button {
-    background-color: #4A3D33;
+    background-color: #54392f;
     color: white;
-    border: none;
-    border-radius: 4px;
     padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
-
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
-button:hover {
-    background-color: rgb(74, 61, 51);
-    padding: 12px 23px;
 
-}
-
-#mensagem_erro {
-    color: red;
-    margin: 10px 0;
-}
-
-.centered {
-    display: flex;
-    justify-content: center;
-}
 
 #img_galinha {
-    position: absolute;
-    top: 70%;
-    left: 48%;
-    transform: translate(-50%, -50%);
-    width: 40px;
     display: none;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    width: 50px;
+    animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
