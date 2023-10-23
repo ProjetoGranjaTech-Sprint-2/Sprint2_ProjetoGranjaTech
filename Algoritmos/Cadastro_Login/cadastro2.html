@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="cadastroteste.css">
+    <title>Cadastro - GranjaTech</title>
+    <link rel="stylesheet" href="cadastro.css">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
     <div class="container" id="div_endereco">
 
         <div class="img-galinha">
-            <img src="../../imagens/imagem logado.png">
+            <img src="../imagens/imagem logado.png">
         </div>
 
         <div class="form">
@@ -96,46 +96,30 @@
         var numero = input_numero.value;
         var rua = input_rua.value;
         var bairro = input_bairro.value;
-        var cidade = input_bairro.value;
+        var cidade = input_cidade.value;
         var uf = input_uf.value;
         var cep = input_cep.value;
         div_cadastro = "";
 
-        if (telefone_ == "") {
-            const telefone_ = "";
-        }
         if (numero == "") {
             alert(`Por favor, insira um número`);
         } else {
-            div_endereco.innerHTML =
-                ` <div class="container">
 
-<div class="img-galinha">
-    <img src="../../imagens/imagem logado.png">
-</div>
+            const numero_ = document.getElementById("input_numero").value;
+            const rua_ = document.getElementById("input_rua").value;
+            const bairro_ = document.getElementById("input_bairro").value;
+            const cidade_ = document.getElementById("input_cidade").value;
+            const uf_ = document.getElementById("input_uf").value;
+            const cep_ = document.getElementById("input_cep").value;
 
-<div class="form">
+            localStorage.setItem("input_numero", numero_);
+            localStorage.setItem("input_rua", rua_);
+            localStorage.setItem("input_bairro", bairro_);
+            localStorage.setItem("input_cidade", cidade_);
+            localStorage.setItem("input_uf", uf_);
+            localStorage.setItem("input_cep", cep_);
 
-    <div class="form-header">
-        <h2>Confirme seus dados:</h2>
-    </div>
-
-<section class="confirmacao">
-<div class="dados">
-    <p>Nome Empresarial: ${nome_emp}</p><br>
-    <p>Nome Fantasia: ${nome_fant}</p> <br>
-    <p>CNPJ: ${cnpj_}</p> <br>
-    <p>Email: ${email_}</p> <br>
-    <p>Telefone: ${telefone_}</p> <br>
-    <p>CEP: ${cep}</p> <br>
-    <p>Estado: ${uf}</p> <br>
-    <p>Cidade: ${cidade}</p> <br>
-    <p>Bairro: ${bairro}</p> <br>
-    <p>Rua: ${rua}</p> <br>
-    <p>Número: ${numero}</p> <br>
-    <br> <br>
-    <button class="botao"><a href="login.html" class="botao-confirmar">Confirmar</a></button>
-</div>`
+            window.location.href = "cadastro3.html";
         }
     }
     function limpar() {
