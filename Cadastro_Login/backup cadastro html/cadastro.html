@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - GranjaTech</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    <section class="cadastro">
+        <div class="dados">
+            <h2>Dados</h2>
+
+            <span style="color: red;">*</span> <input class="input" type="text" id="input_nome_empresarial"
+                placeholder="Nome Empresarial"><br> <br>
+            <span style="color: red;">*</span> <input class="input" type="text" id="input_nome_fantasia"
+                placeholder="Nome Fantasia"> <br> <br>
+            <span style="color: red;">*</span> <input class="input" id="input_cnpj" placeholder="CNPJ"> <br> <br>
+            <span style="color: red;">*</span> <input class="input" type="email" id="input_email" placeholder="Email">
+            <br>
+            <br>
+            <span style="color: red;">*</span> <input class="input" type="password" id="input_senha"
+                class="material-symbols-outlined" placeholder="Senha"> <button onclick="mostrar()"
+                class="material-symbols-outlined" id="olhinho">visibility</button><br> <br>
+            <input class="input" type="text" id="input_telefone" placeholder="Telefone"><br> <br>
+            <button onclick="prosseguir()" id="botao_prosseguir">Prosseguir</button>
+            <br><br>
+
+        </div>
+    </section>
+
+    <div id="div_cadastro"></div>
+    <div id="div_confirmacao"></div>
+
+</body>
+
+</html>
+
+<script>
+    var nome_empresarial = input_nome_empresarial.value;
+    var nome_fantasia = input_nome_fantasia.value;
+    var cnpj = input_cnpj.value;
+    var email = input_email.value;
+    var senha = input_senha.value;
+    var telefone = input_telefone.value;
+
+    function mostrar() {
+        senha = input_senha.value;
+        senha = document.getElementById("input_senha")
+
+        if (senha.type == "password") {
+            senha.type = "text"
+        } else {
+            senha.type = "password"
+        }
+    }
+    function prosseguir() {
+        nome_empresarial = input_nome_empresarial.value;
+        nome_fantasia = input_nome_fantasia.value;
+        cnpj = input_cnpj.value;
+        email = input_email.value;
+        senha = input_senha.value;
+        telefone = input_telefone.value;
+
+        if (nome_empresarial == "") { // validação para que o campo nome empresarial não esteja vazio, porém, se a pessoa der espaço no campo, a validação é falha.
+            div_cadastro.innerHTML = `Por favor, preencha o campo "Nome Empresarial (Responsável/Empresário)".`
+        } else {
+            if (nome_fantasia == "") { // validação para que o campo nome fantasia não esteja vazio, porém, se a pessoa der espaço no campo, a validação é falha.
+                div_cadastro.innerHTML = `Por favor, preencha o campo "Nome Fantasia".`
+            } else {
+                if (cnpj == "") {
+                    div_cadastro.innerHTML = `Por favor, preencha o campo "CNPJ".`
+                } else if (cnpj.length >= 14 & cnpj.length <= 18) { // o cnpj pode ser tanto com "." e "-" como somente os números, por isso essa quantidade de caracteres "barrada".
+                    if (email == "") {
+                        div_cadastro.innerHTML = `Por favor, preencha o campo "Email".`
+                    } else if (email.indexOf('.com') >= 0) { // validação para que o email tem ".com", se não, o usuário não segue em frente.
+                        var possuiEmailVálido =
+                            email.indexOf('@gmail') >= 0 ||
+                            email.indexOf('@hotmail') >= 0 ||
+                            email.indexOf('@outlook') >= 0;
+
+                        if (possuiEmailVálido) { // validação para que o usuário insira um desses endereços de email testados na variável acima (possuiEmailVálido).
+                            if (senha == "") {
+                                div_cadastro.innerHTML = `Por favor, preencha o campo "Senha".`
+                            } else if (senha.length >= 10) {
+                                var possui_especial =
+                                    senha.indexOf('#') >= 0 ||
+                                    senha.indexOf('@') >= 0 ||
+                                    senha.indexOf('!') >= 0 ||
+                                    senha.indexOf('%') >= 0 ||
+                                    senha.indexOf('$') >= 0 ||
+                                    senha.indexOf('&') >= 0 ||
+                                    senha.indexOf('*') >= 0;
+
+                                if (possui_especial) { // validação para que o usuário coloque na sua senha pelo menos 1 caracter especial ditados na variável acima. 
+
+                                    div_cadastro.innerHTML =
+
+                                        `<section class="endereco">
+                                        <div class="dados">
+        <h2>Endereço</h2>
+        <form method="get" action=".">
+            <span style="color: red;">*</span> <input type="text" name="cep" type="text" id="input_cep" value="" size="10"
+                maxlength="9" onblur="pesquisacep(this.value);" placeholder="CEP">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="input_uf" name="uf" placeholder="Estado">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="input_cidade" name="cidade" placeholder="Cidade">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="input_bairro" name="bairro" placeholder="Bairro">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="input_rua" name="rua" placeholder="Rua">
+            <br><br>
+            <span style="color: red;">*</span> <input type="text" id="input_numero" name="numero" placeholder="Número">
+            <br><br>
+            <input type="text" id="input_complemento" name="complemento" placeholder="Complemento">
+            <br> <br>
+        </form>
+        <button onclick="limpar()" id="limpar">Limpar</button>
+        <button onclick="confirmacao()" id="botao_prosseguir">Prosseguir</button>
+    </div>
+    </section>`
+                                } else {
+                                    div_cadastro.innerHTML = `Sua senha não contém caracteres especiais! Por favor, insira uma senha com um ou mais caracteres especiais (!, @, #, $, %, &, *).`
+                                }
+                            } else {
+                                div_cadastro.innerHTML = `Senha com quantidade de caracteres inválido! Por favor, insira uma senha com 10 ou mais caracteres.`
+                            }
+                        } else {
+                            div_cadastro.innerHTML = `Email inválido! Insira um email que tenha um dos seguintes endereços: "@outlook", "@gmail" ou "@hotmail"`
+
+                        }
+                    } else {
+                        div_cadastro.innerHTML = `Email inválido!`
+                    }
+                } else {
+                    div_cadastro.innerHTML = `CNPJ inválido!`
+                }
+            }
+        }
+    }
+
+    function confirmacao() {
+        var numero = input_numero.value;
+        var rua = input_rua.value;
+        var bairro = input_bairro.value;
+        var cidade = input_bairro.value;
+        var uf = input_uf.value;
+        var cep = input_cep.value;
+        var complemento = input_complemento.value;
+
+
+        if (telefone == "") {
+            telefone = "-----"
+        }
+        if (numero == "") {
+            div_confirmacao.innerHTML = `Por favor, insira um número`
+        } else {
+            div_confirmacao.innerHTML =
+                `<section class="confirmacao">
+                <div class="dados">
+                <h2>Confirme seus dados:</h2>
+                <p>Nome Empresarial: ${nome_empresarial}</p><br>
+                <p>Nome Fantasia: ${nome_fantasia}</p> <br>
+                <p>CNPJ: ${cnpj}</p> <br>
+                <p>Email: ${email}</p> <br>
+                <p>Telefone: ${telefone}</p> <br>
+                <p>CEP: ${cep}</p> <br>
+                <p>Estado: ${uf}</p> <br>
+                <p>Cidade: ${cidade}</p> <br>
+                <p>Bairro: ${bairro}</p> <br>
+                <p>Rua: ${rua}</p> <br>
+                <p>Número: ${numero}</p> <br>
+                <p>Complemento: ${complemento}</p>
+                <br> <br>
+                <button class="botao"><a href="login.html" class="botao-confirmar">Confirmar</a></button>
+    </div>`
+        }
+    }
+    function limpar() {
+        input_rua.value = "";
+        input_bairro.value = "";
+        input_cidade.value = "";
+        input_uf.value = "";
+        input_cep.value = "";
+        input_complemento.value = "";
+        input_numero.value = "";
+    }
+
+    function limpa_formulário_cep() {
+        //Limpa valores do formulário de cep.
+        document.getElementById('rua').value = ("");
+        document.getElementById('bairro').value = ("");
+        document.getElementById('cidade').value = ("");
+        document.getElementById('uf').value = ("");
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value = (conteudo.logradouro);
+            document.getElementById('bairro').value = (conteudo.bairro);
+            document.getElementById('cidade').value = (conteudo.localidade);
+            document.getElementById('uf').value = (conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if (validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('rua').value = "...";
+                document.getElementById('bairro').value = "...";
+                document.getElementById('cidade').value = "...";
+                document.getElementById('uf').value = "...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+
+    }
+
+</script>

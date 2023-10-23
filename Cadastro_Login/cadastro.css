@@ -1,0 +1,182 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.container {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    box-shadow: 6px 6px 12px rgba(245, 245, 245, 0.100);
+    justify-content: center;
+}
+
+.img-galinha {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.img-galinha>img {
+    height: 100%;
+}
+
+.container>.form {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(74, 61, 51);
+    padding: 30px;
+}
+
+.container>.form>.form-header {
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container>.form>.form-header>.a-entrar {
+    display: flex;
+    border: none;
+    background-color: whitesmoke;
+    padding: 0.6rem 1.1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: rgb(74, 61, 51);
+}
+
+.container>.form>.cadastro>.input-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.container>.form>.cadastro>.input-grupo>.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    height: 7vw;
+    width: 17vw;
+    min-width: 100px;
+    min-height: 70px;
+    max-height: 200px;
+}
+
+.container>.form>.cadastro>.input-grupo>.input-box>.material-symbols-outlined {
+    border: none;
+    width: 15px;
+    text-align: right;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    bottom: 40px;
+    left: 15vw;
+}
+
+.container>.form>.cadastro>.input-grupo>.input-box>input {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px black;
+}
+
+.container>.form>.form-header>h2 {
+    color: white;
+    font-size: 35px;
+}
+
+.container>.form>.cadastro>.input-grupo>#continuar-botao {
+    width: 100%;
+    border: none;
+    background-color: white;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Página 2 - Endereço */
+
+.container>.form>.form-header>.h2-end {
+    display: flex;
+}
+
+.container>.form>.cadastro>.input-grupo>.input-box-endereco {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    height: 12vh;
+    width: 16vw;
+    min-width: 100px;
+    min-height: 70px;
+    max-height: 200px;
+}
+
+.container>.form>.cadastro>.input-grupo>.input-box-endereco>input {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px black;
+}
+
+.container>.form>.cadastro>.botao-grupo {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.container>.form>.cadastro>.botao-grupo>button {
+    width: 100%;
+    border: none;
+    background-color: white;
+    padding: 0.45rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Página 3 - Confirmação dos dados */
+
+.confirmacao>.dados>p {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+.confirmacao>.dados>.botao {
+    background-color: transparent;
+    border: none;
+}
+
+.confirmacao>.dados>.botao>.botao-confirmar {
+    display: flex;
+    border: none;
+    background-color: whitesmoke;
+    padding: 0.6rem 1.1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 550px;
+    height: 35px;
+    color: rgb(74, 61, 51);
+    justify-content: center;
+}
