@@ -189,10 +189,17 @@ section > .container > .carrossel > input {
     display: none;
 }
 
+/* .direita, .esquerda {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(74, 61, 51);
+    position: absolute;
+    margin-top: calc(33vmin + 19vw);
+} */
+
 .manual-navigation {
     position: absolute;
-    top: 40%;
-    margin-top: 27vw;
+    margin-top: calc(33vmin + 22.5vw);
     width: 80vw;
     max-width: 900px;
     display: flex;
@@ -239,9 +246,8 @@ section > .container > .carrossel > input {
 .navigation-auto {
     position: absolute;
     width: 80vw;
+    margin-top: calc(33vmin + 22.5vw);
     max-width: 900px;
-    top: 40%;
-    margin-top: 27vw;
     display: flex;
     justify-content: center;    
 }

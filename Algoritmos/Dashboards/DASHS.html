@@ -5,13 +5,14 @@
 <head>
     <title>Gráfico de Temperatura e Umidade</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="shortcut icon" href="../imagens/galinha.ico">
     <link rel="stylesheet" href="DASHS.css">
 </head>
 
 <body>
 
     <header class="perfil">
-        <navbar>
+        <nav>
             <h3>GRANJATECH</h3>
             <div class="div-h3">
                 <ul>
@@ -22,11 +23,11 @@
 
                 <ul>
                     <li>
-                        <a style="color: rgba(74, 61, 51);" href="">Início</a>
+                        <a style="color: rgba(74, 61, 51);" href="../Site institucional/logado/logado.html" class="inicio">Início</a>
                     </li>
                 </ul>
             </div>
-        </navbar>
+        </nav>
     </header>
 
     <main class="hidden">
@@ -101,17 +102,20 @@
         </div>
         <div class="controle2">
             <div class="galinha1">
-                <img src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha vermelha.png" alt=""> 
+                <img src="image-removebg-preview (4).png" alt=""> 
                 <span class="vermelho"> Alerta: 30°C 70%</span>
             </div>
                <div class="galinha2">
-                <img src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha amarela.png" alt="" >
-                <span class="amarelo">Moderado: 26°C a 29°C  60%</span>
+                <img src="image-removebg-preview (3).png" alt="" >
+                <span class="amarelo">ALERTA - Sensor 1 e Sensor 2 estão em risco</span>
                </div>
                <div class="galinha3">
-                <img src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha verde.png" alt="" >
+                <img src="image-removebg-preview (2).png" alt="" >
                 <span class="verde">Adequado: 15°C 40%</span>
                </div>               
+        </div>
+        <div class="relatorio">
+            <a href="GranjaTech Dash Analytics - Dados_Arduino.pdf" download="Analytics" target="_blank">Baixe aqui o relatório</a>
         </div>
     </main>  
     <script>
@@ -135,10 +139,8 @@
 
     </script>
 
-    <script>
+    <script>     
 
-        const dadosHistTemp = [20, 21, 33, 18, 29, 30, 23];
-        const dadosHistUmi = [50, 62, 74, 49, 54, 32, 77];
         const rotulosHist = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
 
         const ctxHist = document.getElementById('GraficoHist').getContext('2d');
@@ -149,15 +151,15 @@
                 datasets: [
                     {
                         label: 'Temperatura (°C)',
-                        data: dadosHistTemp,
-                        borderColor: '#215784',
-                        backgroundColor: '#215784',
+                        data: [20, 22, 22, 21, 21, 22, 21],
+                        borderColor: '#ff442f',
+                        backgroundColor: '#ff442f',
                     },
                     {
                         label: 'Umidade (%)',
-                        data: dadosHistUmi,
-                        borderColor: '#ffA500',
-                        backgroundColor: '#ffA500',
+                        data: [60, 59, 58, 58, 58, 59, 58],
+                        borderColor: '#483bce',
+                        backgroundColor: '#483bce',
                     }
                 ]
             },
@@ -165,7 +167,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Histórico',
+                        text: 'Histórico - Sensor 1',
                         font: {
                             size: 15
                         }
@@ -179,22 +181,27 @@
             }
         });
 
-        const dadosTemp = [29, 34, 36, 28, 27, 32, 33, 29];
-        const rotulosTemp = ['06:00', '09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00'];
+        const rotulo = ['12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00'];
 
         const ctxTemp = document.getElementById('GraficoTemp').getContext('2d');
         const GraficoTemp = new Chart(ctxTemp, {
             type: 'line',
             data: {
-                labels: rotulosTemp,
+                labels: rotulo,
                 datasets: [
                     {
-                        label: 'Temperatura (°C)',
+                        label: 'Sensor 1',
 
-                        data: dadosTemp,
-                        borderColor: '#215784',
-                        backgroundColor: '#215784',
-                    },
+                        data: [20, 20, 20.5, 21, 22.1, 22.5, 23.3, 24.3],
+                        borderColor: '#ff442f',
+                        backgroundColor: '#ff442f',
+                    }, {
+                        label: 'Sensor 2',
+
+                        data: [22, 22.8, 23, 23.1, 23.4, 23.5, 24, 25.1],
+                        borderColor: '#ff862f',
+                        backgroundColor: '#ff862f',
+                    }, 
                 ]
             },
 
@@ -207,27 +214,31 @@
                 },
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: false,     
                     }
                 }
             }
         });
 
-        const dadosUmidade = [42, 46, 44, 40, 19, 23, 20, 16];
-        const rotulosUmid = ['06:00', '09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00'];
 
         const ctxUmid = document.getElementById('GraficoUmid').getContext('2d');
         const GraficoUmid = new Chart(ctxUmid, {
             type: 'line',
             data: {
-                labels: rotulosUmid,
+                labels: rotulo,
                 datasets: [
                     {
-                        label: 'UMIDADE (%)',
+                        label: 'Sensor 1',
 
-                        data: dadosUmidade,
-                        borderColor: '#ffA500',
-                        backgroundColor: '#ffA500',
+                        data: [60, 63, 63, 64, 64, 65, 67, 68],
+                        borderColor: '#483bce',
+                        backgroundColor: '#483bce',
+                    }, {
+                        label: 'Sensor 2',
+
+                        data: [45, 49, 50, 52, 53, 54, 57, 59],
+                        borderColor: '#4c6aed',
+                        backgroundColor: '#4c6aed',
                     }
                 ]
             },
@@ -240,7 +251,7 @@
                 },
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: false
                     }
                 }
             }

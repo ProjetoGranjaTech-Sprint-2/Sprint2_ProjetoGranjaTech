@@ -50,7 +50,6 @@ header {
 
 header > div > img {
     width: 50px;
-    height: 50px;
     display: flex;
     transition: 0.3s;
 }
@@ -78,6 +77,9 @@ header > .botões {
     text-align: center;
     align-items: center;
 }
+
+
+
 header > .botões > a {
     display: flex;
     justify-content: center;
@@ -94,12 +96,14 @@ header > .botões > a {
     transition: .3s;
 }
 
+
 header > .botões > a > span {
     color: white;
 }
 
-header > div > a:hover {
-    padding: 14px;
+header > .botões > a:hover {
+    width: 108px;
+    height: 48px;
     border-radius: 45px;
     cursor: pointer;
 }
@@ -140,20 +144,23 @@ main {
     height: 60vw;
     position: absolute;
 }
-.contexto > article > h1 {
+main > .contexto > article > h1 {
     width: 70vw;
     font-size: 55px;
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     margin-bottom: 50px;
-    text-shadow: 2px 2px 2px black;
 }
 
-.contexto > article > p {
+main > .contexto > article > p {
     width: 80vw;
     font-size: 22px;
     line-height: 1.6;
     text-align: center;
+    color: rgb(240, 240, 240);
+}
+
+main > .contexto > article > h1 > b {
+    font-size: 65px;
     color: white;
 }
 
@@ -172,6 +179,7 @@ main {
     cursor: pointer;
 }
 .contexto > article > p > b {
+    font-size: 25px;
     color: #ffd890;
 }
 
@@ -209,12 +217,11 @@ main {
     color: #ffd890;
     text-align: center;
     font-size: 75px;
-    text-shadow: 2px 2px 2px black;
 }
 .quem-somos > .nossa-missao > p {
     color: white;
     text-align: center;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 .quem-somos > .nossa-missao > .objetivos {
@@ -262,8 +269,7 @@ main {
     color: white;
     letter-spacing: 2px;
     text-align: center;
-    font-size: 50px;
-    text-shadow: 2px 2px 2px black;
+    font-size: 55px;
 }
 
 .opções > div {
