@@ -1,0 +1,172 @@
+@font-face {
+    font-family: Roxborough CF;
+    src: url(font/Roxborough-CF/Roxborough\ CF.ttf);
+}
+
+* {
+    font-family: Roxrough CF;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+header {
+    width: 90%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding: 0 5vw;
+    display: flex;
+    background-color: rgb(74, 61, 51);
+}
+
+.header-logo {
+    display: flex;
+    font-size: 25px;
+    color: white;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header-logo:hover {
+    cursor: pointer;
+}
+.botao-voltar {
+    height: 45px;
+    width: 45px;
+    max-width: 110px;
+    background-color: white;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: ease .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 50vw;
+    margin-right: 100px;
+
+}
+
+.botao-voltar:hover {
+    width: 15%;
+    height: 60%;
+}
+
+
+.seta-voltar {
+    margin-bottom: 2px;
+    border-radius: 40px;
+    font-size: 40px;
+    transform: scaleX(-1);
+    text-decoration: none;
+    color: rgb(74, 61, 51);
+}
+
+.botao-voltar .seta-voltar {
+    transition: margin-left .6s;
+}
+
+.botao-voltar:hover .seta-voltar {
+    transition-delay: .1s;
+    margin-left: 40px;
+}
+
+
+header>a>img {
+    width: 50px;
+    transition: .3s;
+}
+
+header>a>img:hover {
+    width: 55px;
+}
+
+header>nav>a {
+    display: inline-flex;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+header>nav>a:hover {
+    font-size: 19px;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 120px;
+
+}
+
+a {
+    color: rgb(74, 61, 51);
+}
+
+
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 40px;
+    width: 350px;
+
+}
+
+h1 {
+    color: #54392f;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.botao-entrar {
+    background-color: rgb(74, 61, 51);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+
+
+#img_galinha {
+    display: none;
+    width: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
