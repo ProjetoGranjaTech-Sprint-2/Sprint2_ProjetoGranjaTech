@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="index.css">
     <link rel="shortcut icon" href="../imagens/galinha.ico">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="shortcut icon" href="../../imagens/galinha.ico">
@@ -41,13 +42,14 @@
 
                 <a href="../../Dashboards/DASHS.html" class="slide first">
                     <div>
-                        <h1>Seja bem vinda! Fernanda</h1>
+                        <h1>Seja bem-vinda! Fernanda</h1>
                         <p>Gostaria de dar uma espiadinha no Dashboard!?</p>
                     </div>
                     <img src="../../imagens/teladash.png" alt="">
                 </a>
 
-                <a href="../../Dashboards/GranjaTech Dash Analytics - Dados_Arduino.pdf" target="_blank" class="slide conheça">
+                <a href="../../Dashboards/GranjaTech Dash Analytics - Dados_Arduino.pdf" target="_blank"
+                    class="slide conheça">
                     <img src="../../imagens/relatorio.png" alt="">
                     <div>
                         <h1>Relatório atual</h1>
@@ -63,12 +65,12 @@
                     <img src="../../imagens/simuladorFinanceiroGranjaTech.png" alt="">
                 </a>
 
-                
+
                 <div class="navigation-auto">
                     <div class="auto-btn1"></div>
                     <div class="auto-btn2"></div>
                     <div class="auto-btn3"></div>
-        
+
                 </div>
                 <div class="manual-navigation">
                     <label for="radio1" class="manual-btn"></label>
@@ -77,7 +79,7 @@
                 </div>
             </div>
 
-    
+
 
         </section>
         <!-- <section class="opções" id="opções">
@@ -164,35 +166,35 @@
 
 <script>
 
-var count;
+    var count;
 
-document.getElementById("radio1").checked = true;
+    document.getElementById("radio1").checked = true;
 
-setInterval(function () {
-    nextImage();
-}, 5000)
+    setInterval(function () {
+        nextImage();
+    }, 5000)
 
-function nextImage() {
+    function nextImage() {
 
-    var radio_1 = document.getElementById("radio1").checked;
-    var radio_2 = document.getElementById("radio2").checked;
-    var radio_3 = document.getElementById("radio3").checked;
+        var radio_1 = document.getElementById("radio1").checked;
+        var radio_2 = document.getElementById("radio2").checked;
+        var radio_3 = document.getElementById("radio3").checked;
 
-    if (radio_1 == true) {
-        count = 1
-    } else if (radio_2 == true) {
-        count = 2
-    } else if (radio_3 == true) {
-        count = 3
+        if (radio_1 == true) {
+            count = 1
+        } else if (radio_2 == true) {
+            count = 2
+        } else if (radio_3 == true) {
+            count = 3
+        }
+
+        count++;
+        if (count > 3) {
+            count = 1;
+        }
+
+        document.getElementById("radio" + count).checked = true;
+
     }
-
-    count++;
-    if (count > 3) {
-        count = 1;
-    }
-
-    document.getElementById("radio" + count).checked = true;
-
-}
 
 </script>
