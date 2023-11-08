@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="esqueciasenha.css"> <!-- Lembre-se de criar um arquivo CSS para estilização -->
     <title>Recuperar Senha - GranjaTech</title>
-    
+
     <link rel="shortcut icon" href="../../imagens/galinha.ico">
 
 </head>
@@ -38,8 +38,6 @@
                 if (possuiEmailVálido) {
                     exibir.innerHTML = `Instruções para recuperar sua senha foram enviadas para ${email}.`;
                     setTimeout(function () {
-                        window.location.href = "login.html";
-
                     }, 1500);
                 } else {
                     exibir.innerHTML = 'Email inválido! Insira um email que tenha um dos seguintes endereços: "@outlook", "@gmail" ou "@hotmail"';
