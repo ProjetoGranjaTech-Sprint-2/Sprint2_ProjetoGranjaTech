@@ -1,7 +1,7 @@
 @font-face {
     font-family: Roxborough CF;
     src: url(font/Roxborough-CF/Roxborough\ CF.ttf);
-    
+
 }
 
 * {
@@ -18,12 +18,15 @@ html {
 ::-webkit-scrollbar {
     width: 15px;
 }
+
 ::-webkit-scrollbar-track {
     background-color: whitesmoke;
 }
+
 ::-webkit-scrollbar-thumb {
     background: rgb(74, 61, 51);
 }
+
 header {
     width: 100%;
     height: 75px;
@@ -48,17 +51,17 @@ header {
     cursor: pointer;
 }
 
-header > div > img {
+header>div>img {
     width: 50px;
     display: flex;
     transition: 0.3s;
 }
 
-header > div > img:hover {
+header>div>img:hover {
     width: 55px;
 }
 
-header > nav > a {
+header>nav>a {
     display: inline-flex;
     color: rgb(74, 61, 51);
     text-decoration: none;
@@ -67,11 +70,11 @@ header > nav > a {
     transition: 0.3s;
 }
 
-header > nav > a:hover {
+header>nav>a:hover {
     font-size: 19px;
 }
 
-header > div > a {
+header>div>a {
     background-color: rgb(74, 61, 51);
     color: white;
     text-decoration: none;
@@ -82,7 +85,7 @@ header > div > a {
     transition: 0.3s;
 }
 
-header > div > a:hover {
+header>div>a:hover {
     padding: 10px;
     border-radius: 12px;
     cursor: pointer;
@@ -94,18 +97,22 @@ main {
     padding-top: 70px;
 }
 
+section {
+    height: 100vh;
+}
+
 .contexto {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 700px;
-    background-color: rgb(74, 61, 51); 
+    height: 100vh;
+    background-color: rgb(74, 61, 51);
     overflow: hidden;
     z-index: 1;
 }
 
-.contexto > img {
+.contexto>img {
     height: 100%;
     width: 100%;
     filter: blur(2px) brightness(25%);
@@ -115,7 +122,7 @@ main {
     background-size: cover;
 }
 
-.contexto > article {
+.contexto>article {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -124,14 +131,15 @@ main {
     height: 60vw;
     position: absolute;
 }
-.contexto > article > h1 {
+
+.contexto>article>h1 {
     width: 70vw;
     font-size: 55px;
     text-align: center;
     margin-bottom: 50px;
 }
 
-.contexto > article > p {
+.contexto>article>p {
     width: 80vw;
     font-size: 22px;
     line-height: 1.6;
@@ -139,7 +147,7 @@ main {
     color: rgb(240, 240, 240);
 }
 
-main > .contexto > article > h1 > b {
+main>.contexto>article>h1>b {
     font-size: 65px;
     color: white;
 }
@@ -155,17 +163,19 @@ main > .contexto > article > h1 > b {
     font-size: 20px;
     transition: 2s;
 }
+
 .botao_contexto:hover {
     width: 200px;
     cursor: pointer;
 }
- .botao_contexto > a {
+
+.botao_contexto>a {
     text-decoration: none;
     color: rgb(74, 61, 51);
     font-weight: 700;
- }
+}
 
- .contexto > article > p > b {
+.contexto>article>p>b {
     font-size: 25px;
     color: #ffd890;
 }
@@ -175,13 +185,11 @@ main > .contexto > article > h1 > b {
     display: flex;
     justify-content: center;
     overflow: hidden;
-    height: 120vw;
-    max-height: 680px;
+    height: 100vh;
     z-index: 1;
-
-    
 }
-.quem-somos > img {
+
+.quem-somos>img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -193,25 +201,25 @@ main > .contexto > article > h1 > b {
     z-index: -2;
 }
 
-.quem-somos > .nossa-missao {
-    height: 100vw;
-    max-height: 660px;
+.quem-somos>.nossa-missao {
+    height: 100vh;
     padding-top: 50px;
 }
 
 
-.quem-somos > .nossa-missao > h1 {
+.quem-somos>.nossa-missao>h1 {
     color: #ffd890;
     text-align: center;
     font-size: 75px;
 }
-.quem-somos > .nossa-missao > p {
+
+.quem-somos>.nossa-missao>p {
     color: white;
     text-align: center;
     font-size: 22px;
 }
 
-.quem-somos > .nossa-missao > .objetivos {
+.quem-somos>.nossa-missao>.objetivos {
     display: flex;
     width: 100%;
     height: 275px;
@@ -220,25 +228,25 @@ main > .contexto > article > h1 > b {
     padding: 50px 0px;
 }
 
-.quem-somos > .nossa-missao > .objetivos > .objetivo {
+.quem-somos>.nossa-missao>.objetivos>.objetivo {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
+
 }
 
-.quem-somos > .nossa-missao > .objetivos > .objetivo > p {
+.quem-somos>.nossa-missao>.objetivos>.objetivo>p {
     color: white;
     text-align: center;
     font-size: 20px;
-    
+
 }
 
-.quem-somos > .nossa-missao > .objetivos > .objetivo > img {
-    width: 100px; 
-    filter: opacity(80%);   
+.quem-somos>.nossa-missao>.objetivos>.objetivo>img {
+    width: 100px;
+    filter: opacity(80%);
 }
 
 /*--------------------------*/
@@ -251,22 +259,23 @@ main > .contexto > article > h1 > b {
     flex-direction: column;
 }
 
-.opções > h1 {
-    margin-bottom: 30px;
+.opções>h2 {
     color: white;
-    letter-spacing: 2px;
+    padding-bottom: 50px;
+    width: 100%;
     text-align: center;
-    font-size: 55px;
+    font-size: 65px;
+    margin-top: 50px;
 }
 
-.opções > div {
+.opções>div {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.opções > div > .content > .tri-top {
+.opções>div>.content>.tri-top {
     width: 0;
     height: 0;
     border: 5em solid transparent;
@@ -274,7 +283,7 @@ main > .contexto > article > h1 > b {
     border-width: 20px 140px;
 }
 
-.opções > div > .content > img {
+.opções>div>.content>img {
     background-color: white;
     width: 280px;
     height: 150px;
@@ -284,7 +293,7 @@ main > .contexto > article > h1 > b {
     margin-bottom: -4px;
 }
 
-.opções > div > .content > p {
+.opções>div>.content>p {
     width: 280px;
     height: 180px;
     background-color: white;
@@ -296,7 +305,7 @@ main > .contexto > article > h1 > b {
     color: rgb(74, 61, 51);
 }
 
-.opções > div > .content > .tri-bott {
+.opções>div>.content>.tri-bott {
     width: 0;
     height: 0;
     border: 5em solid transparent;
@@ -308,32 +317,37 @@ main > .contexto > article > h1 > b {
 
 .localizacao {
     background-color: white;
+    margin-bottom: 50px;
+    height: 725px;
 }
-.localizacao > .maps {
+
+.localizacao>.maps {
     display: flex;
     justify-content: center;
-    padding: 50px;
 }
-.localizacao > .maps > iframe {
+
+.localizacao>.maps>iframe {
     border: 5px solid rgb(74, 61, 51);
     padding: 5px;
 }
-.localizacao > div > h1 {
+
+.localizacao>div>h1 {
     display: flex;
     justify-content: center;
     font-size: 50px;
     color: rgb(74, 61, 51);
     text-shadow: 1px 1px 1px black;
-    
+
 }
 
-.localizacao > div > h2 {
+.localizacao>div>h2 {
     display: flex;
     justify-content: center;
     align-items: center;
     color: rgb(74, 61, 51);
     padding: 25px 25px;
 }
+
 /*--------------------------*/
 
 
@@ -345,40 +359,45 @@ main > .contexto > article > h1 > b {
 }
 
 
-.sobre-nos > h2 {
+.sobre-nos>h2 {
     color: rgb(74, 61, 51);
     padding-bottom: 50px;
     width: 100%;
     text-align: center;
     font-size: 65px;
+    text-shadow: 1px 1px 1px black;
 }
-.sobre-nos > .container {
+
+.sobre-nos>.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 
 }
-.sobre-nos > .container > .tresfora  {
+
+.sobre-nos>.container>.tresfora {
     display: flex;
     justify-content: space-around;
     width: 80%;
     margin: 10px;
 }
-.sobre-nos > .container > .tresfora > div {
+
+.sobre-nos>.container>.tresfora>div {
     width: 14vw;
     max-width: 160px;
     text-align: center;
 }
 
-.sobre-nos > .container > .tresfora > div > img {
+.sobre-nos>.container>.tresfora>div>img {
     width: 14vw;
     max-width: 150px;
     border-radius: 50%;
     border: rgb(74, 61, 51) solid 2px;
 }
 
-.sobre-nos > .container > .tresfora > div > a, p {
+.sobre-nos>.container>.tresfora>div>a,
+p {
     color: rgb(74, 61, 51);
     text-decoration: none;
 }
@@ -410,18 +429,18 @@ footer {
     cursor: pointer;
 }
 
-.footer-logo > img {
+.footer-logo>img {
     width: 45px;
     display: flex;
     transition: 0.3s;
 }
 
-.footer-logo > img:hover {
+.footer-logo>img:hover {
     width: 50px
 }
 
-footer > .sobre {
-    display: flex; 
+footer>.sobre {
+    display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 30px;
@@ -431,7 +450,7 @@ footer > .sobre {
     text-align: center;
 }
 
-footer > .sobre > nav > a {
+footer>.sobre>nav>a {
     color: white;
     text-decoration: none;
     display: block;
@@ -439,12 +458,12 @@ footer > .sobre > nav > a {
     transition: 0.2s;
 }
 
-footer > .sobre > nav > a:hover {
+footer>.sobre>nav>a:hover {
     font-weight: 600;
     font-size: 17px;
 }
 
-footer > .sobre > div > p {
+footer>.sobre>div>p {
     color: white;
     list-style: none;
     letter-spacing: 1px;
@@ -452,19 +471,19 @@ footer > .sobre > div > p {
 }
 
 
-footer > .sobre > div > ul {
+footer>.sobre>div>ul {
     margin-top: 8px;
     list-style: none;
     letter-spacing: 1px;
     font-size: 14px;
 }
 
-footer > .rede-social {
+footer>.rede-social {
     margin-top: 50px;
     color: white;
 }
 
-footer > .rede-social > a {
+footer>.rede-social>a {
     display: flex;
     align-items: center;
     width: 225px;
@@ -472,16 +491,16 @@ footer > .rede-social > a {
     margin-top: 30px;
     color: white;
     text-decoration: none;
-    
+
     transition: 0.3s;
 }
 
-footer > .rede-social > a:hover {
+footer>.rede-social>a:hover {
     height: 23.4px;
     font-size: 17px;
 }
 
-footer > .rede-social > a > img {
+footer>.rede-social>a>img {
     height: 130%;
     margin-right: 5px;
 

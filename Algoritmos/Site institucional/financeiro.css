@@ -17,13 +17,15 @@
     max-height: 700px;
 }
 
-.simulador > h1 {
-    text-align: center;
-    letter-spacing: 2px;
+.simulador > h2 {
     color: rgb(74, 61, 51);
-    padding: 40px 0;
-    font-size: 40px;
+    padding-bottom: 50px;
+    width: 100%;
+    text-align: center;
+    font-size: 65px;
     text-shadow: 1px 1px 1px black;
+    letter-spacing: 2px;
+    padding: 40px 0;
 }
 
 .areasimulador {
