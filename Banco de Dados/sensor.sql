@@ -1,11 +1,16 @@
 use sprint2;
 
+create database sprint2;
+
 create table sensor(
-idSensor int primary key auto_increment,
-tipo varchar(11),
+id int primary key auto_increment,
+tipo varchar(11), constraint chkTipo check(tipo in ('umidade', 'temperatura')),
 fkGalin int,
 constraint fkGalinheiro foreign key (fkGalin) references galinheiro(idGalinheiro)
 );
+
+describe sensor;
+
 
 insert into sensor values
 (null, 'temperatura', 1),

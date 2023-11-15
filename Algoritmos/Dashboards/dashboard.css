@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(74, 61, 51);
+}
+
+header > .logo {
+    width: 120px;
+}
+
+
+header > nav > ul {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+header > nav > ul > li {
+    color: white;
+    list-style: none;
+    font-weight: 900;
+    font-size: large;
+}
+
+header > .sair {
+    display: flex;
+    width: 120px;
+    color: white;
+    align-items: center;
+    font-weight: 900;
+}
+
+header > .sair > span {
+    margin-right: 5px;
+    font-weight: 900;
+
+}
+
+header > .sair > p {
+    margin-left: 5px;
+    font-size: large;
+}
+
+main {
+    width: 100%;
+    height: calc(90vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main > .galpao > h2 {
+    margin-left: 25%;
+    padding-bottom: 80px;
+}
+
+main > .galpao > div {
+    display: flex;
+}
+
+main > .galpao > div > .galpoes {
+    height: 300px;
+    width: 55vw;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main > .galpao > div > .galpoes > ul > li {
+    list-style: none;
+    text-align: center;
+}
+
+main > .galpao > div > .kpi {
+    height: 300px;
+    width: 30vw;
+    border: 1px solid red;
+    display: grid;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid rgb(74, 61, 51);
+}
+
+main > .galpao > div > .kpi > div {
+    display: flex;
+    justify-content: space-around;
+}

@@ -2,10 +2,8 @@ use sprint2;
 
 create table galinheiro(
 idGalinheiro int primary key auto_increment,
-qtdSensorTemp int,
-qtdSensorUmid int,
-fkCadastro int,
-constraint fkCadastro foreign key (fkCadastro) references cadastro(idCadastro)
+fkCliente int,
+constraint fkCliente foreign key (fkCliente) references cadastro_cliente(idCliente)
 );
 
 insert into galinheiro values

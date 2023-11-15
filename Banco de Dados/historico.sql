@@ -3,10 +3,11 @@ use sprint2;
 create table historico(
 idHist int auto_increment,
 fkSensor int,
-constraint fkSensor foreign key (fkSensor) references sensor(idSensor),
+constraint fkSensor foreign key (fkSensor) references sensor(id),
 primary key (idHist, fkSensor),
 timeVrf datetime,
-stats decimal (3,1)
+stats decimal (3,1),
+uniMedida varchar(2), constraint chkUniMedida check (uniMedida in ('%', '°C')) 
 );
 
 insert into historico values
@@ -56,6 +57,7 @@ select h.timeVrf as DataHora,
 	h.stats as Dado,
 		s.idSensor as Sensor,
 			s.tipo as TipoSensor,
-				g.idGalinheiro as Galinheiro,
-					g.fkCadastro as Cliente 
-						from historico as h join sensor as s on h.fkSensor = s.idSensor join galinheiro as g on s.fkGalin = g.idGalinheiro where g.idGalinheiro = 1;
+				s.uni_medida as Medida,
+					g.idGalinheiro as Galinheiro,
+						g.fkCadastro as Cliente 
+							from historico as h join sensor as s on h.fkSensor = s.idSensor join galinheiro as g on s.fkGalin = g.idGalinheiro where g.idGalinheiro = 1;
