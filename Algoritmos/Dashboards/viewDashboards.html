@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashs</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="viewDashboards.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo"></div>
+        <nav>
+            <ul>
+                <li>Galpão</li>
+                <li>Dashboards</li>
+                <li>Avisos</li>
+                <li>Ajuda</li>
+            </ul>
+        </nav>
+        <div class="sair">
+            <i class="material-symbols-outlined">logout</i>
+            <p>Sair</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="graficos">
+            <div class="grafico">
+                <canvas id="graficoTemp"></canvas>
+            </div>
+            <div class="grafico">
+                <canvas id="graficoUmi"></canvas>
+            </div>
+        </section>
+        <section class="graficos">
+            <div class="status">
+                <h2>ESTÁVEL</h2>
+                <div class="sensores">
+                    <i class="material-symbols-outlined">chevron_left</i>
+                    <div class="kpi_sensores">
+                        <div class="container_dados">
+                            <span id="temp">23</span>
+                            <span id="umi">25</span>
+                        </div>
+                        <p id="sensor">sensor1</p>
+                    </div>
+                    <i class="material-symbols-outlined">chevron_right</i>
+                </div>
+            </div>
+            <div id="sinalização">
+                <span>cor1</span>
+                <span>cor2</span>
+                <span>cor3</span>
+                <span>cor4</span>
+                <span>cor5</span>
+            </div>
+            <div id="tabela">TABELA</div>
+        </section>    
+    </main>
+
+</body>
+</html>
+
+<script>
+
+
+const ChartTemp = document.getElementById('graficoTemp');
+
+new Chart(ChartTemp, {
+  type: 'line',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: 'Temperatura °C',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+const ChartUmi = document.getElementById('graficoUmi');
+
+new Chart(ChartUmi, {
+  type: 'line',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: 'Temperatura °C',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+
+
+</script>
