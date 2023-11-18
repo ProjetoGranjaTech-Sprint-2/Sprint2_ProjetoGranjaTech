@@ -25,7 +25,7 @@
     font-size: 65px;
     text-shadow: 1px 1px 1px black;
     letter-spacing: 2px;
-    padding: 40px 0;
+    padding: 70px 0;
 }
 
 .areasimulador {
@@ -116,6 +116,7 @@ input {
 #div_html > h2 {
     margin: 10px 0;
     text-align: center;
+    text-shadow: 0.2px 0.2px 0.2px black;
 }
 
 span {
