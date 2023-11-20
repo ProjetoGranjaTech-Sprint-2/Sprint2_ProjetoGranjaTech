@@ -129,7 +129,7 @@ main {
     height: 100%;
     width: 100%;
     filter: blur(2px) brightness(25%);
-    background-image: url(../../imagens/cestaDeOvo.gif);
+    background-image: url(../assets/imgs/imagensInstitucional/cestaDeOvo.gif);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -199,7 +199,7 @@ main > .contexto > article > h1 > b {
     width: 100%;
     height: 100%;
     filter: brightness(25%);
-    background-image: url(../../imagens/GranjaBackground.png);
+    background-image: url(../assets/imgs/imagensInstitucional/GranjaBackground.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -401,7 +401,7 @@ main > .contexto > article > h1 > b {
 footer {
     height: 250px;
     width: 100%;
-    background-image: url(../../imagens/footer.png);
+    background-image: url(../assets/imgs/imagensInstitucional/footer.png);
     background-size: 1500px;
     position: absolute;
     z-index: -2;
