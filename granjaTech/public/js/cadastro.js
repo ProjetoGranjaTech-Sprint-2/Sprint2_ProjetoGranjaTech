@@ -11,102 +11,190 @@ function mostrar() {
     }
 }
 
+var nome_empresarial;
+var nome_fantasia;
+var cnpj;
+var email;
+var senha;
+var telefone;
+
 
 function prosseguir() {
-    var nome_empresarial = input_nome_empresarial.value;
-    var nome_fantasia = input_nome_fantasia.value;
-    var cnpj = input_cnpj.value;
-    var email = input_email.value;
-    var senha = input_senha.value;
-    var telefone = input_telefone.value;
+    nome_empresarial = input_nome_empresarial.value;
+    nome_fantasia = input_nome_fantasia.value;
+    cnpj = input_cnpj.value;
+    email = input_email.value;
+    senha = input_senha.value;
+    telefone = input_telefone.value;
 
     if (nome_empresarial == "") {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML = `Por favor, preencha o campo "Nome Empresarial (Responsável/Empresário)".`;
         setTimeout(sumirMensagem, 2000);
     } else if (nome_fantasia == "") {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = `Por favor, preencha o campo "Nome Fantasia".`;
+        setTimeout(sumirMensagem, 2000);
+    } else if (cnpj == "") {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = `Por favor, preencha o campo CNPJ. Ele deve ter entre 14 e 18 números".`;
+        setTimeout(sumirMensagem, 2000);
+    } else if (cnpj.length >= 14 & cnpj.length <= 18) {
+        if (email == "") {
             cardErro.style.display = "block";
-            mensagem_erro.innerHTML = `Por favor, preencha o campo "Nome Fantasia".`;
+            mensagem_erro.innerHTML = `Por favor, preencha o campo "Email".`;
             setTimeout(sumirMensagem, 2000);
-        } else if (cnpj == "") {
-                cardErro.style.display = "block";
-                mensagem_erro.innerHTML = `Por favor, preencha o campo CNPJ. Ele deve ter entre 14 e 18 números".`;
-                setTimeout(sumirMensagem, 2000);
-            } else if (cnpj.length >= 14 & cnpj.length <= 18) {
-                if (email == "") {
+        } else if (email.indexOf('.com') >= 0) {
+            var possuiEmailVálido =
+                email.indexOf('@gmail') >= 0 ||
+                email.indexOf('@hotmail') >= 0 ||
+                email.indexOf('@outlook') >= 0;
+
+            if (possuiEmailVálido) {
+                if (senha == "") {
                     cardErro.style.display = "block";
-                    mensagem_erro.innerHTML = `Por favor, preencha o campo "Email".`;
+                    mensagem_erro.innerHTML = `Por favor, preencha o campo "Senha".`;
                     setTimeout(sumirMensagem, 2000);
-                } else if (email.indexOf('.com') >= 0) {
-                    var possuiEmailVálido =
-                        email.indexOf('@gmail') >= 0 ||
-                        email.indexOf('@hotmail') >= 0 ||
-                        email.indexOf('@outlook') >= 0;
+                } else if (senha.length >= 10) {
+                    var possui_especial =
+                        senha.indexOf('#') >= 0 ||
+                        senha.indexOf('@') >= 0 ||
+                        senha.indexOf('!') >= 0 ||
+                        senha.indexOf('%') >= 0 ||
+                        senha.indexOf('$') >= 0 ||
+                        senha.indexOf('&') >= 0 ||
+                        senha.indexOf('*') >= 0;
 
-                    if (possuiEmailVálido) {
-                        if (senha == "") {
-                            cardErro.style.display = "block";
-                            mensagem_erro.innerHTML = `Por favor, preencha o campo "Senha".`;
-                            setTimeout(sumirMensagem, 2000);
-                        } else if (senha.length >= 10) {
-                            var possui_especial =
-                                senha.indexOf('#') >= 0 ||
-                                senha.indexOf('@') >= 0 ||
-                                senha.indexOf('!') >= 0 ||
-                                senha.indexOf('%') >= 0 ||
-                                senha.indexOf('$') >= 0 ||
-                                senha.indexOf('&') >= 0 ||
-                                senha.indexOf('*') >= 0;
+                    if (possui_especial) {
 
-                            if (possui_especial) {
+                        // const nome_emp = document.getElementById("input_nome_empresarial").value;
+                        // const nome_fant = document.getElementById("input_nome_fantasia").value;
+                        // const cnpj_ = document.getElementById("input_cnpj").value;
+                        // const email_ = document.getElementById("input_email").value;
+                        // const telefone_ = document.getElementById("input_telefone").value;
 
-                                const nome_emp = document.getElementById("input_nome_empresarial").value;
-                                const nome_fant = document.getElementById("input_nome_fantasia").value;
-                                const cnpj_ = document.getElementById("input_cnpj").value;
-                                const email_ = document.getElementById("input_email").value;
-                                const telefone_ = document.getElementById("input_telefone").value;
+                        // localStorage.setItem("input_nome_empresarial", nome_empresarial);
+                        // localStorage.setItem("input_nome_fantasia", nome_fantasia);
+                        // localStorage.setItem("input_cnpj", cnpj);
+                        // localStorage.setItem("input_email", email);
+                        // localStorage.setItem("input_telefone", telefone_); NÃO USEI ISSO POR NÃO EXPIRAR APÓS SAIR DA PAGINA, E MESMO LIMPANDO O CACHE O VALOR NÃO SOME
 
+                        sessionStorage.CNPJ = cnpj;
+                        sessionStorage.EMAIL = email;
+                        sessionStorage.SENHA = senha;
 
-                                // localStorage.setItem("input_nome_empresarial", nome_empresarial);
-                                // localStorage.setItem("input_nome_fantasia", nome_fantasia);
-                                // localStorage.setItem("input_cnpj", cnpj);
-                                // localStorage.setItem("input_email", email);
-                                // localStorage.setItem("input_telefone", telefone_); NÃO USEI ISSO POR NÃO EXPIRAR APÓS SAIR DA PAGINA, E POIS MESMO LIMPANDO O CACHE O VALOR NÃO SOME
+                        window.location.href = "cadastro2.html";
 
-                                sessionStorage.NOME_EMP = nome_empresarial
-                                sessionStorage.NOME_FANT = nome_fantasia
-                                sessionStorage.CNPJ = cnpj
-                                sessionStorage.EMAIL = email
-                                sessionStorage.SENHA = senha
-                                sessionStorage.TELEFONE = telefone
-
-                                window.location.href = "cadastro2.html";
-
-                            } else {
-                                alert(`Sua senha não contém caracteres especiais! Por favor, insira uma senha com um ou mais caracteres especiais (!, @, #, $, %, &, *).`)
-                            }
-                        } else {
-                            alert(`Senha com quantidade de caracteres inválido! Por favor, insira uma senha com 10 ou mais caracteres.`)
-                        }
                     } else {
-                        alert(`Email inválido - Insira um email que tenha um dos seguintes endereços: "@outlook", "@gmail" ou "@hotmail"`)
-
+                        cardErro.style.display = "block";
+                        mensagem_erro.innerHTML = `Sua senha não contém caracteres especiais! Por favor, insira uma senha com um ou mais caracteres especiais (!, @, #, $, %, &, *).`;
+                        setTimeout(sumirMensagem, 2000);
                     }
                 } else {
-                    alert(`Email inválido!`)
+                    cardErro.style.display = "block";
+                    mensagem_erro.innerHTML = `Senha com quantidade de caracteres inválido! Por favor, insira uma senha com 10 ou mais caracteres.`;
+                    setTimeout(sumirMensagem, 2000);
                 }
             } else {
-                alert(`CNPJ inválido!`)
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML = `Email inválido - Insira um email que tenha um dos seguintes endereços: "@outlook", "@gmail" ou "@hotmail".`;
+                setTimeout(sumirMensagem, 2000);
             }
+        } else {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = `Email inválido!`;
+            setTimeout(sumirMensagem, 2000);
         }
+    } else {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = `CNPJ inválido!`;
+        setTimeout(sumirMensagem, 2000);
+    }
+}
+
+function limpar() {
+    input_rua.value = "";
+    input_bairro.value = "";
+    input_cidade.value = "";
+    input_uf.value = "";
+    input_cep.value = "";
+    input_numero.value = "";
+}
 
 
+var numero;
+var rua;
+var bairro;
+var cidade;
+var uf;
+var cep;
 
-function checkEnter(event) {
+function confirmacao() {
+    // const nome_emp = localStorage.getItem("input_nome_empresarial");
+    // const nome_fant = localStorage.getItem("input_nome_fantasia");
+    // const cnpj_ = localStorage.getItem("input_cnpj");
+    // const email_ = localStorage.getItem("input_email");
+    // const telefone_ = localStorage.getItem("input_telefone");
+
+    numero = input_numero.value;
+    rua = input_rua.value;
+    bairro = input_bairro.value;
+    cidade = input_cidade.value;
+    uf = input_uf.value;
+    cep = input_cep.value;
+    
+    div_cadastro = "";
+
+    if (numero == "") {
+        alert(`Por favor, insira um número`);
+    } else {
+
+        // const numero_ = document.getElementById("input_numero").value;
+        // const rua_ = document.getElementById("input_rua").value;
+        // const bairro_ = document.getElementById("input_bairro").value;
+        // const cidade_ = document.getElementById("input_cidade").value;
+        // const uf_ = document.getElementById("input_uf").value;
+        // const cep_ = document.getElementById("input_cep").value;
+
+        // localStorage.setItem("input_numero", numero_);
+        // localStorage.setItem("input_rua", rua_);
+        // localStorage.setItem("input_bairro", bairro_);
+        // localStorage.setItem("input_cidade", cidade_);
+        // localStorage.setItem("input_uf", uf_);
+        // localStorage.setItem("input_cep", cep_);
+
+        window.location.href = "cadastro3.html";
+    }
+}
+
+function preencher() {
+
+    output_nome_emp.textContent = nome_empresarial;
+    output_nome_fant.textContent = nome_fantasia;
+    output_cnpj.textContent = cnpj;
+    output_email.textContent = email;
+    output_telefone.textContent = telefone;
+
+    output_cep.textContent = cep;
+    output_uf.textContent = uf;
+    output_cidade.textContent = cidade;
+    output_bairro.textContent = bairro;
+    output_rua.textContent = rua;
+    output_numero.textContent = numero;
+
+}
+
+function ativarProsseguir(event) {
     if (event.key === "Enter") {
         prosseguir();
     }
-    
+
+}
+
+function ativarConfirmacao(event) {
+    if (event.key === "Enter") {
+        confirmacao();
+    }
 }
 
 function sumirMensagem() {
