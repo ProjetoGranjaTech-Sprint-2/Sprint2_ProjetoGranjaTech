@@ -6,6 +6,9 @@
 body, html {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header {
@@ -55,7 +58,7 @@ header > .sair > p {
 }
 
 main {
-    width: 100%;
+    width: 90%;
     height: calc(100% - 80px);
     display: flex;
     justify-content: space-between;
@@ -66,7 +69,6 @@ main {
 main > .graficos {
     width: 43%;
     height: 85%;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
