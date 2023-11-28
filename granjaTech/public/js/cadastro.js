@@ -1,13 +1,8 @@
-var nome_empresarial = input_nome_empresarial.value;
-var nome_fantasia = input_nome_fantasia.value;
-var cnpj = input_cnpj.value;
-var email = input_email.value;
-var senha = input_senha.value;
-var telefone = input_telefone.value;
+
+
 
 function mostrar() {
     senha = input_senha.value;
-    senha = document.getElementById("input_senha")
 
     if (senha.type == "password") {
         senha.type = "text"
@@ -15,26 +10,33 @@ function mostrar() {
         senha.type = "password"
     }
 }
+
+
 function prosseguir() {
-    nome_empresarial = input_nome_empresarial.value;
-    nome_fantasia = input_nome_fantasia.value;
-    cnpj = input_cnpj.value;
-    email = input_email.value;
-    senha = input_senha.value;
-    telefone = input_telefone.value;
+    var nome_empresarial = input_nome_empresarial.value;
+    var nome_fantasia = input_nome_fantasia.value;
+    var cnpj = input_cnpj.value;
+    var email = input_email.value;
+    var senha = input_senha.value;
+    var telefone = input_telefone.value;
 
     if (nome_empresarial == "") {
-        alert(`Por favor, preencha o campo "Nome Empresarial (Responsável/Empresário)".`)
-    } else {
-        if (nome_fantasia == "") {
-            alert(`Por favor, preencha o campo "Nome Fantasia".`)
-        } else {
-            res.innerHTML = "";
-            if (cnpj == "") {
-                alert(`Por favor, preencha o campo CNPJ. Ele deve ter entre 14 e 18 números".`)
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = `Por favor, preencha o campo "Nome Empresarial (Responsável/Empresário)".`;
+        setTimeout(sumirMensagem, 2000);
+    } else if (nome_fantasia == "") {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = `Por favor, preencha o campo "Nome Fantasia".`;
+            setTimeout(sumirMensagem, 2000);
+        } else if (cnpj == "") {
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML = `Por favor, preencha o campo CNPJ. Ele deve ter entre 14 e 18 números".`;
+                setTimeout(sumirMensagem, 2000);
             } else if (cnpj.length >= 14 & cnpj.length <= 18) {
                 if (email == "") {
-                    alert(`Por favor, preencha o campo "Email".`)
+                    cardErro.style.display = "block";
+                    mensagem_erro.innerHTML = `Por favor, preencha o campo "Email".`;
+                    setTimeout(sumirMensagem, 2000);
                 } else if (email.indexOf('.com') >= 0) {
                     var possuiEmailVálido =
                         email.indexOf('@gmail') >= 0 ||
@@ -43,7 +45,9 @@ function prosseguir() {
 
                     if (possuiEmailVálido) {
                         if (senha == "") {
-                            alert(`Por favor, preencha o campo "Senha".`)
+                            cardErro.style.display = "block";
+                            mensagem_erro.innerHTML = `Por favor, preencha o campo "Senha".`;
+                            setTimeout(sumirMensagem, 2000);
                         } else if (senha.length >= 10) {
                             var possui_especial =
                                 senha.indexOf('#') >= 0 ||
@@ -63,11 +67,18 @@ function prosseguir() {
                                 const telefone_ = document.getElementById("input_telefone").value;
 
 
-                                localStorage.setItem("input_nome_empresarial", nome_emp);
-                                localStorage.setItem("input_nome_fantasia", nome_fant);
-                                localStorage.setItem("input_cnpj", cnpj_);
-                                localStorage.setItem("input_email", email_);
-                                localStorage.setItem("input_telefone", telefone_);
+                                // localStorage.setItem("input_nome_empresarial", nome_empresarial);
+                                // localStorage.setItem("input_nome_fantasia", nome_fantasia);
+                                // localStorage.setItem("input_cnpj", cnpj);
+                                // localStorage.setItem("input_email", email);
+                                // localStorage.setItem("input_telefone", telefone_); NÃO USEI ISSO POR NÃO EXPIRAR APÓS SAIR DA PAGINA, E POIS MESMO LIMPANDO O CACHE O VALOR NÃO SOME
+
+                                sessionStorage.NOME_EMP = nome_empresarial
+                                sessionStorage.NOME_FANT = nome_fantasia
+                                sessionStorage.CNPJ = cnpj
+                                sessionStorage.EMAIL = email
+                                sessionStorage.SENHA = senha
+                                sessionStorage.TELEFONE = telefone
 
                                 window.location.href = "cadastro2.html";
 
@@ -88,10 +99,16 @@ function prosseguir() {
                 alert(`CNPJ inválido!`)
             }
         }
-    }
-}
+
+
+
 function checkEnter(event) {
     if (event.key === "Enter") {
         prosseguir();
     }
+    
+}
+
+function sumirMensagem() {
+    cardErro.style.display = "none";
 }

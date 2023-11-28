@@ -19,6 +19,24 @@ body {
     background-color: whitesmoke;
 }
 
+.card {
+    padding: 25px 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+
+.mensagem {
+    font-size: 18px;
+}
+
 .container {
     width: 80%;
     height: 80vh;

@@ -11,6 +11,22 @@ body, html {
     align-items: center;
 }
 
+.card {
+    padding: 25px 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensagem {
+    font-size: 18px;
+}
+
 header {
     height: 80px;
     width: 100%;
