@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
 }
 
 body, html {
@@ -35,7 +37,16 @@ header > nav > ul > li {
     color: white;
     list-style: none;
     font-weight: 900;
-    font-size: large;
+    font-size: 1.1em;
+    transition: 0.2s;
+}
+
+header > nav > ul > li:hover {
+    font-size: 1.2em;
+}
+
+header > nav > ul > li >a {
+    color: white;
 }
 
 header > .sair {
@@ -73,6 +84,7 @@ main > .graficos {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background-color: whitesmoke;
 }
 
 main > .graficos > .status > h2 {
@@ -104,11 +116,22 @@ main > .graficos > .status > .sensores > .kpi_sensores {
     align-items: center;
 }
 
+#selectCustom {
+    background-color: whitesmoke;
+    color: rgb(74, 61, 51);
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+    width: 150px;
+}
+
 main > .graficos > .status > .sensores > .kpi_sensores > .container_dados {
     width: 75%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    color: rgb(74, 61, 51);
+    text-shadow: 1px 1px 1px black;
 }
 
 main > .graficos > .status > .sensores > .kpi_sensores > .container_dados > span {
