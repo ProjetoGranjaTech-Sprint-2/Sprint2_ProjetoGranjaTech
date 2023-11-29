@@ -213,7 +213,6 @@ function finalizar() {
     })
     .catch(function (resposta) {
         console.log(`[ERRO] ${resposta}`)
-        sumirMensagem();
     });
     return false;
 }

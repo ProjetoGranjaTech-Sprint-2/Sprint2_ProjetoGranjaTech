@@ -2,7 +2,7 @@ var database = require("../database/config")
 
 function cadastrar(nome_empresarial, nome_fantasia, cnpj, email, senha, telefone, cep, uf, cidade, bairro, rua, numero) {
     var instrucao = `
-        INSERT INTO cadastro_cliente (nomeEmpresarial, nomeFantasia, cnpj, email, senha, telefone, cep, estado, cidade, bairro, rua, numero) VALUES ('${nome_empresarial}', '${nome_fantasia}', '${cnpj}', '${email}', '${senha}', '${telefone}', '${cep}', '${uf}', '${cidade}', '${bairro}', '${rua}', '${numero}'');
+        INSERT INTO cadastro_cliente (nomeEmpresarial, nomeFantasia, cnpj, email, senha, telefone, cep, estado, cidade, bairro, rua, numero) VALUES ('${nome_empresarial}', '${nome_fantasia}', '${cnpj}', '${email}', '${senha}', '${telefone}', '${cep}', '${uf}', "${cidade}", "${bairro}", "${rua}", ${numero});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao)

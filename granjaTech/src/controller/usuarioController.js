@@ -14,8 +14,7 @@ function cadastrar(req, res) {
     var rua = req.body.ruaServer;
     var numero = req.body.numeroServer;
 
-    console.log('pegou todas variaveis' + nome_empresarial, nome_fantasia, cnpj, email, senha, telefone, cep, uf, cidade, bairro, rua, numero)
-
+    
     if (nome_empresarial == undefined) res.status(400).send("Seu nome_empresarial está undefined!");
     else if (nome_fantasia == undefined) res.status(400).send("Seu nome_fantasia está undefined!");
     else if (cnpj == undefined) res.status(400).send("Sua cnpj está undefined!");
