@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    text-decoration: none;
 }
 
 header {
@@ -12,25 +13,34 @@ header {
     background-color: rgb(74, 61, 51);
 }
 
-header > .logo {
+header>.logo {
     width: 120px;
 }
 
 
-header > nav > ul {
+header>nav>ul {
     display: flex;
     justify-content: space-between;
     width: 400px;
 }
 
-header > nav > ul > li {
+header>nav>ul>li {
     color: white;
     list-style: none;
     font-weight: 900;
-    font-size: large;
+    font-size: 1.1em;
+    transition: 0.2s;
 }
 
-header > .sair {
+header > nav > ul > li:hover {
+    font-size: 1.2em;
+}
+
+header > nav > ul > li >a {
+    color: white;
+}
+
+header>.sair {
     display: flex;
     width: 120px;
     color: white;
@@ -38,13 +48,13 @@ header > .sair {
     font-weight: 900;
 }
 
-header > .sair > span {
+header>.sair>span {
     margin-right: 5px;
     font-weight: 900;
 
 }
 
-header > .sair > p {
+header>.sair>p {
     margin-left: 5px;
     font-size: large;
 }
@@ -57,41 +67,175 @@ main {
     justify-content: center;
 }
 
-main > .galpao > h2 {
+main>.galpao {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+main>.galpao>.titulo-galpao {
+    display: flex;
+    justify-content: center;
+    width: 65%;
+    height: 20%;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+    color: rgb(74, 61, 51);
+}
+
+/* main > .galpao > h2 {
+    display: flex;
     margin-left: 25%;
     padding-bottom: 80px;
-}
+    font-size: 3.5em;
+    border: 5px solid red;
+} */
 
-main > .galpao > div {
+main>.galpao>div {
     display: flex;
+    height: 100%;
 }
 
-main > .galpao > div > .galpoes {
-    height: 300px;
-    width: 55vw;
-    border: 1px solid red;
+main>.galpao>div>.galpoes {
+    width: 65%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-main > .galpao > div > .galpoes > ul > li {
+main>.galpao>div>.galpoes>.selecao {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+}
+
+main>.galpao>div>.galpoes>.selecao>.primeira-linha {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+main>.galpao>div>.galpoes>.selecao>.segunda-linha {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+main>.galpao>div>.galpoes>.selecao>.caixas {
     list-style: none;
     text-align: center;
 }
 
-main > .galpao > div > .kpi {
-    height: 300px;
-    width: 30vw;
-    border: 1px solid red;
+.retangulo {
+    border-radius: 25%;
+}
+
+main>.galpao>div>.galpoes>.selecao>.primeira-linha>.caixas>.retangulo {
+    /* border: 5px solid red; */
+    border-style: none;
+    width: 125px;
+    height: 50px;
+}
+
+.galpao .galpoes .selecao .primeira-linha .caixas:nth-child(1) .retangulo {
+    background-color: #378F11;
+}
+
+.galpao .galpoes .selecao .primeira-linha .caixas:nth-child(2) .retangulo {
+    background-color: #378F11;
+}
+
+
+.galpao .galpoes .selecao .primeira-linha .caixas:nth-child(3) .retangulo {
+    background-color: #A41904;
+}
+
+.galpao .galpoes .selecao .segunda-linha .caixas:nth-child(1) .retangulo {
+    background-color: #462489;
+}
+
+.galpao .galpoes .selecao .segunda-linha .caixas:nth-child(2) .retangulo {
+    background-color: #FF914D;
+}
+
+.galpao .galpoes .selecao .segunda-linha .caixas:nth-child(3) .retangulo {
+    background-color: #0E6F99;
+}
+
+
+
+main>.galpao>div>.galpoes>.selecao>.segunda-linha>.caixas>.retangulo {
+    border: 5px solid red;
+    border-style: none;
+    width: 125px;
+    height: 50px;
+}
+
+main>.galpao>div>.kpi {
+    height: 90%;
+    width: 35%;
     display: grid;
     vertical-align: middle;
     align-items: center;
     justify-content: center;
-    border-left: 2px solid rgb(74, 61, 51);
+    border-left: 5px solid rgb(74, 61, 51);
+    background-color: whitesmoke;
 }
 
-main > .galpao > div > .kpi > div {
+main>.galpao>div>.kpi> div {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    gap: 25px;
+}
+
+main>.galpao>div>.kpi> div >span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    color: white;
+    background-color: blue;
+    border-radius: 15px;
+}
+
+main>.galpao>div>.kpi> div:nth-child(1) >span {
+    background-color:  #A41904;
+}
+
+main>.galpao>div>.kpi> div:nth-child(2) >span {
+    background-color:  #FF914D;
+}
+
+main>.galpao>div>.kpi> div:nth-child(3) >span {
+    background-color:  #378F11
+}
+
+main>.galpao>div>.kpi> div:nth-child(4) >span {
+    background-color:  #0E6F99;
+}
+
+main>.galpao>div>.kpi> div:nth-child(5) >span {
+    background-color:  #462489;
+}
+
+
+main>.galpao>div>.kpi> div >p {
+    padding: 3px;
+    font-size: 1.5em;
 }

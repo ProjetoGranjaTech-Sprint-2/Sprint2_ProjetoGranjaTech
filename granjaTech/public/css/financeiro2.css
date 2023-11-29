@@ -36,6 +36,7 @@
 
 label {
     font-size: 1.3em;
+    text-align: center;
 }
 
 input {
@@ -80,7 +81,6 @@ input {
     font: normal 18px 'Roboto Condensed', sans-serif;
     border-radius: 5px;
     border: none;
-
     letter-spacing: 2px;
 }
 
@@ -116,13 +116,13 @@ input {
 #div_html > h2 {
     margin: 10px 0;
     text-align: center;
-    text-shadow: 0.2px 0.2px 0.2px black;
+    text-shadow: 1px 1px 1px  rgb(74, 61, 51);
 }
 
 span {
     font-size: 20px;
     color: black;
-    text-shadow: 0.2px 0.2px 0.2px black;
+    text-shadow: 1px 1px 1px  rgb(74, 61, 51);
 }
 
 
