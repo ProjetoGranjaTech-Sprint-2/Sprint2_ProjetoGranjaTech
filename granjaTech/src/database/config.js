@@ -3,7 +3,7 @@ var sql = require('mssql');
 
 var mySqlConfig = {
     host: "localhost",
-    database: "sprint2",
+    database: "BDGranjaTech",
     user: "BDuser",
     password: "MYSQLuser123",
 };

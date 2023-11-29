@@ -18,7 +18,7 @@ function cadastrar(nome_empresarial, nome_fantasia, cnpj, email, senha, telefone
 
 function autenticar(email, senha) {
     var instrucao = `
-        SELECT idCliente, nomeEmpresarial, email, FROM cadastro_cliente WHERE email = '${email}' AND senha = '${senha}';
+        SELECT idCliente, nomeEmpresarial, email FROM cadastro_cliente WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
