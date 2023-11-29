@@ -181,6 +181,18 @@ body {
 
 /* Página 3 - Confirmação dos dados */
 
+.confirmacao {
+    width: 100%;
+}
+
+.confirmacao>.dados {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
 .confirmacao>.dados>p {
     color: white;
     font-size: 16px;
@@ -192,14 +204,12 @@ body {
     border: none;
 }
 
-.confirmacao>.dados>.botao>.botao-confirmar {
-    display: flex;
-    border: none;
+.confirmacao>.dados>.botao-confirmar {
     background-color: whitesmoke;
-    padding: 0.6rem 1.1rem;
+    /* padding: 0.6rem 1.1rem; */
     border-radius: 5px;
     text-decoration: none;
-    width: 550px;
+    width: 100%;
     height: 35px;
     color: rgb(74, 61, 51);
     justify-content: center;

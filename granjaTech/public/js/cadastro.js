@@ -184,6 +184,50 @@ function preencher() {
 
 }
 
+function finalizar () {
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    body: JSON.stringify({
+        nome_empresarialServer: nome_empresarial,
+        nome_fantasiaServer: nome_fantasia,
+        cnpjServer: cnpj,
+        emailServer: email,
+        senhaServer: senha,
+        telefoneServer: telefone, 
+        cepServer: cep, 
+        ufServer: uf, 
+        cidadeServer: cidade, 
+        bairroServer: bairro, 
+        ruaServer: rua, 
+        numeroServer: numero, 
+    }),
+    })
+    .then(function (result) {
+        
+        if (result.ok) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
+
+            setTimeout(()=> {
+                window.location.href = "../cadastro_login/login.html"
+            }, 2000);
+
+            sessionStorage.clear();
+            sumirMensagem();
+        } else throw "Houve um erro ao tentar realizar o cadastro!"; 
+    })
+    .catch(function (resposta) {
+        console.log(`[ERRO] ${resposta}`)
+        sumirMensagem();
+    });
+    return false;
+}
+
+
+
 function ativarProsseguir(event) {
     if (event.key === "Enter") {
         prosseguir();

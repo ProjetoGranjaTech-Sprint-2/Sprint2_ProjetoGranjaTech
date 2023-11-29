@@ -9,6 +9,8 @@
 
     <link rel="shortcut icon" href="../assets/icon/galinha.ico">
 
+    <script src="../js/cadastro.js"> </script>
+
 </head>
 
 <body>
@@ -38,10 +40,22 @@
                     <p>Rua: <span id="output_rua"></span></p> <br>
                     <p>Número: <span id="output_numero"></span></p> <br>
                     <br> <br>
-                    <button class="botao"><a href="login.html" class="botao-confirmar">Confirmar</a></button>
+                    <button onclick="finalizar()" class="botao-confirmar">Confirmar</button>
                 </div>
             </section>
 </body>
 
 </html>
-<script src="../js/cadastro3.js"> </script>
+
+<script>
+
+    window.onload = ()=> {
+        preencher();
+
+    if (telefone_ == "") {
+        telefone = "--------";
+    };
+
+    }
+
+</script>

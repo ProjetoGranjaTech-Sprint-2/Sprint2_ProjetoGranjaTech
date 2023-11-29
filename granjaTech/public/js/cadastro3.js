@@ -24,9 +24,6 @@
 // var uf = uf_;
 // var cep = cep_;
 
-window.onload = preencher;
-
-
 // var output_nome_emp = document.getElementById("output_nome_emp");
 // var output_nome_fant = document.getElementById("output_nome_fant");
 // var output_cnpj = document.getElementById("output_cnpj");
@@ -41,7 +38,5 @@ window.onload = preencher;
 // var output_numero = document.getElementById("output_numero");
 
 
-if (telefone_ == "") {
-    telefone = "--------";
-};
+
 
