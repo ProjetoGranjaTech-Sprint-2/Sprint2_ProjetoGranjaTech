@@ -26,8 +26,8 @@ function entrar() {
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
-                            emailServer: emailVar,
-                            senhaServer: senhaVar
+                            emailServer: login,
+                            senhaServer: senha
                         })
                     })
                         .then(function (resposta) {
