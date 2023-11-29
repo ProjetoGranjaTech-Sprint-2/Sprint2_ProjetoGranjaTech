@@ -1,8 +1,5 @@
-
-
-
 function mostrar() {
-    senha = input_senha.value;
+    let senha = input_senha;
 
     if (senha.type == "password") {
         senha.type = "text"
@@ -11,21 +8,22 @@ function mostrar() {
     }
 }
 
-var nome_empresarial;
-var nome_fantasia;
-var cnpj;
-var email;
-var senha;
-var telefone;
+function auxiliar() {
 
+    let cnpj = input_cnpj.value;
+
+    if (cnpj.length == 2 && cnpj.charAt(1) != '.' || cnpj.length == 6 && cnpj.charAt(5) != '.') input_cnpj.value += '.';
+    else if (cnpj.length == 10 && cnpj.charAt(9) != '/') input_cnpj.value += '/';
+    else if (cnpj.length == 15 && cnpj.charAt(14) != '-') input_cnpj.value += '-';
+}
 
 function prosseguir() {
-    nome_empresarial = input_nome_empresarial.value;
-    nome_fantasia = input_nome_fantasia.value;
-    cnpj = input_cnpj.value;
-    email = input_email.value;
-    senha = input_senha.value;
-    telefone = input_telefone.value;
+    var nome_empresarial = input_nome_empresarial.value;
+    var nome_fantasia = input_nome_fantasia.value;
+    var cnpj = input_cnpj.value;
+    var email = input_email.value;
+    var senha = input_senha.value;
+    var telefone = input_telefone.value;
 
     if (nome_empresarial == "") {
         cardErro.style.display = "block";
@@ -67,21 +65,16 @@ function prosseguir() {
 
                     if (possui_especial) {
 
-                        // const nome_emp = document.getElementById("input_nome_empresarial").value;
-                        // const nome_fant = document.getElementById("input_nome_fantasia").value;
-                        // const cnpj_ = document.getElementById("input_cnpj").value;
-                        // const email_ = document.getElementById("input_email").value;
-                        // const telefone_ = document.getElementById("input_telefone").value;
+                        if (telefone == "") {
+                            telefone = "--------";
+                        };
 
-                        // localStorage.setItem("input_nome_empresarial", nome_empresarial);
-                        // localStorage.setItem("input_nome_fantasia", nome_fantasia);
-                        // localStorage.setItem("input_cnpj", cnpj);
-                        // localStorage.setItem("input_email", email);
-                        // localStorage.setItem("input_telefone", telefone_); NÃO USEI ISSO POR NÃO EXPIRAR APÓS SAIR DA PAGINA, E MESMO LIMPANDO O CACHE O VALOR NÃO SOME
-
-                        sessionStorage.CNPJ = cnpj;
-                        sessionStorage.EMAIL = email;
-                        sessionStorage.SENHA = senha;
+                        localStorage.setItem("input_nome_empresarial", nome_empresarial);
+                        localStorage.setItem("input_nome_fantasia", nome_fantasia);
+                        localStorage.setItem("input_cnpj", cnpj);
+                        localStorage.setItem("input_email", email);
+                        localStorage.setItem("input_senha", senha);
+                        localStorage.setItem("input_telefone", telefone);
 
                         window.location.href = "cadastro2.html";
 
@@ -121,47 +114,29 @@ function limpar() {
     input_numero.value = "";
 }
 
-
-var numero;
-var rua;
-var bairro;
-var cidade;
-var uf;
-var cep;
-
 function confirmacao() {
-    // const nome_emp = localStorage.getItem("input_nome_empresarial");
-    // const nome_fant = localStorage.getItem("input_nome_fantasia");
-    // const cnpj_ = localStorage.getItem("input_cnpj");
-    // const email_ = localStorage.getItem("input_email");
-    // const telefone_ = localStorage.getItem("input_telefone");
 
-    numero = input_numero.value;
-    rua = input_rua.value;
-    bairro = input_bairro.value;
-    cidade = input_cidade.value;
-    uf = input_uf.value;
-    cep = input_cep.value;
+    var numero = input_numero.value;
+    var rua = input_rua.value;
+    var bairro = input_bairro.value;
+    var cidade = input_cidade.value;
+    var uf = input_uf.value;
+    var cep = input_cep.value;
     
     div_cadastro = "";
 
     if (numero == "") {
-        alert(`Por favor, insira um número`);
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = `Por favor, insira um número`;
+        setTimeout(sumirMensagem, 2000);
     } else {
 
-        // const numero_ = document.getElementById("input_numero").value;
-        // const rua_ = document.getElementById("input_rua").value;
-        // const bairro_ = document.getElementById("input_bairro").value;
-        // const cidade_ = document.getElementById("input_cidade").value;
-        // const uf_ = document.getElementById("input_uf").value;
-        // const cep_ = document.getElementById("input_cep").value;
-
-        // localStorage.setItem("input_numero", numero_);
-        // localStorage.setItem("input_rua", rua_);
-        // localStorage.setItem("input_bairro", bairro_);
-        // localStorage.setItem("input_cidade", cidade_);
-        // localStorage.setItem("input_uf", uf_);
-        // localStorage.setItem("input_cep", cep_);
+        localStorage.setItem("input_numero", numero);
+        localStorage.setItem("input_rua", rua);
+        localStorage.setItem("input_bairro", bairro);
+        localStorage.setItem("input_cidade", cidade);
+        localStorage.setItem("input_uf", uf);
+        localStorage.setItem("input_cep", cep);
 
         window.location.href = "cadastro3.html";
     }
@@ -169,44 +144,61 @@ function confirmacao() {
 
 function preencher() {
 
-    output_nome_emp.textContent = nome_empresarial;
-    output_nome_fant.textContent = nome_fantasia;
-    output_cnpj.textContent = cnpj;
-    output_email.textContent = email;
-    output_telefone.textContent = telefone;
+    const nome_emp = localStorage.getItem("input_nome_empresarial");
+    const nome_fant = localStorage.getItem("input_nome_fantasia");
+    const cnpj_ = localStorage.getItem("input_cnpj");
+    const email_ = localStorage.getItem("input_email");
+    const senha_ = localStorage.getItem("input_senha");
+    const telefone_ = localStorage.getItem("input_telefone");
+    
+    
+    const cep_ = localStorage.getItem("input_cep");
+    const rua_ = localStorage.getItem("input_rua");
+    const bairro_ = localStorage.getItem("input_bairro");
+    const cidade_ = localStorage.getItem("input_cidade");
+    const uf_ = localStorage.getItem("input_uf");
+    const numero_ = localStorage.getItem("input_numero");
 
-    output_cep.textContent = cep;
-    output_uf.textContent = uf;
-    output_cidade.textContent = cidade;
-    output_bairro.textContent = bairro;
-    output_rua.textContent = rua;
-    output_numero.textContent = numero;
+
+    output_nome_emp.textContent = nome_emp;
+    output_nome_fant.textContent = nome_fant;
+    output_cnpj.textContent = cnpj_;
+    output_email.textContent = email_;
+    output_telefone.textContent = telefone_;
+
+    output_cep.textContent = cep_;
+    output_uf.textContent = uf_;
+    output_cidade.textContent = cidade_;
+    output_bairro.textContent = bairro_;
+    output_rua.textContent = rua_;
+    output_numero.textContent = numero_;
 
 }
 
-function finalizar () {
+function finalizar() {
     fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-    body: JSON.stringify({
-        nome_empresarialServer: nome_empresarial,
-        nome_fantasiaServer: nome_fantasia,
-        cnpjServer: cnpj,
-        emailServer: email,
-        senhaServer: senha,
-        telefoneServer: telefone, 
-        cepServer: cep, 
-        ufServer: uf, 
-        cidadeServer: cidade, 
-        bairroServer: bairro, 
-        ruaServer: rua, 
-        numeroServer: numero, 
+        body: JSON.stringify({
+            nome_empresarialServer: localStorage.getItem("input_nome_empresarial"),
+            nome_fantasiaServer: localStorage.getItem("input_nome_fantasia"),
+            cnpjServer: localStorage.getItem("input_cnpj"),
+            emailServer: localStorage.getItem("input_email"),
+            senhaServer: localStorage.getItem("input_senha"),
+            telefoneServer: localStorage.getItem("input_telefone"), 
+            cepServer: localStorage.getItem("input_cep"), 
+            ufServer: localStorage.getItem("input_uf"), 
+            cidadeServer: localStorage.getItem("input_cidade"), 
+            bairroServer: localStorage.getItem("input_bairro"), 
+            ruaServer: localStorage.getItem("input_rua"), 
+            numeroServer: localStorage.getItem("input_numero"), 
     }),
     })
     .then(function (result) {
-        
+        console.log('resposta: ', result);
+
         if (result.ok) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
