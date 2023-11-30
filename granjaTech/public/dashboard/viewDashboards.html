@@ -52,8 +52,8 @@
           <i class="material-symbols-outlined">chevron_left</i>
           <div class="kpi_sensores">
             <div class="container_dados">
-              <span id="temp">23°C</span>
-              <span id="umi">25%</span>
+              <span id="temp"></span>
+              <span id="umi"></span>
             </div>
             <!-- <p id="sensor"></p> -->
             <select name="sensores" id="selectCustom">
@@ -96,7 +96,7 @@
     }).then(function (resposta) {
       resposta.json().then((sensores) => {
         sensores.forEach((sensor) => {
-          selectCustom.innerHTML += `<option value='${sensor.id}'>${sensor.tipo}</option>`;
+          selectCustom.innerHTML += `<option value='${sensor.id}'> S${sensor.id} ${sensor.tipo}</option>`;
         });
       });
     })
@@ -143,6 +143,17 @@
           stats = resposta[0].stats;
           uniMedida = resposta[0].uniMedida;
 
+          var tamanhoLista = resposta.length;
+
+          if (resposta[2].uniMedida == "°C"){
+        temp.innerHTML += `<span>${resposta[2].stats}${resposta[2].uniMedida}</span>`
+        }
+
+        // if (registro.uniMedida == `%`){
+        // umi.innerHTML += `<span>${resposta[0].stats}${resposta[0].uniMedida}</span>`
+        // }
+
+          // MUDAR VALORES NA TELA 
           // idEquipamento = resposta[0].idEquipamento;
           // if (idEquipamento == undefined) {
           //   setTimeout(function () {
@@ -158,25 +169,36 @@
     });
   }
 
-
+  
   function plotarGrafico(resposta) {
 
     console.log('iniciando plotagem do grafico...')
 
     let labels = [];
     // Criando estrutura para plotar gráfico - dados
-    let dadosTemp = {
+    let dados = {
       labels: labels,
       datasets: [{
         label: 'TEMPERATURA',
         data: [],
         fill: false,
+        backgroundColor: '#fd582f',
+        borderColor: '#fd582f',
+        tension: 0.1,
+      }],
+    };
+    let labelsUmid = [];
+    let dadosUmid = {
+      labels: labelsUmid,
+      datasets: [{
+        label: 'UMIDADE',
+        data: [],
+        fill: false,
         backgroundColor: '#6633ff',
         borderColor: '#6633ff',
         tension: 0.1,
-      },
-      ]
-    };
+      }],
+    }
 
     console.log('----------------------------------------------')
     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
@@ -185,44 +207,60 @@
     // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (i = 0; i < resposta.length; i++) {
       var registro = resposta[i];
-      labels.push(registro);
-      dadosTemp.datasets[0].data.push(registro.stats);
-      // dados.datasets[1].data.push(registro.dataBaseDamage);
-      // dados.datasets[2].data.push(registro.dataBaseDefense);
-      // dados.datasets[3].data.push(registro.dataBaseEvasion);
+      // labels.push(registro);
+      if (registro.uniMedida == `°C`) {
+        labels.push(`Sensor ${registro.idHist} + 10H`);
+        dados.datasets[0].data.push(registro.stats);
+      }
+      if (registro.uniMedida == `%`) {
+        labelsUmid.push(`Sensor${registro.idHist} + 20H`);
+        dadosUmid.datasets[0].data.push(registro.stats);
+      }
+      //   dadosUmid.datasets[0].data.push(null);
+      // } else if (registro.uniMedida == '%') {
+      //   dadosUmid.datasets[0].data.push(registro.stats);
     }
+
+    // dadosTemp.datasets[0].data.push(registro.stats);
+    // dados.datasets[1].data.push(registro.dataBaseDamage);
+    // dados.datasets[2].data.push(registro.dataBaseDefense);
+    // dados.datasets[3].data.push(registro.dataBaseEvasion);
+
 
     console.log('----------------------------------------------')
     console.log('O gráfico será plotado com os respectivos valores:')
-    console.log('Labels:')
+    console.log('Labels: TEMP')
     console.log(labels)
-    console.log('Dados:')
-    console.log(dadosTemp.datasets)
+    console.log('Dados: DA TEMPERATURA')
+    console.log(dados.datasets)
+    console.log('Dados: DA UMIDADE')
+    // console.log(dadosUmid.datasets)
     console.log('----------------------------------------------')
 
     // Criando estrutura para plotar gráfico - config
-    const configTemp = {
+    const config = {
       type: 'line',
-      data: dadosTemp,
+      data: dados,
     };
 
     const configUmid = {
       type: 'line',
-      data: dadosTemp,
-    }
+      data: dadosUmid,
+    };
 
     // Adicionando gráfico criado em div na tela
     let myCharTemp = new Chart(
       document.getElementById(`graficoTemp`),
-      configTemp
+      config
     );
 
-    let myChartUmid = new Chart (
+    let myChartUmid = new Chart(
       document.getElementById(`graficoUmid`),
       configUmid
     );
-    setTimeout(() => atualizarGrafico, 2000);
   }
+  setTimeout(() => atualizarGrafico, 2000);
+
 
 
 
@@ -272,6 +310,8 @@
         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
       });
   }
+
+
 
 
 
