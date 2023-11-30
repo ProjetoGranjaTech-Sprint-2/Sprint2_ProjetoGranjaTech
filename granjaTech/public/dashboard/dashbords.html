@@ -44,7 +44,7 @@
                                 <h2 itemprop="nome">1</h2>
                                 <button class="retangulo" itemprop="botão"></button>
                             </li>
-                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_add" onclick="adicionar()">
+                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_add" onclick="chamarGalpão()">
                                 add</div>
                             <!-- <li class="caixas">
                                 <h2>2</h2>
@@ -103,7 +103,33 @@
 <script>
 
     function chamarGalpão() {
-        // fazer as rotas necessarias para puxar o id do galpão, e dar um select no galpão ao mesmo tempo
+        // fazer as rotas necessarias para puxar o id do galpão, e dar um select no galpão ao mesmo tempo 
+        var idUsuario = sessionStorage.ID_USUARIO;
+        
+        console.log(idUsuario)
+
+        fecth(`/dashboard/galpoes`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuario: sessionStorage.ID_USUARIO,
+            }),
+        })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if(resposta.ok) {
+                adicionar();
+            } else {
+                throw "Houver um erro ao tentar pegar os galpões do cliente!"
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        })
+        return false;
     }
 
     function adicionar() {
