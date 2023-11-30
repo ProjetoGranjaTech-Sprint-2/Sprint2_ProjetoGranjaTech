@@ -124,23 +124,19 @@
                     if (email == "") {
                         alert(`Por favor, preencha o campo "Email".`)
                     } else if (email.indexOf('.com') >= 0) {
+                    } else if (email.indexOf('.school') >= 0) {
                         var possuiEmailVálido =
                             email.indexOf('@gmail') >= 0 ||
                             email.indexOf('@hotmail') >= 0 ||
-                            email.indexOf('@outlook') >= 0;
+                            email.indexOf('@outlook') >= 0 ||
+                            email.indexOf('@sptech') >= 0;
 
                         if (possuiEmailVálido) {
                             if (senha == "") {
                                 alert(`Por favor, preencha o campo "Senha".`)
                             } else if (senha.length >= 10) {
                                 var possui_especial =
-                                    senha.indexOf('#') >= 0 ||
-                                    senha.indexOf('@') >= 0 ||
-                                    senha.indexOf('!') >= 0 ||
-                                    senha.indexOf('%') >= 0 ||
-                                    senha.indexOf('$') >= 0 ||
-                                    senha.indexOf('&') >= 0 ||
-                                    senha.indexOf('*') >= 0;
+                                    senha.match(/[!@#$%&*]/);
 
                                 if (possui_especial) {
 
