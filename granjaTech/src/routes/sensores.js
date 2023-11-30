@@ -7,4 +7,8 @@ router.get("/listarSensor", function (req, res) {
     sensoresController.listarSensor(req, res);  
 });
 
+router.get("/dadosSensor", function (req, res) {
+    sensoresController.dadosSensor(req, res);  
+});
+
 module.exports = router;

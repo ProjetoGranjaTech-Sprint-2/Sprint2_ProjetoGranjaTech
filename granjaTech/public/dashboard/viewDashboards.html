@@ -42,7 +42,7 @@
         <canvas id="graficoTemp"></canvas>
       </div>
       <div class="grafico">
-        <canvas id="graficoUmi"></canvas>
+        <canvas id="graficoUmid"></canvas>
       </div>
     </section>
     <section class="graficos">
@@ -88,18 +88,18 @@
 
   let proximaAtualizacao;
 
-  window.onload = obterDados(), listarSensor();
+  window.onload = dadosSensor(), listarSensor();
 
   function listarSensor() {
     fetch("/sensores/listarSensor", {
       method: "GET",
     }).then(function (resposta) {
-        resposta.json().then((sensores) => {
-          sensores.forEach((sensor) => {
-            selectCustom.innerHTML += `<option value='${sensor.id}'>${sensor.tipo}</option>`;
-          });
+      resposta.json().then((sensores) => {
+        sensores.forEach((sensor) => {
+          selectCustom.innerHTML += `<option value='${sensor.id}'>${sensor.tipo}</option>`;
         });
-      })
+      });
+    })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
       });
@@ -118,44 +118,44 @@
   }
 
 
-  function obterDados() {
+  var idHist, fkSensor, timeVrf, stats, uniMedida;
 
-    alertRecepcao();
-
+  function dadosSensor() {
+    // alertRecepcao();
     if (proximaAtualizacao != undefined) {
       clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/acesso/buscarTop10`, {
-      method: "POST",
+    fetch(`/sensores/dadosSensor`, { cache: 'no-store' }, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        idUser: sessionStorage.ID_USUARIO
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+    }).then(function (resposta) {
 
-        if (resposta.ok) {
-          resposta.json().then(function (resposta) {
-            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-            resposta.reverse();
+      resposta.json().then(resposta => {
+        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+        console.log(resposta);
+        resposta.forEach((historico) => {
+          idHist = resposta[0].idHist;
+          fkSensor = resposta[0].fkSensor;
+          timeVrf = resposta[0].timeVrf;
+          stats = resposta[0].stats;
+          uniMedida = resposta[0].uniMedida;
 
-            plotarGrafico(resposta);
-
-            limparFormulario();
-            finalizarAguardar();
-          });
-        } else {
-          throw "Nenhum dado encontrado ou erro na API";
-        }
-      })
-      .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+          // idEquipamento = resposta[0].idEquipamento;
+          // if (idEquipamento == undefined) {
+          //   setTimeout(function () {
+          //     console.log("Redirecionando")
+          //     window.location = "./statsBattle.html";
+          //   }, 1000);
+          // }
+        })
+        plotarGrafico(resposta);
       });
-
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
   }
 
 
@@ -163,35 +163,70 @@
 
     console.log('iniciando plotagem do grafico...')
 
-    var nome_musica = []
+    let labels = [];
+    // Criando estrutura para plotar gráfico - dados
+    let dadosTemp = {
+      labels: labels,
+      datasets: [{
+        label: 'TEMPERATURA',
+        data: [],
+        fill: false,
+        backgroundColor: '#6633ff',
+        borderColor: '#6633ff',
+        tension: 0.1,
+      },
+      ]
+    };
 
-    var data = []
+    console.log('----------------------------------------------')
+    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    console.log(resposta)
 
-
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (i = 0; i < resposta.length; i++) {
       var registro = resposta[i];
-      nome_musica.push(registro.NomeMúsica);
-      data.push(registro.Repetições);
+      labels.push(registro);
+      dadosTemp.datasets[0].data.push(registro.stats);
+      // dados.datasets[1].data.push(registro.dataBaseDamage);
+      // dados.datasets[2].data.push(registro.dataBaseDefense);
+      // dados.datasets[3].data.push(registro.dataBaseEvasion);
     }
 
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dadosTemp.datasets)
+    console.log('----------------------------------------------')
 
-    let myChart = new Chart(
-      document.getElementById(`grafico`), {
-      type: 'bar',
-      data: {
-        labels: nome_musica,
-        datasets: [{
-          label: 'Músicas mais acessadas',
-          data: data,
-          borderWidth: 1
-        }]
-      },
-    });
+    // Criando estrutura para plotar gráfico - config
+    const configTemp = {
+      type: 'line',
+      data: dadosTemp,
+    };
 
-    setTimeout(() => atualizarGrafico(data, nome_musica, myChart))
+    const configUmid = {
+      type: 'line',
+      data: dadosTemp,
+    }
+
+    // Adicionando gráfico criado em div na tela
+    let myCharTemp = new Chart(
+      document.getElementById(`graficoTemp`),
+      configTemp
+    );
+
+    let myChartUmid = new Chart (
+      document.getElementById(`graficoUmid`),
+      configUmid
+    );
+    setTimeout(() => atualizarGrafico, 2000);
   }
 
-  function atualizarGrafico(data, nome_musica, myChart) {
+
+
+  function atualizarGrafico(dados, myChart) {
 
 
     fetch(`/acesso/buscarTop10`, { cache: 'no-store' }).then(function (response) {
@@ -240,49 +275,49 @@
 
 
 
-  const ChartTemp = document.getElementById('graficoTemp');
+  // const ChartTemp = document.getElementById('graficoTemp');
 
-  new Chart(ChartTemp, {
-    type: 'line',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: 'Temperatura °C',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: '#fd582f',
-        borderColor: '#fd582f'
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
+  // new Chart(ChartTemp, {
+  //   type: 'line',
+  //   data: {
+  //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  //     datasets: [{
+  //       label: 'Temperatura °C',
+  //       data: [12, 19, 3, 5, 2, 3],
+  //       backgroundColor: '#fd582f',
+  //       borderColor: '#fd582f'
+  //     }]
+  //   },
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         beginAtZero: true
+  //       }
+  //     }
+  //   }
+  // });
 
-  const ChartUmi = document.getElementById('graficoUmi');
+  // const ChartUmi = document.getElementById('graficoUmi');
 
-  new Chart(ChartUmi, {
-    type: 'line',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: 'Umidade %',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: '#6633ff',
-        borderColor: '#6633ff',
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
+  // new Chart(ChartUmi, {
+  //   type: 'line',
+  //   data: {
+  //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  //     datasets: [{
+  //       label: 'Umidade %',
+  //       data: [12, 19, 3, 5, 2, 3],
+  //       backgroundColor: '#6633ff',
+  //       borderColor: '#6633ff',
+  //     }]
+  //   },
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         beginAtZero: true
+  //       }
+  //     }
+  //   }
+  // });
 
 
 

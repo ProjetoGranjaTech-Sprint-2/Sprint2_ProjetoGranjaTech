@@ -8,8 +8,17 @@ function listarSensor() {
     return database.executar(instrucao);
 }
 
+function dadosSensor() {
+    var instrucao = `
+    select * from historico;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listarSensor,
+    dadosSensor,
 }
 
 
