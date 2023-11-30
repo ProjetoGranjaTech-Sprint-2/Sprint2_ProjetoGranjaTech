@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash Galpões</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+    
+</head>
+
+<body>
+
+    <header>
+        <div class="logo"></div>
+        <nav>
+            <ul>
+                <li>Galpão</li>
+                <li> <a href="./viewDashboards.html">Dashboards</a></li>
+                <li>Avisos</li>
+                <li>Ajuda</li>
+            </ul>
+        </nav>
+        <div class="sair">
+            <span class="material-symbols-outlined">
+                logout
+            </span>
+            <p>Sair</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="galpao">
+            <div class="titulo-galpao">
+                <h2>GALPÃO</h2>
+            </div>
+            <div>
+                <section class="galpoes">
+                    <ul class="selecao">
+                        <div class="primeira-linha">
+                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
+                                <h2 itemprop="nome">1</h2>
+                                <button class="retangulo" itemprop="botão"></button>
+                            </li>
+                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_add" onclick="adicionar()">
+                                add</div>
+                            <!-- <li class="caixas">
+                                <h2>2</h2>
+                                <button class="retangulo"></button>
+                            </li>
+                            <li class="caixas">
+                                <h2>3</h2>
+                                <button class="retangulo"></button>
+                            </li>
+                        </div>
+                        <div class="segunda-linha">
+                            <li class="caixas">
+                                <h2>4</h2>
+                                <button class="retangulo"></button>
+                            </li>
+                            <li class="caixas">
+                                <h2>5</h2>
+                                <button class="retangulo"></button>
+                            </li>
+                            <li class="caixas">
+                                <h2>6</h2>
+                                <button class="retangulo"></button>
+                            </li> -->
+                        </div>
+                    </ul>
+                </section>
+                <section class="kpi">
+                    <div>
+                        <span>CRÍTICO!</span>
+                        <p>A partir 28° ou 70%</p>
+                    </div>
+                    <div>
+                        <span>ATENÇÃO!</span>
+                        <p>A partir 25° ou 65%</p>
+                    </div>
+                    <div>
+                        <span>ESTÁVEL</span>
+                        <p>A partir 20° ou 55%</p>
+                    </div>
+                    <div>
+                        <span>ATENÇÃO!</span>
+                        <p> Abaixo 17° ou 40%</p>
+                    </div>
+                    <div>
+                        <span>CRÍTICO!</span>
+                        <p> Abaixo 15° ou 30%</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
+
+<script>
+
+    function chamarGalpão() {
+        // fazer as rotas necessarias para puxar o id do galpão, e dar um select no galpão ao mesmo tempo
+    }
+
+    function adicionar() {
+        const selecao = document.querySelector(".primeira-linha");
+
+        var element_li = document.createElement('li');
+        var element_h2 = document.createComment('h2');
+        var element_button = document.createElement('button');
+
+        element_li.classList += "caixas"
+        element_li.setAttribute('itemscope', '');
+        element_li.setAttribute('itemtype', 'http://schema.org/Warehouse');
+        element_li.setAttribute('itemid', id_galpão + '_galpão');
+
+        element_h2.setAttribute('itempromp', 'nome');
+
+        element_button.className += "retangulo";
+        element_button.setAttribute('itempromp', 'botão');
+
+        element_li.appendChild(element_h2);
+        element_li.appendChild(element_button);
+    }
+
+</script>

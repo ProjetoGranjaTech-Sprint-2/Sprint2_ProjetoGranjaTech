@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<html>
+
+<head>
+    <title>Gráfico de Temperatura e Umidade</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="shortcut icon" href="../assets/icon/galinha.ico">
+    <link rel="stylesheet" href="../css/DASHS.css">
+</head>
+
+<body>
+
+    <header class="perfil">
+        <nav>
+            <h3>GRANJATECH</h3>
+            <div class="div-h3">
+                <ul>
+                    <li>
+                        <span> Bem-vindo(a), Fernanda! </span>
+                    </li>
+                </ul>
+
+                <ul>
+                    <li>
+                        <a style="color: rgba(74, 61, 51);" href="../Site institucional/logado/logado.html" class="inicio">Início</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="hidden">
+
+        <div class="dash">
+
+            <h2 class="titulo">MONITORAMENTO DO GALPÃO</h2>
+
+            <div class="TempUmi">
+                <div class="div_temp">
+                    <canvas id="GraficoTemp"></canvas>
+                </div>
+                <div class="div_umid">
+                    <canvas id="GraficoUmid"></canvas>
+                </div>
+            </div>
+            <div class="div_hist">
+                <canvas id="GraficoHist"></canvas>
+            </div>
+<!-- 
+            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha vermelha.png" alt="">
+
+            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha amarela.png" alt="">
+
+            <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha verde.png" alt="">
+
+            <div class="alertas">
+                                
+                <div class="alertaVerm">
+                    Alerta: 
+                     30°C 
+                     70%
+                </div>
+                <br>
+                <div class="alertaAma">
+                    Moderado:
+                     26°C a 29°C 
+                    60% 
+                </div>
+                <br>
+                <div class="alertaVerde">
+                    Adequado:
+                     15°C 
+                    40%
+                </div> -->
+
+        </div>
+
+        <div class="controle">
+            <h1> GALPÃO </h1>
+            <div class="botoes">
+                <img src="https://i.pinimg.com/originals/d5/2d/75/d52d75338d7b34496a3d00b08de65451.png" height="30px" width="30px" style="transform: rotate(180deg);"  alt="">
+                <button class="G1">G1</button>
+                <img src="https://i.pinimg.com/originals/d5/2d/75/d52d75338d7b34496a3d00b08de65451.png" height="30px" width="30px" alt="">
+                <!-- <button class="G2">II</button>
+                <button class="G3">III</button> -->
+            </div>
+            <div class="sensores">
+                <div class="sensores1">
+                    <button class="S1">S1</button>
+                    <button class="S2">S2</button>
+                </div>
+                <div class="sensores2">
+                    <button class="S3">S3</button>
+                    <button class="S4">S4</button>
+                </div>
+            </div>
+            <div class="legenda">
+                <h1 style="color: #215784;">°C</h1>
+                <h1 style="color:  #215784;">%</h1>
+            </div>
+        </div>
+        <div class="controle2">
+            <div class="galinha1">
+                <img src="image-removebg-preview (4).png" alt=""> 
+                <span class="vermelho"> Alerta: 30°C 70%</span>
+            </div>
+               <div class="galinha2">
+                <img src="image-removebg-preview (3).png" alt="" >
+                <span class="amarelo">ALERTA - Sensor 1 e Sensor 2 estão em risco</span>
+               </div>
+               <div class="galinha3">
+                <img src="image-removebg-preview (2).png" alt="" >
+                <span class="verde">Adequado: 15°C 40%</span>
+               </div>               
+        </div>
+        <div class="relatorio">
+            <a href="GranjaTech Dash Analytics - Dados_Arduino.pdf" download="Analytics" target="_blank">Baixe aqui o relatório</a>
+        </div>
+    </main>  
+    <script>
+        console.log(select);
+        let text = select.options[select.selectedIndex].text;
+
+
+        function atualizouSelect() {
+            let select = document.querySelector('#Galpão');
+            let Optionvalue = select.options[select.selectedIndex].value;
+            let value = Optionvalue.value;
+            let text = Optionvalue.text;
+
+            console.log(value, text);
+        }
+
+
+        function atualizouSelect() {
+
+        }
+
+    </script>
+
+    <script>     
+
+        const rotulosHist = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+
+        const ctxHist = document.getElementById('GraficoHist').getContext('2d');
+        const GraficoHist = new Chart(ctxHist, {
+            type: 'bar',
+            data: {
+                labels: rotulosHist,
+                datasets: [
+                    {
+                        label: 'Temperatura (°C)',
+                        data: [20, 22, 22, 21, 21, 22, 21],
+                        borderColor: '#ff442f',
+                        backgroundColor: '#ff442f',
+                    },
+                    {
+                        label: 'Umidade (%)',
+                        data: [60, 59, 58, 58, 58, 59, 58],
+                        borderColor: '#483bce',
+                        backgroundColor: '#483bce',
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Histórico - Sensor 1',
+                        font: {
+                            size: 15
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const rotulo = ['12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00'];
+
+        const ctxTemp = document.getElementById('GraficoTemp').getContext('2d');
+        const GraficoTemp = new Chart(ctxTemp, {
+            type: 'line',
+            data: {
+                labels: rotulo,
+                datasets: [
+                    {
+                        label: 'Sensor 1',
+
+                        data: [20, 20, 20.5, 21, 22.1, 22.5, 23.3, 24.3],
+                        borderColor: '#ff442f',
+                        backgroundColor: '#ff442f',
+                    }, {
+                        label: 'Sensor 2',
+
+                        data: [22, 22.8, 23, 23.1, 23.4, 23.5, 24, 25.1],
+                        borderColor: '#ff862f',
+                        backgroundColor: '#ff862f',
+                    }, 
+                ]
+            },
+
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Temperatura'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,     
+                    }
+                }
+            }
+        });
+
+
+        const ctxUmid = document.getElementById('GraficoUmid').getContext('2d');
+        const GraficoUmid = new Chart(ctxUmid, {
+            type: 'line',
+            data: {
+                labels: rotulo,
+                datasets: [
+                    {
+                        label: 'Sensor 1',
+
+                        data: [60, 63, 63, 64, 64, 65, 67, 68],
+                        borderColor: '#483bce',
+                        backgroundColor: '#483bce',
+                    }, {
+                        label: 'Sensor 2',
+
+                        data: [45, 49, 50, 52, 53, 54, 57, 59],
+                        borderColor: '#4c6aed',
+                        backgroundColor: '#4c6aed',
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Umidade'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>

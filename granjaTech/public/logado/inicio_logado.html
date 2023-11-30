@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GranjaTech</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/financeiro.css">
+
+    <link rel="shortcut icon" href="../assets//icon/galinha.ico">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="shortcut icon" href="../assets//icon/galinha.ico">
+
+</head>
+
+<body>
+    <header>
+        <div class="header-logo" id="header-logo"><img src="../assets/imgs/imagensInstitucional/galinha.png" alt="logomarca">GRANJATECH</div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#opções">Serviços</a>
+            <a href="#simulador">Simulador</a>
+            <a href="#sobre_nos">Sobre nós</a>
+            <a href="#contato">Contatos</a>
+        </nav>
+        <div class="botões">
+            <a href="logado.html">
+                Perfil
+                <span class="material-symbols-outlined">account_circle</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="contexto" id="inicio">
+            <img id="videoGalinha">
+
+            <article>
+                <h1>Somos a <b>solução</b> para os problema na sua granja</h1>
+                <p>
+                    Sensores de última geração e sistema de monitoramento de ponta asseguram uma produção <b>segura e
+                        saudável</b>, temos o compromisso com o <b>bem estar e produtividade</b> garantindo <b>sucesso
+                        em sua granja.</b>
+                    <b>Simule, cadastre-se e alavanque seu <b>NEGÓCIO</b> <br>
+                        <a href="logado.html"><button class="botao_contexto">Voltar ao perfil!</button></a>
+                </p>
+            </article>
+        </section>
+        <section class="quem-somos">
+            <img>
+            <div class="nossa-missao">
+                <h1>Nossa missão</h1>
+                <p>"Nós a GranjaTech queremos trazer segurança e confiabilidade para a sua granja. <br> O setor
+                    agropecuário no Brasil desempenha um papel crucial para a economia nacional e regional. <br> É
+                    necessário que ele tenha autonomia, qualidade e controle e essa é a: <br> <b>NOSSA MISSÃO"</b>
+                </p>
+                <div>
+
+                </div>
+                <div class="objetivos">
+
+                    <div class="objetivo">
+                        <img src="../assets/imgs/imagensInstitucional/objetivoOvo.png" alt="Ovo" width="150px">
+                        <p>Ser uma empresa reconhecida no mercado agropecuário</p>
+                    </div>
+                    <div class="objetivo">
+                        <img src="../assets/imgs/imagensInstitucional/objetivoTech.png" width="150px" alt="tech symbol">
+                        <p>Utilizar a tecnologia para garantir a sua fonte de renda</p>
+                    </div>
+                    <div class="objetivo">
+                        <img src="../assets/imgs/imagensInstitucional/objetivoBrasil.png" alt="" width="150px">
+                        <p>Nos orgulhamos de ser uma empresa brasileira e ajudar no desenvolvimento nacional</p>
+                    </div>
+                    <div class="objetivo">
+                        <img src="../assets/imgs/imagensInstitucional/objetivoFeedback.png" alt="" width="150px">
+                        <p>Acreditamos na transparência através de Feedbacks, a fim de melhorarmos o produto </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section></section> COLOCAR ALGO AQUI COMO TRABALHAMOS (COMO SE FOSSE UM DIAGRAMA) -->
+        <section class="opções" id="opções">
+            <h1>Benefícios do uso de nossos sensores</h1>
+            <div>
+                <div class="content">
+                    <div class="tri-top"></div>
+                    <img src="../assets/imgs/imagensInstitucional/img 1.jpg" alt="imagem 1">
+                    <p>Ambientes controlados proporcionam conforto térmico, o que contribui para o bem-estar dos animais
+                        e, consequentemente, o aumento da produtividade.</p>
+                    <div class="tri-bott"></div>
+                </div>
+
+                <div class="content">
+                    <div class="tri-top"></div>
+                    <img src="../assets/imgs/imagensInstitucional/img 2.jpg" alt="imagem 2">
+                    <p>Os sensores permitem o controle preciso da temperatura e umidade do ar, criando condições
+                        ideais para o desenvolvimento saudável dos animais.</p>
+                    <div class="tri-bott"></div>
+                </div>
+
+                <div class="content">
+                    <div class="tri-top"></div>
+                    <img src="../assets/imgs/imagensInstitucional/img 3.jpg" alt="imagem 3">
+                    <p>A climatização adequada evita esse estresse, promovendo melhores condições de vida aos animais.
+                    </p>
+                    <div class="tri-bott"></div>
+                </div>
+                <div class="content">
+                    <div class="tri-top"></div>
+                    <img src="../assets/imgs/imagensInstitucional/ventilador.jpg" alt="imagem 4">
+                    <p> A melhor condição de vida do animal garante ovos em maior quantidade e melhores, aumentando
+                        ainda mais o lucro.
+                    </p>
+                    <div class="tri-bott"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="simulador" id="simulador">
+            <h1>SIMULADOR</h1>
+            <section class="areasimulador">
+                <div class="input_grupo1">
+                    <label>Quantidade de galinhas </label>
+                    <input type="number" id="input_galinhas">
+                    <label>Quantas galinhas morreram por ano?</label>
+                    <input type="number" id="input_galinhas_morte">
+                    <label>Quantidade de ovos vendidos mensalmente</label>
+                    <input type="number" id="input_qtd_ovo">
+                    <label>Preço médio de venda do ovo por unidade</label>
+                    <input type="number" id="input_preco_ovo">
+                    <div class="simuladorbttn">
+                        <button onclick="calcular()">Calcular</button>
+                        <button onclick="limparGalinha()">Limpar</button>
+                    </div>
+                </div>
+                <div class="arearesultado">
+                    <div class="resultado">
+                        <div id="div_html">
+                            <h1>Bem-vindo ao simulador GranjaTech</h1>
+                            <span>
+                                Estamos aqui para ajudá-lo a entender como
+                                as condições
+                                climáticas afetam o desempenho financeiro de sua granja.
+                            </span>
+                        </div>
+                        <div class="div_img">
+                            <img src="../assets/imgs/imagensInstitucional/galinha.png" alt="Icone da galinha" id="galinhaAnimada">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="sobre-nos" id="sobre_nos">
+            <h2>Sobre nós</h2>
+            <div class="container">
+                <div class="tresfora">
+                    <div>
+                        <img src="../assets/imgs/imagensInstitucional/sem-foto.png" alt="equipe">
+                        <a href="https://github.com/Eriic-Souza">Eriic-Souza</a>
+                        <p>ADS - SPTech</p>
+                    </div>
+                    <div>
+                        <img src="../assets/imgs/imagensInstitucional/Garcia.png" alt="equipe">
+                        <a href="https://github.com/gabriellgarciaa">gabriellgarciaa</a>
+                        <p>ADS - SPTech</p>
+                    </div>
+                    <div>
+                        <img src="../assets/imgs/imagensInstitucional/Luis.png" alt="equipe">
+                        <a href="https://github.com/LuisGustavoDAlmeida">LuisGustavoDAlmeida</a>
+                        <p>ADS - SPTech</p>
+                    </div>
+                </div>
+                <div class="tresfora">
+                    <div>
+                        <img src="../assets/imgs/imagensInstitucional/Maria.png" alt="equipe">
+                        <a href="https://github.com/MariaGirote">MariaGirote</a>
+                        <p>ADS - SPTech</p>
+                    </div>
+                    <div>
+                        <img src="../assets/imgs/imagensInstitucional/Melissa.png" alt="equipe">
+                        <a href="https://github.com/MelReiz">MelReiz</a>
+                        <p>ADS - SPTech</p>
+                    </div>
+                    <div>
+                        <img src="../assets/imgs/imagensInstitucional/Thiago.png" alt="equipe">
+                        <a href="https://github.com/thiagovieiras">thiagovieiras</a>
+                        <p>ADS - SPTech</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="localizacao" id="endereço">
+            <div>
+                <h1>Conheça a nossa localização</h1>
+                <h2>
+                    Estamos localizados na avenida paulista, a avenida mais movimentada do Brasil e a alma de São
+                    Paulo.
+                </h2>
+            </div>
+            <div class="maps">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7314.391677463444!2d-46.65703388798397!3d-23.56140890049954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1697405282152!5m2!1spt-BR!2sbr"
+                    width="1000" height="550" style="border:3;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-logo" id="footer-logo">
+            <img src="../assets/imgs/imagensInstitucional/galinha branca.png" alt="logomarca">GRANJATECH
+        </div>
+        <div class="sobre" id="contato">
+            <nav>
+                <a href="#inicio">Início</a>
+                <a href="#opções">Serviços</a>
+                <a href="#sobre_nos">Sobre nós</a>
+            </nav>
+            <div>
+                <p>Telefone</p>
+                <ul>
+                    <li>(11) 4002-8922</li>
+                    <li>(11) 2567-1172</li>
+                    <li>(11) 3325-5274</li>
+                </ul>
+            </div>
+        </div>
+        <div class="rede-social">
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="../assets/imgs/imagensInstitucional/logo facebook.png" alt="logo-facebook">facebook.com/granjatech
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="../assets/imgs/imagensInstitucional/logo instagram.png" alt="logo-instagram">instagram.com/granjatech
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<script src="script.js"></script>

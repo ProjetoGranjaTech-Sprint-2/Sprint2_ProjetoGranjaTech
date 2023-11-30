@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - GranjaTech</title>
+    <link rel="stylesheet" href="../css/cadastro.css">
+
+    <link rel="shortcut icon" href="../assets/icon/galinha.ico">
+
+    <script src="../js/cadastro.js"> </script>
+
+</head>
+
+<body>
+
+    <div class="card" id="cardErro">
+        <div class="mensagem" id="mensagem_erro"></div>
+    </div>
+    <div class="container">
+
+        <div class="img-galinha">
+            <img src="../assets/imgs/imagensInstitucional/imagem logado.png">
+        </div>
+
+        <div class="form">
+
+            <div class="form-header">
+                <h2>Confirme seus dados:</h2>
+            </div>
+
+            <section class="confirmacao">
+                <div class="dados">
+                    <p>Nome Empresarial: <span id="output_nome_emp"></span></p><br>
+                    <p>Nome Fantasia: <span id="output_nome_fant"></span></p> <br>
+                    <p>CNPJ: <span id="output_cnpj"></span></p> <br>
+                    <p>Email: <span id="output_email"></span></p> <br>
+                    <p>Telefone: <span id="output_telefone"></span></p> <br>
+                    <p>CEP: <span id="output_cep"></span></p> <br>
+                    <p>Estado: <span id="output_uf"></span></p> <br>
+                    <p>Cidade: <span id="output_cidade"></span></p> <br>
+                    <p>Bairro: <span id="output_bairro"></span></p> <br>
+                    <p>Rua: <span id="output_rua"></span></p> <br>
+                    <p>Número: <span id="output_numero"></span></p> <br>
+                    <br> <br>
+                    <button onclick="finalizar()" class="botao-confirmar">Confirmar</button>
+                </div>
+            </section>
+</body>
+
+</html>
+
+<script>
+
+    window.onload = ()=> {
+        preencher();
+    }
+
+</script>

@@ -17,9 +17,9 @@ const serial = async (
         {
             host: 'localhost',
             port: 3306,
-            user: 'estagiario',
-            password: 'estagiario123',
-            database: 'metricas'
+            user: 'BDuser',
+            password: 'MYSQLuser123',
+            database: 'sprint2'
         }
     ).promise();
 
@@ -40,10 +40,10 @@ const serial = async (
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
         const valores = data.split(',');
         const dht11Umidade = parseFloat(valores[0]);
-        const dht11Temperatura = parseFloat(valores[1]);
-        const luminosidade = parseFloat(valores[2]);
+        // const dht11Temperatura = parseFloat(valores[1]);
+        // const luminosidade = parseFloat(valores[2]);
         const lm35Temperatura = parseFloat(valores[3]);
-        const chave = parseInt(valores[4]);
+        // const chave = parseInt(valores[4]);
 
         valoresDht11Umidade.push(dht11Umidade);
         valoresDht11Temperatura.push(dht11Temperatura);

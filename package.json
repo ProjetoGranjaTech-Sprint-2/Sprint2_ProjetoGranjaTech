@@ -1,0 +1,18 @@
+{
+    "name": "site",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "node ./granjaTech/app.js",
+        "dev": "cd granjaTech && npm run dev",
+        "postinstall": "cd granjaTech && npm install"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "mssql": "^10.0.1",
+        "mysql2": "^3.6.5",
+        "nodemon": "^3.0.1",
+        "path": "^0.12.7"
+    }
+}
