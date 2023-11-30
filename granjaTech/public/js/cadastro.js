@@ -12,10 +12,23 @@ function auxiliar() {
 
     let cnpj = input_cnpj.value;
 
-    if (cnpj.length == 2 && cnpj.charAt(1) != '.' || cnpj.length == 6 && cnpj.charAt(5) != '.') input_cnpj.value += '.';
-    else if (cnpj.length == 10 && cnpj.charAt(9) != '/') input_cnpj.value += '/';
-    else if (cnpj.length == 15 && cnpj.charAt(14) != '-') input_cnpj.value += '-';
+    // Defini o comprimento máximo do CNPJ 
+    const maxCnpjLength = 18;
+
+    if (cnpj.length < maxCnpjLength) {
+        if (cnpj.length == 2 && cnpj.charAt(1) != '.' || cnpj.length == 6 && cnpj.charAt(5) != '.') {
+            input_cnpj.value += '.';
+        } else if (cnpj.length == 10 && cnpj.charAt(9) != '/') {
+            input_cnpj.value += '/';
+        } else if (cnpj.length == 15 && cnpj.charAt(14) != '-') {
+            input_cnpj.value += '-';
+        }
+    } else {
+        // Limita o comprimento do CNPJ
+        input_cnpj.value = cnpj.substring(0, maxCnpjLength);
+    }
 }
+
 
 function prosseguir() {
     var nome_empresarial = input_nome_empresarial.value;
