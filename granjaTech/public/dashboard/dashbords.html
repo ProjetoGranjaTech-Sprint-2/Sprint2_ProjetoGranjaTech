@@ -40,11 +40,13 @@
                 <section class="galpoes">
                     <ul class="selecao">
                         <div class="primeira-linha">
-                            <li class="caixas">
-                                <h2>1</h2>
-                                <button class="retangulo"></button>
+                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
+                                <h2 itemprop="nome">1</h2>
+                                <button class="retangulo" itemprop="botão"></button>
                             </li>
-                            <li class="caixas">
+                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_add" onclick="chamarGalpão()">
+                                add</div>
+                            <!-- <li class="caixas">
                                 <h2>2</h2>
                                 <button class="retangulo"></button>
                             </li>
@@ -65,7 +67,7 @@
                             <li class="caixas">
                                 <h2>6</h2>
                                 <button class="retangulo"></button>
-                            </li>
+                            </li> -->
                         </div>
                     </ul>
                 </section>
@@ -97,3 +99,58 @@
 </body>
 
 </html>
+
+<script>
+
+    function chamarGalpão() {
+        // fazer as rotas necessarias para puxar o id do galpão, e dar um select no galpão ao mesmo tempo 
+        var idUsuario = sessionStorage.ID_USUARIO;
+        
+        console.log(idUsuario)
+
+        fecth(`/dashboard/galpoes`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuario: sessionStorage.ID_USUARIO,
+            }),
+        })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if(resposta.ok) {
+                adicionar();
+            } else {
+                throw "Houver um erro ao tentar pegar os galpões do cliente!"
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        })
+        return false;
+    }
+
+    function adicionar() {
+        const selecao = document.querySelector(".primeira-linha");
+
+        var element_li = document.createElement('li');
+        var element_h2 = document.createComment('h2');
+        var element_button = document.createElement('button');
+
+        element_li.classList += "caixas"
+        element_li.setAttribute('itemscope', '');
+        element_li.setAttribute('itemtype', 'http://schema.org/Warehouse');
+        element_li.setAttribute('itemid', id_galpão + '_galpão');
+
+        element_h2.setAttribute('itempromp', 'nome');
+
+        element_button.className += "retangulo";
+        element_button.setAttribute('itempromp', 'botão');
+
+        element_li.appendChild(element_h2);
+        element_li.appendChild(element_button);
+    }
+
+</script>

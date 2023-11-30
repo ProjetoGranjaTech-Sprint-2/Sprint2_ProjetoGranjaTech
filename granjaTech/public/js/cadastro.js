@@ -12,10 +12,23 @@ function auxiliar() {
 
     let cnpj = input_cnpj.value;
 
-    if (cnpj.length == 2 && cnpj.charAt(1) != '.' || cnpj.length == 6 && cnpj.charAt(5) != '.') input_cnpj.value += '.';
-    else if (cnpj.length == 10 && cnpj.charAt(9) != '/') input_cnpj.value += '/';
-    else if (cnpj.length == 15 && cnpj.charAt(14) != '-') input_cnpj.value += '-';
+    // Defini o comprimento máximo do CNPJ 
+    const maxCnpjLength = 18;
+
+    if (cnpj.length < maxCnpjLength) {
+        if (cnpj.length == 2 && cnpj.charAt(1) != '.' || cnpj.length == 6 && cnpj.charAt(5) != '.') {
+            input_cnpj.value += '.';
+        } else if (cnpj.length == 10 && cnpj.charAt(9) != '/') {
+            input_cnpj.value += '/';
+        } else if (cnpj.length == 15 && cnpj.charAt(14) != '-') {
+            input_cnpj.value += '-';
+        }
+    } else {
+        // Limita o comprimento do CNPJ
+        input_cnpj.value = cnpj.substring(0, maxCnpjLength);
+    }
 }
+
 
 function prosseguir() {
     var nome_empresarial = input_nome_empresarial.value;
@@ -43,11 +56,12 @@ function prosseguir() {
             mensagem_erro.innerHTML = `Por favor, preencha o campo "Email".`;
             setTimeout(sumirMensagem, 2000);
         } else if (email.indexOf('.com') >= 0) {
+        } else if (email.indexOf('.school') >= 0) {
             var possuiEmailVálido =
                 email.indexOf('@gmail') >= 0 ||
                 email.indexOf('@hotmail') >= 0 ||
-                email.indexOf('@outlook') >= 0;
-
+                email.indexOf('@outlook') >= 0 ||
+                email.indexOf('@sptech') >= 0;
             if (possuiEmailVálido) {
                 if (senha == "") {
                     cardErro.style.display = "block";
@@ -55,13 +69,7 @@ function prosseguir() {
                     setTimeout(sumirMensagem, 2000);
                 } else if (senha.length >= 10) {
                     var possui_especial =
-                        senha.indexOf('#') >= 0 ||
-                        senha.indexOf('@') >= 0 ||
-                        senha.indexOf('!') >= 0 ||
-                        senha.indexOf('%') >= 0 ||
-                        senha.indexOf('$') >= 0 ||
-                        senha.indexOf('&') >= 0 ||
-                        senha.indexOf('*') >= 0;
+                        senha.match(/[!@#$%&*]/);
 
                     if (possui_especial) {
 
@@ -122,7 +130,7 @@ function confirmacao() {
     var cidade = input_cidade.value;
     var uf = input_uf.value;
     var cep = input_cep.value;
-    
+
     div_cadastro = "";
 
     if (numero == "") {
@@ -150,8 +158,8 @@ function preencher() {
     const email_ = localStorage.getItem("input_email");
     const senha_ = localStorage.getItem("input_senha");
     const telefone_ = localStorage.getItem("input_telefone");
-    
-    
+
+
     const cep_ = localStorage.getItem("input_cep");
     const rua_ = localStorage.getItem("input_rua");
     const bairro_ = localStorage.getItem("input_bairro");
@@ -187,33 +195,33 @@ function finalizar() {
             cnpjServer: localStorage.getItem("input_cnpj"),
             emailServer: localStorage.getItem("input_email"),
             senhaServer: localStorage.getItem("input_senha"),
-            telefoneServer: localStorage.getItem("input_telefone"), 
-            cepServer: localStorage.getItem("input_cep"), 
-            ufServer: localStorage.getItem("input_uf"), 
-            cidadeServer: localStorage.getItem("input_cidade"), 
-            bairroServer: localStorage.getItem("input_bairro"), 
-            ruaServer: localStorage.getItem("input_rua"), 
-            numeroServer: localStorage.getItem("input_numero"), 
-    }),
+            telefoneServer: localStorage.getItem("input_telefone"),
+            cepServer: localStorage.getItem("input_cep"),
+            ufServer: localStorage.getItem("input_uf"),
+            cidadeServer: localStorage.getItem("input_cidade"),
+            bairroServer: localStorage.getItem("input_bairro"),
+            ruaServer: localStorage.getItem("input_rua"),
+            numeroServer: localStorage.getItem("input_numero"),
+        }),
     })
-    .then(function (result) {
-        console.log('resposta: ', result);
+        .then(function (result) {
+            console.log('resposta: ', result);
 
-        if (result.ok) {
-            cardErro.style.display = "block";
-            mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
+            if (result.ok) {
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando para tela de Login...`;
 
-            setTimeout(()=> {
-                window.location.href = "../cadastro_login/login.html"
-            }, 2000);
+                setTimeout(() => {
+                    window.location.href = "../cadastro_login/login.html"
+                }, 2000);
 
-            sessionStorage.clear();
-            sumirMensagem();
-        } else throw "Houve um erro ao tentar realizar o cadastro!"; 
-    })
-    .catch(function (resposta) {
-        console.log(`[ERRO] ${resposta}`)
-    });
+                sessionStorage.clear();
+                sumirMensagem();
+            } else throw "Houve um erro ao tentar realizar o cadastro!";
+        })
+        .catch(function (resposta) {
+            console.log(`[ERRO] ${resposta}`)
+        });
     return false;
 }
 
@@ -234,4 +242,9 @@ function ativarConfirmacao(event) {
 
 function sumirMensagem() {
     cardErro.style.display = "none";
+}
+function checkEnter(event) {
+    if (event.key === "Enter") {
+        prosseguir();
+    }
 }
