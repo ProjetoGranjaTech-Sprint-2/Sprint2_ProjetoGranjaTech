@@ -25,7 +25,7 @@ function auxiliar() {
         }
     } else {
         // Limita o comprimento do CNPJ
-        input_cnpj.value = cnpj.substring(0, maxCnpjLength);
+        input_cnpj.value = cnpj.substring(0, 18);
     }
 }
 
@@ -55,8 +55,8 @@ function prosseguir() {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = `Por favor, preencha o campo "Email".`;
             setTimeout(sumirMensagem, 2000);
-        } else if (email.indexOf('.com') >= 0) {
-        } else if (email.indexOf('.school') >= 0) {
+        } else if (email.indexOf('.com') >= 0 || email.indexOf('.school') >= 0) {
+
             var possuiEmailVálido =
                 email.indexOf('@gmail') >= 0 ||
                 email.indexOf('@hotmail') >= 0 ||
