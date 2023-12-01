@@ -10,7 +10,7 @@ function inserirCliente(fkUsuario) {
 
 function excluirTupla(idGalin) {
     var instrucao = `
-    DELETE FROM galinheiro WHERE idGalinheiro (${idGalin});
+    DELETE FROM galinheiro WHERE idGalinheiro = ${idGalin};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

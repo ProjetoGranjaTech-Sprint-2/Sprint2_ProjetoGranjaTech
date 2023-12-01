@@ -115,6 +115,7 @@
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
+                    idUsuario: sessionStorage.ID_USUARIO,
                     idGalinheiro: sessionStorage.ID_GALINHIERO,
                 }),
             })
@@ -150,7 +151,7 @@
 
                 if (resposta.ok) {
                     resposta.json().then(result => {
-                        sessionStorage.ID_GALINHIERO = result[result.length-1]
+                        sessionStorage.ID_GALINHIERO = result[result.length-1].idGalinheiro
                         mostrar(result);
                     })
                 } else {
