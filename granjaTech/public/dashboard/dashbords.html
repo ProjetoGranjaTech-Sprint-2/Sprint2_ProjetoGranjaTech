@@ -44,30 +44,27 @@
                                 <h2 itemprop="nome">1</h2>
                                 <button class="retangulo" itemprop="botão"></button>
                             </li>
-                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_add" onclick="chamarGalpão()">
-                                add</div>
-                            <!-- <li class="caixas">
-                                <h2>2</h2>
-                                <button class="retangulo"></button>
+                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
+                                <h2 itemprop="nome">1</h2>
+                                <button class="retangulo" itemprop="botão"></button>
                             </li>
-                            <li class="caixas">
-                                <h2>3</h2>
-                                <button class="retangulo"></button>
+                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
+                                <h2 itemprop="nome">1</h2>
+                                <button class="retangulo" itemprop="botão"></button>
                             </li>
-                        </div>
-                        <div class="segunda-linha">
-                            <li class="caixas">
-                                <h2>4</h2>
-                                <button class="retangulo"></button>
+                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
+                                <h2 itemprop="nome">1</h2>
+                                <button class="retangulo" itemprop="botão"></button>
                             </li>
-                            <li class="caixas">
-                                <h2>5</h2>
-                                <button class="retangulo"></button>
+                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
+                                <h2 itemprop="nome">1</h2>
+                                <button class="retangulo" itemprop="botão"></button>
                             </li>
-                            <li class="caixas">
-                                <h2>6</h2>
-                                <button class="retangulo"></button>
-                            </li> -->
+                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
+                                <h2 itemprop="nome">1</h2>
+                                <button class="retangulo" itemprop="botão"></button>
+                            </li>
+                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_add" onclick="inserirCliente()">add</div>
                         </div>
                     </ul>
                 </section>
@@ -102,26 +99,28 @@
 
 <script>
 
-    function chamarGalpão() {
-        // fazer as rotas necessarias para puxar o id do galpão, e dar um select no galpão ao mesmo tempo 
-        var idUsuario = sessionStorage.ID_USUARIO;
-        
-        console.log(idUsuario)
 
-        fecth(`/dashboard/galpoes`, {
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    function inserirCliente() {   
+
+        fetch(`/dashboard/galpoes`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                idUsuario: sessionStorage.ID_USUARIO,
+                idUsuario: idUsuario,
             }),
         })
         .then(function (resposta) {
             console.log("resposta: ", resposta);
 
             if(resposta.ok) {
-                adicionar();
+                resposta.json().then(result => {
+    
+                    adicionar(result);
+                })
             } else {
                 throw "Houver um erro ao tentar pegar os galpões do cliente!"
             }
@@ -132,25 +131,66 @@
         return false;
     }
 
-    function adicionar() {
+    function select() {
+        
+        fetch(`/dashboard/galpoes`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuario: idUsuario,
+            }),
+        })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if(resposta.ok) {
+                resposta.json().then(result => {
+    
+                    adicionar(result);
+                })
+            } else {
+                throw "Houver um erro ao tentar pegar os galpões do cliente!"
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        })
+        return false;
+
+    }
+
+    function adicionar(result) {
         const selecao = document.querySelector(".primeira-linha");
+        console.log('adicionar [AQUI] => ', result)
 
-        var element_li = document.createElement('li');
-        var element_h2 = document.createComment('h2');
-        var element_button = document.createElement('button');
+        for (i in result) {
+            
+            var element_li = document.createElement('li');
+            var element_h2 = document.createElement('h2');
+            var element_button = document.createElement('button');
+    
+            element_li.classList += "caixas"
+            element_li.setAttribute('itemscope', '');
+            element_li.setAttribute('itemtype', 'http://schema.org/Warehouse');
+            element_li.setAttribute('itemid', i + '_galpão');
+    
+            element_h2.setAttribute('itempromp', 'nome');
+            element_h2.innerHTML = i
+    
+            element_button.className += "retangulo";
+            element_button.setAttribute('itempromp', 'botão');
+    
+            element_li.appendChild(element_h2);
+            element_li.appendChild(element_button);
+    
+            selecao.appendChild(element_li)
+        }            
 
-        element_li.classList += "caixas"
-        element_li.setAttribute('itemscope', '');
-        element_li.setAttribute('itemtype', 'http://schema.org/Warehouse');
-        element_li.setAttribute('itemid', id_galpão + '_galpão');
 
-        element_h2.setAttribute('itempromp', 'nome');
 
-        element_button.className += "retangulo";
-        element_button.setAttribute('itempromp', 'botão');
-
-        element_li.appendChild(element_h2);
-        element_li.appendChild(element_button);
+        console.log('aqui')
     }
 
 </script>
