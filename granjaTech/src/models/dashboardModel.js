@@ -8,6 +8,14 @@ function inserirCliente(fkUsuario) {
     return database.executar(instrucao);
 }
 
+function excluirTupla(idGalin) {
+    var instrucao = `
+    DELETE FROM galinheiro WHERE idGalinheiro (${idGalin});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function selecionarGalpao(fkUsuario) {
     var instrucao = `
     SELECT idGalinheiro FROM galinheiro WHERE fkCliente = ${fkUsuario};
@@ -19,6 +27,7 @@ function selecionarGalpao(fkUsuario) {
 
 module.exports = {
     inserirCliente,
+    excluirTupla,
     selecionarGalpao
 }
 

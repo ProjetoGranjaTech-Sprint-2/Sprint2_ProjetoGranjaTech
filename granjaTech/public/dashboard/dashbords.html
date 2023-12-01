@@ -42,32 +42,7 @@
                 <section class="galpoes">
                     <ul class="selecao">
                         <div class="primeira-linha">
-                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
-                                <h2 itemprop="nome">1</h2>
-                                <button class="retangulo" itemprop="botão"></button>
-                            </li>
-                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
-                                <h2 itemprop="nome">1</h2>
-                                <button class="retangulo" itemprop="botão"></button>
-                            </li>
-                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
-                                <h2 itemprop="nome">1</h2>
-                                <button class="retangulo" itemprop="botão"></button>
-                            </li>
-                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
-                                <h2 itemprop="nome">1</h2>
-                                <button class="retangulo" itemprop="botão"></button>
-                            </li>
-                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
-                                <h2 itemprop="nome">1</h2>
-                                <button class="retangulo" itemprop="botão"></button>
-                            </li>
-                            <li class="caixas" itemscope itemtype="http://schema.org/Warehouse" itemid="1_galpão">
-                                <h2 itemprop="nome">1</h2>
-                                <button class="retangulo" itemprop="botão"></button>
-                            </li>
-                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_add"
-                                onclick="inserirCliente()">add</div>
+                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_sql" onclick="inserirCliente()">add</div>
                         </div>
                     </ul>
                 </section>
@@ -102,8 +77,9 @@
 
 <script>
 
-
     var idUsuario = sessionStorage.ID_USUARIO;
+
+    window.onload = select();
 
     function inserirCliente() {
 
@@ -129,8 +105,34 @@
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
             })
-        return false;
-    }
+            return false;
+        }
+        
+        function excluirTupla() {
+            fetch(`/dashboard/excluir/galpoes`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    idGalinheiro: sessionStorage.ID_GALINHIERO,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+    
+                    if (resposta.ok) {
+                        console.log('TUDO CERTO POR AQUI')
+                        select();
+                    } else {
+                        throw "Houver um erro ao tentar pegar os galpões do cliente!"
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                })
+            return false;
+        }
 
     function select() {
 
@@ -148,8 +150,8 @@
 
                 if (resposta.ok) {
                     resposta.json().then(result => {
-
-                        adicionar(result);
+                        sessionStorage.ID_GALINHIERO = result[result.length-1]
+                        mostrar(result);
                     })
                 } else {
                     throw "Houver um erro ao tentar pegar os galpões do cliente!"
@@ -159,14 +161,16 @@
                 console.log(`#ERRO: ${resposta}`);
             })
         return false;
-
+        
     }
 
-    function adicionar(result) {
+    function mostrar(result) {
         const selecao = document.querySelector(".primeira-linha");
+        selecao.innerHTML = ''
+
         console.log('adicionar [AQUI] => ', result)
 
-        for (i in result) {
+        for (var i = 0; i < result.length; i++) {
 
             var element_li = document.createElement('li');
             var element_h2 = document.createElement('h2');
@@ -175,10 +179,10 @@
             element_li.classList += "caixas"
             element_li.setAttribute('itemscope', '');
             element_li.setAttribute('itemtype', 'http://schema.org/Warehouse');
-            element_li.setAttribute('itemid', i + '_galpão');
+            element_li.setAttribute('itemid', (i+1) + '_galpão');
 
             element_h2.setAttribute('itempromp', 'nome');
-            element_h2.innerHTML = i
+            element_h2.innerHTML = (i+1);
 
             element_button.className += "retangulo";
             element_button.setAttribute('itempromp', 'botão');
@@ -189,9 +193,13 @@
             selecao.appendChild(element_li)
         }
 
+        selecao.innerHTML += '<div title="Excluir último galpão" class="material-symbols-outlined botao_sql" onclick="excluirTupla()">remove</div>';
+        selecao.innerHTML += '<div title="Adicionar novo galpão" class="material-symbols-outlined botao_sql" onclick="inserirCliente()">add</div>'
+
 
 
         console.log('aqui')
     }
+
 
 </script>

@@ -7,6 +7,10 @@ router.post("/inserir/galpoes", function (req, res) {
     dashboardController.inserirCliente(req, res);  
 });
 
+router.post("/excluir/galpoes", function (req, res) {
+    dashboardController.excluirTupla(req, res);  
+});
+
 router.post("/selecionar/galpoes", function (req, res) {
     dashboardController.selecionarGalpao(req, res);  
 });

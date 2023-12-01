@@ -21,6 +21,31 @@ function inserirCliente(req, res) {
         });
 };
 
+function excluirTupla(req, res) {
+    var fkUsuario = req.body.idUsuario;
+    var idGalin = req.body.idGalinheiro;
+    console.log('chegou aqui no controllers: ', idGalin)
+
+    dashboardModel.excluirTupla(idGalin)
+        .then((resultado) => {
+            console.log(resultado)
+            if (resultado) {
+                console.log('resultado == ', resultado);
+
+                res.status(200).json(resultado);
+            } else {
+                console.log('[ERRO] ==', resultado)
+            }
+        })
+        // res.json(resultado)
+        .catch((erro) => {
+            console.error(`Erro ao excluir o Idgalin:${idGalin} do ${fkUsuario}. => ${erro}`);
+            res.status(500).json({ erro: "Erro interno ao excluir o ${fkUsuario}" });
+        });
+};
+
+
+
 function selecionarGalpao(req, res) {
     var fkUsuario = req.body.idUsuario;
 
@@ -41,5 +66,6 @@ function selecionarGalpao(req, res) {
 
 module.exports = {
     inserirCliente,
+    excluirTupla,
     selecionarGalpao
 }
