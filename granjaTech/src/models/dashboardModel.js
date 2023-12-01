@@ -8,7 +8,7 @@ function inserirCliente(fkUsuario) {
     return database.executar(instrucao);
 }
 
-function chamarGalpão(fkUsuario) {
+function selecionarGalpao(fkUsuario) {
     var instrucao = `
     SELECT idGalinheiro FROM galinheiro WHERE fkCliente = ${fkUsuario};
     `;
@@ -19,7 +19,7 @@ function chamarGalpão(fkUsuario) {
 
 module.exports = {
     inserirCliente,
-    chamarGalpão
+    selecionarGalpao
 }
 
 

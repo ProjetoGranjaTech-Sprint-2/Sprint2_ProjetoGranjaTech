@@ -8,15 +8,8 @@ function inserirCliente(req, res) {
             console.log(resultado)
             if (resultado) {
                 console.log('resultado == ', resultado);
-                
-                dashboardModel.chamarGalpão(fkUsuario)
-                .then((result) => {
-                    res.status(200).json(result);
-                })
-                .catch((erro) => {
-                    console.error(`Erro ao chamar os galpões do usuário ${fkUsuario}. => ${erro}`);
-                    res.status(500).json({ erro: "Erro interno ao chamar os galpões" });    
-                })
+
+                res.status(200).json(resultado);
             } else {
                 console.log('[ERRO] ==', resultado)
             }
@@ -28,6 +21,25 @@ function inserirCliente(req, res) {
         });
 };
 
+function selecionarGalpao(req, res) {
+    var fkUsuario = req.body.idUsuario;
+
+    dashboardModel.selecionarGalpao(fkUsuario)
+        .then((result) => {
+            if (result) {
+
+                console.log('resultado:', result);
+                res.status(200).json(result);
+
+            } else console.log('[ERRO] no Select', result)
+        })
+        .catch((erro) => {
+            console.error(`Erro ao chamar os galpões do usuário ${fkUsuario}. => ${erro}`);
+            res.status(500).json({ erro: "Erro interno ao chamar os galpões" });
+        })
+}
+
 module.exports = {
     inserirCliente,
+    selecionarGalpao
 }
