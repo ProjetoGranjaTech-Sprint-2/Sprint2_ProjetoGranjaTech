@@ -54,5 +54,6 @@ constraint fkSensor foreign key (fkSensor) references sensor(id),
 primary key (idHist, fkSensor),
 timeVrf datetime,
 stats decimal (3,1),
+-- statsUmi decimal (3,1),
 uniMedida varchar(2), constraint chkUniMedida check (uniMedida in ('%', '°C')) 
 );
