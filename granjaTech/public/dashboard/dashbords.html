@@ -79,7 +79,8 @@
 <script>
 
     var idUsuario = sessionStorage.ID_USUARIO;
-    var idGalinheiro = sessionStorage.ID_GALINHIERO;
+    var idGalinheiro = sessionStorage.ID_GALINHEIRO;
+    var idsGalpão = 0;
     window.onload = select();
 
     function lerGalpão() {
@@ -88,8 +89,15 @@
 
         galpões.forEach((galpões, index) => {
             galpões.addEventListener("click", function () {
-                console.log(galpões)
-                window.location.href = `/dashboard/viewDashboards.html`
+                console.log(galpões.value);
+                console.log(idsGalpão.value);
+                for (var contador = 0; contador < idsGalpão.length; contador++) {
+                    if (index == idsGalpão[index]); {
+                        // fkGalinheiro = idsGalpão[index];
+                        sessionStorage.ID_GALINHEIRO = idsGalpão[index].idGalinheiro.toString();
+                    }
+                    window.location.href = `/dashboard/viewDashboards.html`;
+                }
             })
         })
     }
@@ -103,7 +111,7 @@
             },
             body: JSON.stringify({
                 idUsuario: idUsuario,
-                idGalinheiro: sessionStorage.ID_GALINHIERO,
+                idGalinheiro: sessionStorage.ID_GALINHEIRO,
             }),
         })
             .then(function (resposta) {
@@ -130,7 +138,7 @@
             },
             body: JSON.stringify({
                 idUsuario: sessionStorage.ID_USUARIO,
-                idGalinheiro: sessionStorage.ID_GALINHIERO,
+                idGalinheiro: sessionStorage.ID_GALINHEIRO,
             }),
         })
             .then(function (resposta) {
@@ -165,8 +173,11 @@
 
                 if (resposta.ok) {
                     resposta.json().then(result => {
-                        sessionStorage.ID_GALINHIERO = result[result.length - 1].idGalinheiro
+                        sessionStorage.ID_GALINHEIRO = result[result.length - 1].idGalinheiro
                         mostrar(result);
+                        // for (var contador = 0; contador < result.length; contador++) {
+                        idsGalpão = result
+                        // }
                         lerGalpão();
                     })
                 } else {
