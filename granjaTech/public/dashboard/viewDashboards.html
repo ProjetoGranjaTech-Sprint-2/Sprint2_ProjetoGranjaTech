@@ -27,7 +27,7 @@
         <li><a href="./dashbords.html">Galpão</a></li>
         <li><a href="./viewDashboards.html">Dashboards</a></li>
         <li>Avisos</li>
-        <li>Ajuda</li>
+        <li><a href="./ajuda.html">Ajuda</a></li>
       </ul>
     </nav>
     <div class="sair">
@@ -210,7 +210,7 @@
       var registro = resposta[i];
       // labels.push(registro);
       if (registro.uniMedida == `°C`) {
-        labels.push(`Sensor ${registro.idHist} + 10H`);
+        labels.push(`Sensor ${registro.idHist} + 10H`); // POR QUE AQUI É IDHIST AO INVES DE FKSENSOR, OQ SIGNIFICA ESSE +10H -----------------------------------------------
         dados.datasets[0].data.push(registro.stats);
       }
       if (registro.uniMedida == `%`) {

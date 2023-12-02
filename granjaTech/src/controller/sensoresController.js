@@ -5,16 +5,17 @@ function listarSensor(req,res) {
 
     if (idGalinheiro == undefined) {
         res.status(400).send ("Seu galinheiro não está definido");
+    } else {
+        sensoresModel.listarSensor(idGalinheiro)
+            .then((resultado) => {
+                res.status(200).json(resultado);
+            })
+            // res.json(resultado)
+            .catch((erro) => {
+                console.error(`Erro ao listar sensores: ${erro}`);
+                res.status(500).json({ erro: "Erro interno ao listar sensores" });
+            });
     }
-    sensoresModel.listarSensor(idGalinheiro)
-        .then((resultado) => {
-            res.status(200).json(resultado);
-        })
-        // res.json(resultado) 
-        .catch((erro) => {
-            console.error(`Erro ao listar sensores: ${erro}`);
-            res.status(500).json({ erro: "Erro interno ao listar sensores" });
-        });
 };
 
 function dadosSensor(req, res) {
