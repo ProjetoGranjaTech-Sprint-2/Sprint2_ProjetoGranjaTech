@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash Galpões</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
+    <link rel="stylesheet" href="../css/ajuda.css">
+
+    <link rel="shortcut icon" href="../assets/icon/galinha.ico">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="../assets/imgs/imagensInstitucional/galinha branca.png" alt="Imagem-Galinha">GRANJATECH
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./dashbords.html">Galpão</a></li>
+                <li> <a href="./viewDashboards.html">Dashboards</a></li>
+                <li>Avisos</li>
+                <li><a href="./ajuda.html">Ajuda</a></li>
+            </ul>
+        </nav>
+        <div class="sair">
+            <span class="material-symbols-outlined">
+                logout
+            </span>
+            <p>Sair</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="formulario">
+            <h1>Ficou com duvida?</h1>
+            
+            <h3>Envie-nos sua solicitação</h3>
+            
+            <label for="slc_category">
+                <p>Selecione a categoria do seu problema:</p>
+                <div class="select_style">
+                    <select name="Category" id="slc_category">
+                        <option value="" selected disabled hidden>Categoria</option>
+                        <option value="dashboard">Dashboard</option>
+                        <option value="email">Email</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="login">Login</option>
+                        <option value="manutenção">Manutenção</option>
+                        <option value="network">Network</option>
+                        <option value="rede">Rede</option>
+                        <option value="registro">Registro</option>
+                        <option value="software">Software</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </div>
+            </label>
+            <!-- <label for="input_attach" class="label_anexo">
+                <p>Anexar arquivo</p>
+                <input type="file" id="input_attach">
+            </label> -->
+            <label for="textarea" class="label_textarea">
+                <textarea id="textarea" cols="30" rows="10"></textarea>
+            </label>
+
+            <butotn id="submit" class="enviar">Enviar</butotn>
+        </section>
+        <section class="localizazao">
+
+        </section>
+        <section class="footer">
+            <h2>Nossa História</h2>
+            <p>
+                Somos uma empresa de tecnologia dedicada a aprimorar o desempenho das granjas por meio da implementação de sensores avançados, focados em monitorar a saúde das galinhas. Reconhecemos a importância de mitigar o estresse térmico, um problema recorrente que muitas vezes resulta na perda de aves devido às altas temperaturas.<br>
+                Nossa missão, desde nossa fundação em 2023, é revolucionar as práticas agrícolas nas futuras granjas de São Paulo, proporcionando-lhes não apenas um ambiente ideal, mas também soluções eficazes para garantir o bem-estar das aves e otimizar a produção local.
+            </p>
+        </section>
+    </main>
+</body>

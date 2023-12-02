@@ -1,0 +1,178 @@
+@font-face {
+    font-family: Roxborough CF;
+    src: url(../assets/fonts/Roxborough-CF/Roxborough\ CF.ttf);
+
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(74, 61, 51);
+    padding: 0 5vw;
+}
+
+header>.logo {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    color: white;
+    font-family: Roxborough CF;
+}
+header > .logo > img {
+    width: 50px;
+}
+
+
+header>nav>ul {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+header>nav>ul>li {
+    color: white;
+    list-style: none;
+    font-weight: 900;
+    font-size: 1.1em;
+    transition: 0.2s;
+}
+
+header > nav > ul > li:hover {
+    font-size: 1.2em;
+}
+
+header > nav > ul > li >a {
+    color: white;
+}
+
+header>.sair {
+    display: flex;
+    width: 120px;
+    color: white;
+    align-items: center;
+    font-weight: 900;
+}
+
+header>.sair>span {
+    margin-right: 5px;
+    font-weight: 900;
+
+}
+
+header>.sair>p {
+    margin-left: 5px;
+    font-size: large;
+}
+
+main {
+    width: 100%;
+    height: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: self-end;
+}
+
+.formulario {
+    width: 85%;
+    height: 415px;
+    padding: 60px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario > h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.formulario > h3 {
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+
+.select_style {
+    border: 2px rgb(74, 61, 51) solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    cursor: pointer;
+}
+
+.select_style > select {
+    width: 99%;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.select_style > span {
+    font-size: 17px;
+}
+
+.label_anexo > p {
+    margin: 10px 0;
+    width: 110px;
+    border: 2px rgb(74, 61, 51) solid;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.label_anexo > input {
+    display: none;
+}
+
+textarea {
+    margin-top: 20px;
+    width: calc(40% - 10px);
+    padding: 5px;
+    border-radius: 10px 2px;
+    height: 130px;
+}
+
+.enviar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(74, 61, 51);
+    border: 2px rgb(74, 61, 51) solid;
+    color: white;
+    font-weight: 700;
+    font-family: Roxborough CF;
+    font-size: 15px;
+    border-radius: 20px;
+    width: 100px;
+    height: 25px;
+    transition: .1s linear;
+}
+
+.enviar:hover {
+    width: 103px;
+    height: 27px;
+    cursor: pointer;
+}
+
+
+
+
