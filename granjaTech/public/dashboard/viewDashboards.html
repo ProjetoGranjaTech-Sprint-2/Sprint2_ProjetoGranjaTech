@@ -90,8 +90,8 @@
 
   window.onload = dadosSensor(), listarSensor();
 
-  function listarSensor() {
-    fetch("/sensores/listarSensor", {
+  function listarSensor(idGalinheiro){
+    fetch(`/sensores/listarSensor/${idGalinheiro}`, {
       method: "GET",
     }).then(function (resposta) {
       resposta.json().then((sensores) => {

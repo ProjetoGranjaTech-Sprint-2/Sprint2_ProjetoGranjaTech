@@ -23,7 +23,8 @@
 
                 <ul>
                     <li>
-                        <a style="color: rgba(74, 61, 51);" href="../Site institucional/logado/logado.html" class="inicio">Início</a>
+                        <a style="color: rgba(74, 61, 51);" href="../Site institucional/logado/logado.html"
+                            class="inicio">Início</a>
                     </li>
                 </ul>
             </div>
@@ -47,7 +48,7 @@
             <div class="div_hist">
                 <canvas id="GraficoHist"></canvas>
             </div>
-<!-- 
+            <!-- 
             <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha vermelha.png" alt="">
 
             <img class="galinha" src="C:\Users\melis\OneDrive - SPTech School\Documentos\SPTECH (1)\Sprint 2\PAG DASHBOARD\DASHBOARDS SPRINT2\galinha amarela.png" alt="">
@@ -58,19 +59,19 @@
                                 
                 <div class="alertaVerm">
                     Alerta: 
-                     30°C 
-                     70%
+                    30°C 
+                    70%
                 </div>
                 <br>
                 <div class="alertaAma">
                     Moderado:
-                     26°C a 29°C 
+                    26°C a 29°C 
                     60% 
                 </div>
                 <br>
                 <div class="alertaVerde">
                     Adequado:
-                     15°C 
+                    15°C 
                     40%
                 </div> -->
 
@@ -79,9 +80,11 @@
         <div class="controle">
             <h1> GALPÃO </h1>
             <div class="botoes">
-                <img src="https://i.pinimg.com/originals/d5/2d/75/d52d75338d7b34496a3d00b08de65451.png" height="30px" width="30px" style="transform: rotate(180deg);"  alt="">
+                <img src="https://i.pinimg.com/originals/d5/2d/75/d52d75338d7b34496a3d00b08de65451.png" height="30px"
+                    width="30px" style="transform: rotate(180deg);" alt="">
                 <button class="G1">G1</button>
-                <img src="https://i.pinimg.com/originals/d5/2d/75/d52d75338d7b34496a3d00b08de65451.png" height="30px" width="30px" alt="">
+                <img src="https://i.pinimg.com/originals/d5/2d/75/d52d75338d7b34496a3d00b08de65451.png" height="30px"
+                    width="30px" alt="">
                 <!-- <button class="G2">II</button>
                 <button class="G3">III</button> -->
             </div>
@@ -102,22 +105,23 @@
         </div>
         <div class="controle2">
             <div class="galinha1">
-                <img src="image-removebg-preview (4).png" alt=""> 
+                <img src="image-removebg-preview (4).png" alt="">
                 <span class="vermelho"> Alerta: 30°C 70%</span>
             </div>
-               <div class="galinha2">
-                <img src="image-removebg-preview (3).png" alt="" >
+            <div class="galinha2">
+                <img src="image-removebg-preview (3).png" alt="">
                 <span class="amarelo">ALERTA - Sensor 1 e Sensor 2 estão em risco</span>
-               </div>
-               <div class="galinha3">
-                <img src="image-removebg-preview (2).png" alt="" >
+            </div>
+            <div class="galinha3">
+                <img src="image-removebg-preview (2).png" alt="">
                 <span class="verde">Adequado: 15°C 40%</span>
-               </div>               
+            </div>
         </div>
         <div class="relatorio">
-            <a href="GranjaTech Dash Analytics - Dados_Arduino.pdf" download="Analytics" target="_blank">Baixe aqui o relatório</a>
+            <a href="GranjaTech Dash Analytics - Dados_Arduino.pdf" download="Analytics" target="_blank">Baixe aqui o
+                relatório</a>
         </div>
-    </main>  
+    </main>
     <script>
         console.log(select);
         let text = select.options[select.selectedIndex].text;
@@ -139,7 +143,7 @@
 
     </script>
 
-    <script>     
+    <script>
 
         const rotulosHist = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
 
@@ -201,7 +205,7 @@
                         data: [22, 22.8, 23, 23.1, 23.4, 23.5, 24, 25.1],
                         borderColor: '#ff862f',
                         backgroundColor: '#ff862f',
-                    }, 
+                    },
                 ]
             },
 
@@ -214,7 +218,7 @@
                 },
                 scales: {
                     y: {
-                        beginAtZero: false,     
+                        beginAtZero: false,
                     }
                 }
             }

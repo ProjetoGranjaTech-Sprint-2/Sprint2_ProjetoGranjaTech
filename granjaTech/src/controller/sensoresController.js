@@ -1,7 +1,12 @@
 var sensoresModel = require("../models/sensoresModel");
 
 function listarSensor(req, res) {
-    sensoresModel.listarSensor()
+    var idGalinheiro = req.params.idGalinheiro;
+
+    if (idGalinheiro == undefined) {
+        res.status(400).send ("Seu galinheiro não está definido");
+    }
+    sensoresModel.listarSensor(idGalinheiro)
         .then((resultado) => {
             res.status(200).json(resultado);
         })

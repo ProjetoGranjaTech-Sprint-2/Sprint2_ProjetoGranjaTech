@@ -1,8 +1,8 @@
 var database = require("../database/config");
 
-function listarSensor() {
+function listarSensor(idGalinheiro) {
     var instrucao = `
-    select * from sensor;
+    select * from sensor where fkGalin = ${idGalinheiro};
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

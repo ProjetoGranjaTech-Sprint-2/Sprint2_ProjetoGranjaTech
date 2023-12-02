@@ -7,6 +7,9 @@ setInterval(function () {
     nextImage();
 }, 5000)
 
+var username = sessionStorage.NOME_USUARIO;
+boasVindas.innerHTML += `<h1> Seja bem-vindo(a) ${sessionStorage.NOME_USUARIO}`;
+
 function nextImage() {
 
     var radio_1 = document.getElementById("radio1").checked;
