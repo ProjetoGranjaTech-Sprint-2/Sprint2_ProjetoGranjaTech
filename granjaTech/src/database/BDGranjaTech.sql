@@ -18,6 +18,9 @@ create table cadastro_cliente(
 	numero int not null
 );
 
+select * from cadastro_cliente;
+delete from cadastro_cliente
+	where idCliente = 2;
 
 create table galinheiro(
 idGalinheiro int primary key auto_increment,

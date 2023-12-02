@@ -3,12 +3,16 @@ var router = express.Router();
 
 var dashboardController = require('../controller/dashboardController.js')
 
-router.post("/galpoes", function (req, res) {
-    dashboardController.chamarGalpão(req, res);  
+router.post("/inserir/galpoes", function (req, res) {
+    dashboardController.inserirCliente(req, res);  
 });
 
-// router.get("/dadosSensor", function (req, res) {
-//     dashboardController.dadosSensor(req, res);  
-// });
+router.post("/excluir/galpoes", function (req, res) {
+    dashboardController.excluirTupla(req, res);  
+});
+
+router.post("/selecionar/galpoes", function (req, res) {
+    dashboardController.selecionarGalpao(req, res);  
+});
 
 module.exports = router;

@@ -100,27 +100,30 @@ main>.galpao>div {
 
 main>.galpao>div>.galpoes {
     width: 65%;
-    height: 100%;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: whitesmoke;
+
 }
 
 main>.galpao>div>.galpoes>.selecao {
     list-style: none;
     text-align: center;
     display: flex;
+    align-items: center;
+    justify-items: center;
     flex-direction: column;
     width: 100%;
-    height: 100%;
-    background-color: whitesmoke;
+    height: 70%;
 }
 
 main>.galpao>div>.galpoes>.selecao>.primeira-linha {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    width: 100%;
+    flex-wrap: wrap;
+    width: 75%;
     height: 50%;
 }
 
@@ -132,29 +135,32 @@ main>.galpao>div>.galpoes>.selecao>.segunda-linha {
     height: 50%;
 }
 
-main>.galpao>div>.galpoes>.selecao>.caixas {
+main > .galpao > div > .galpoes > .selecao > .primeira-linha > .caixas {
     list-style: none;
     text-align: center;
+    margin: 10px 28px;
 }
 
 .retangulo {
     border-radius: 25%;
 }
 
-main > .galpao > div > .galpoes > .selecao > .primeira-linha > .botao_add {
-    width: 60px;
-    height: 60px;
+main > .galpao > div > .galpoes > .selecao > .primeira-linha > .botao_sql {
+    width: 30px;
+    height: 30px;
     border: 2px solid rgb(74, 61, 51);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+
     transition: .1s  normal linear;
 }
 
-main > .galpao > div > .galpoes > .selecao > .primeira-linha > .botao_add:hover {
-    width: 63px;
-    height: 63px;
+main > .galpao > div > .galpoes > .selecao > .primeira-linha > .botao_sql:hover {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
 }
 
 main>.galpao>div>.galpoes>.selecao>.primeira-linha>.caixas>.retangulo {
@@ -162,7 +168,6 @@ main>.galpao>div>.galpoes>.selecao>.primeira-linha>.caixas>.retangulo {
     border-style: none;
     width: 125px;
     height: 50px;
-    
 }
 
 .galpao .galpoes .selecao .primeira-linha .caixas:nth-child(1) .retangulo {
