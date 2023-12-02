@@ -42,7 +42,8 @@
                 <section class="galpoes">
                     <ul class="selecao">
                         <div class="primeira-linha">
-                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_sql" onclick="inserirCliente()">add</div>
+                            <div title="Adicionar novo galpão" class="material-symbols-outlined botao_sql"
+                                onclick="inserirCliente()">add</div>
                         </div>
                     </ul>
                 </section>
@@ -78,8 +79,20 @@
 <script>
 
     var idUsuario = sessionStorage.ID_USUARIO;
-
+    var idGalinheiro = sessionStorage.ID_GALINHIERO;
     window.onload = select();
+
+    function lerGalpão() {
+        const galpões = document.querySelectorAll(".retangulo");
+        alert(galpões);
+
+        galpões.forEach((galpões, index) => {
+            galpões.addEventListener("click", function () {
+                console.log(galpões)
+                window.location.href = `/dashboard/viewDashboards.html`
+            })
+        })
+    }
 
     function inserirCliente() {
 
@@ -90,6 +103,7 @@
             },
             body: JSON.stringify({
                 idUsuario: idUsuario,
+                idGalinheiro: sessionStorage.ID_GALINHIERO,
             }),
         })
             .then(function (resposta) {
@@ -105,35 +119,35 @@
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
             })
-            return false;
-        }
-        
-        function excluirTupla() {
-            fetch(`/dashboard/excluir/galpoes`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    idUsuario: sessionStorage.ID_USUARIO,
-                    idGalinheiro: sessionStorage.ID_GALINHIERO,
-                }),
+        return false;
+    }
+
+    function excluirTupla() {
+        fetch(`/dashboard/excluir/galpoes`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuario: sessionStorage.ID_USUARIO,
+                idGalinheiro: sessionStorage.ID_GALINHIERO,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    console.log('TUDO CERTO POR AQUI')
+                    select();
+                } else {
+                    throw "Houver um erro ao tentar pegar os galpões do cliente!"
+                }
             })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-    
-                    if (resposta.ok) {
-                        console.log('TUDO CERTO POR AQUI')
-                        select();
-                    } else {
-                        throw "Houver um erro ao tentar pegar os galpões do cliente!"
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                })
-            return false;
-        }
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            })
+        return false;
+    }
 
     function select() {
 
@@ -151,8 +165,9 @@
 
                 if (resposta.ok) {
                     resposta.json().then(result => {
-                        sessionStorage.ID_GALINHIERO = result[result.length-1].idGalinheiro
+                        sessionStorage.ID_GALINHIERO = result[result.length - 1].idGalinheiro
                         mostrar(result);
+                        lerGalpão();
                     })
                 } else {
                     throw "Houver um erro ao tentar pegar os galpões do cliente!"
@@ -162,7 +177,6 @@
                 console.log(`#ERRO: ${resposta}`);
             })
         return false;
-        
     }
 
     function mostrar(result) {
@@ -180,10 +194,10 @@
             element_li.classList += "caixas"
             element_li.setAttribute('itemscope', '');
             element_li.setAttribute('itemtype', 'http://schema.org/Warehouse');
-            element_li.setAttribute('itemid', (i+1) + '_galpão');
+            element_li.setAttribute('itemid', (i + 1) + '_galpão');
 
             element_h2.setAttribute('itempromp', 'nome');
-            element_h2.innerHTML = (i+1);
+            element_h2.innerHTML = (i + 1);
 
             element_button.className += "retangulo";
             element_button.setAttribute('itempromp', 'botão');
@@ -196,8 +210,6 @@
 
         selecao.innerHTML += '<div title="Excluir último galpão" class="material-symbols-outlined botao_sql" onclick="excluirTupla()">remove</div>';
         selecao.innerHTML += '<div title="Adicionar novo galpão" class="material-symbols-outlined botao_sql" onclick="inserirCliente()">add</div>'
-
-
 
         console.log('aqui')
     }

@@ -1,6 +1,6 @@
 var sensoresModel = require("../models/sensoresModel");
 
-function listarSensor(req, res) {
+function listarSensor(req,res) {
     var idGalinheiro = req.params.idGalinheiro;
 
     if (idGalinheiro == undefined) {
