@@ -7,11 +7,10 @@ const SERVIDOR_PORTA = 3000;
 const HABILITAR_OPERACAO_INSERIR = true;
 
 const serial = async (
+    // stats,
     valoresStatsTemp,
-    valoresStatsUmi,
-    // valoresDht11Temperatura,
-    // valoresLuminosidade,
-    // valoresChave
+    valoresStatsUmi
+
 ) => {
     const poolBancoDados = mysql.createPool(
         {
@@ -42,104 +41,60 @@ const serial = async (
         const statsUmi = parseFloat(valores[0]); // ISSO É A UMIDADE DO DHT
         const statsTemp = parseFloat(valores[1]); // TEMPERATURA DO LM35
 
-        // valoresStatsUmi.push(statsUmi);
-        // valoresStatsTemp.push(statsTemp);
+        valoresStatsUmi.push(statsUmi);
+        valoresStatsTemp.push(statsTemp);
 
-        const stats = [statsUmi, statsTemp];
-
-        // EMPURRAR UMIDADE E TEMPERATURA DO DHT
-
-        // const dht11Temperatura = parseFloat(valores[2]);
-        // const luminosidade = parseFloat(valores[3]);
-        // const lm35Temperatura = parseFloat(valores[1]);
-        // const chave = parseInt(valores[4]);
-        
-        if (stats[0] > 30){
-            if (HABILITAR_OPERACAO_INSERIR) {
-                await poolBancoDados.execute(
-                    'INSERT INTO historico (idHist, fkSensor, timeVrf, stats, uniMedida) VALUES (?)',
-                    [null, null, null, stats[0], '%']
-                );
-            }
-        } else if (stats[1] <= 30){
-            if (HABILITAR_OPERACAO_INSERIR) {
-                await poolBancoDados.execute(
-                    'INSERT INTO historico (idHist, fkSensor, timeVrf, stats, uniMedida) VALUES (?)',
-                    [null, null, null, stats[1], '°C']
-                );
-            }
+        if (HABILITAR_OPERACAO_INSERIR) {
+            await poolBancoDados.execute(
+                `INSERT INTO historico (fkSensor, stats, uniMedida) VALUES (2, ${statsUmi}, '%'), (1, ${statsTemp}, '°C');`
+            );
         }
-        // valoresStatsTemp.push(statsTemp); // EMPURRAR TEMPERATURA LM35
 
-        // valoresDht11Temperatura.push(dht11Temperatura);
-        // valoresLuminosidade.push(luminosidade);
-        // valoresLm35Temperatura.push(lm35Temperatura);
-        // valoresChave.push(chave);
-
-        // if (HABILITAR_OPERACAO_INSERIR) {
-        //     await poolBancoDados.execute(
-        //         'INSERT INTO historico (idHist, fkSensor, timeVrf, stats, uniMedida) VALUES (?)',
-        //         [stats]
-        //     );
-        // }
-
-    });
-    arduino.on('error', (mensagem) => {
-        console.error(`Erro no arduino (Mensagem: ${mensagem}`)
-    });
-}
-
+        arduino.on('error', (mensagem) => {
+            console.error(`Erro no arduino (Mensagem: ${mensagem}`)
+        });
+    }
+            );
+        }
 const servidor = (
-    stats,
-    // valoresDht11Temperatura,
-    // valoresLuminosidade,
-    // valoresLm35Temperatura,
-    // valoresChave
-) => {
-    const app = express();
-    app.use((request, response, next) => {
-        response.header('Access-Control-Allow-Origin', '*');
-        response.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
-        next();
-    });
-    app.listen(SERVIDOR_PORTA, () => {
-        console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
-    });
-    app.get('/dadosSensor', (_, response) => {
-        return response.json(stats);
-    });
-    // app.get('/sensores/dht11/temperatura', (_, response) => {
-    //     return response.json(valoresDht11Temperatura);
-    // });
-    // app.get('/sensores/luminosidade', (_, response) => {
-    //     return response.json(valoresLuminosidade);
-    // });
-    // app.get('/sensores/lm35/temperatura', (_, response) => {
-    //     return response.json(valoresLm35Temperatura);
-    // });
-    // app.get('/sensores/chave', (_, response) => {
-    //     return response.json(valoresChave);
-    // });
-}
+        stats,
+        valoresStatsUmi,
+        valoresStatsTemp,
+    ) => {
+        const app = express();
+        app.use((request, response, next) => {
+            response.header('Access-Control-Allow-Origin', '*');
+            response.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
+            next();
+        });
+        app.listen(SERVIDOR_PORTA, () => {
+            console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
+        });
+        app.get('/dadosSensor', (_, response) => {
+            return response.json(stats);
+        });
 
-(async () => {
-    const stats = [];
-    // const valoresDht11Temperatura = [];
-    // const valoresLuminosidade = [];
-    // const valoresLm35Temperatura = [];
-    // const valoresChave = [];
-    await serial(
-        stats,
-        // valoresDht11Temperatura,
-        // valoresLuminosidade,
-        // valoresLm35Temperatura,
-        // valoresChave
-    );
-    servidor(
-        stats,
-        // valoresDht11Temperatura,
-        // valoresLuminosidade,
-        // valoresLm35Temperatura,
-        // valoresChave
-    );
-})();
+        app.get('/sensores/dht11/umidade', (_, response) => {
+            return response.json(valoresStatsUmi);
+        });
+
+        app.get('/sensores/lm35/temperatura', (_, response) => {
+            return response.json(valoresStatsTemp);
+        });
+    }
+
+    (async () => {
+        // const stats = [];
+        const valoresStatsTemp = [];
+        const valoresStatsUmi =[];
+        await serial(
+            // stats,
+            valoresStatsTemp,
+            valoresStatsUmi,
+        );
+        servidor(
+            // stats,
+            valoresStatsTemp,
+            valoresStatsUmi,
+        );
+    })();

@@ -47,7 +47,7 @@
     </section>
     <section class="graficos">
       <div class="status">
-        <h2>ESTÁVEL</h2>
+        <h2>ESTÁVEL</h2>''
         <div class="sensores">
           <i class="material-symbols-outlined">chevron_left</i>
           <div class="kpi_sensores">
@@ -271,7 +271,7 @@
       if (response.ok) {
         response.json().then(function (novoRegistro) {
 
-          // obterdados(novoRegistro); // AQUI ERA PRA FICAR O ID
+          dadosSensor(); // AQUI ERA PRA FICAR O ID
           console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
           console.log(`Dados atuais do gráfico:`);
           console.log(dados);
