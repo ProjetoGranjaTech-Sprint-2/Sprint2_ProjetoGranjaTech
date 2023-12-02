@@ -153,13 +153,12 @@ main > .galpao > div > .galpoes > .selecao > .primeira-linha > .botao_sql {
     display: flex;
     align-items: center;
     justify-content: center;
-
     transition: .1s  normal linear;
 }
 
 main > .galpao > div > .galpoes > .selecao > .primeira-linha > .botao_sql:hover {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     cursor: pointer;
 }
 
@@ -168,6 +167,12 @@ main>.galpao>div>.galpoes>.selecao>.primeira-linha>.caixas>.retangulo {
     border-style: none;
     width: 125px;
     height: 50px;
+    transition: 0.2s normal linear;
+}
+
+main>.galpao>div>.galpoes>.selecao>.primeira-linha>.caixas>.retangulo:hover {
+    width: 150px;
+    height: 60px;
 }
 
 .galpao .galpoes .selecao .primeira-linha .caixas:nth-child(1) .retangulo {

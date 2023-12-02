@@ -8,9 +8,9 @@ function inserirCliente(fkUsuario) {
     return database.executar(instrucao);
 }
 
-function excluirTupla(idGalin) {
+function excluirTupla(idGalinheiro) {
     var instrucao = `
-    DELETE FROM galinheiro WHERE idGalinheiro = ${idGalin};
+    DELETE FROM galinheiro WHERE idGalinheiro = ${idGalinheiro};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

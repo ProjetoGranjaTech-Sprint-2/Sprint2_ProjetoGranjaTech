@@ -91,6 +91,7 @@
   window.onload = dadosSensor(), listarSensor();
 
   function listarSensor(idGalinheiro){
+    var idGalinheiro = sessionStorage.ID_GALINHIERO;
     fetch(`/sensores/listarSensor/${idGalinheiro}`, {
       method: "GET",
     }).then(function (resposta) {
