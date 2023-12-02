@@ -9,6 +9,8 @@
     padding: 0px;
     box-sizing: border-box;
     text-decoration: none;
+    list-style: none;
+    color: inherit;
 }
 
 body {
@@ -25,7 +27,7 @@ header {
     padding: 0 5vw;
 }
 
-header>.logo {
+header > .logo {
     width: 120px;
     display: flex;
     align-items: center;
@@ -33,6 +35,7 @@ header>.logo {
     color: white;
     font-family: Roxborough CF;
 }
+
 header > .logo > img {
     width: 50px;
 }
@@ -56,7 +59,7 @@ header > nav > ul > li:hover {
     font-size: 1.2em;
 }
 
-header > nav > ul > li >a {
+header > nav > ul > li > a {
     color: white;
 }
 
@@ -82,17 +85,19 @@ header>.sair>p {
 main {
     width: 100%;
     height: calc(100% - 80px);
-    display: flex;
-    flex-direction: column;
-    align-items: self-end;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    justify-content: end;
 }
 
 .formulario {
-    width: 85%;
+    width: 95%;
     height: 415px;
-    padding: 60px 0px;
+    padding: 60px 140px;
     display: flex;
     flex-direction: column;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .formulario > h1 {
@@ -112,7 +117,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 60%;
     cursor: pointer;
 }
 
@@ -145,7 +150,7 @@ main {
 
 textarea {
     margin-top: 20px;
-    width: calc(40% - 10px);
+    width: 60%;
     padding: 5px;
     border-radius: 10px 2px;
     height: 130px;
@@ -173,6 +178,88 @@ textarea {
     cursor: pointer;
 }
 
+.localizacao {
+    height: 100%;
+    padding: 20px;
+    background-color: rgb(74, 61, 51);
+    grid-column: 2;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+.localizacao > h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
 
+.maps {
+    width: 100%;
+}
 
+.contato {
+    margin-top: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rede-social > a{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.rede-social > a > img{
+    margin-right: 10px;
+}
+
+.localizacao > .logo {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    font-family: Roxborough CF;
+}
+
+.localizacao > .logo > img {
+    width: 30px;
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+}
+
+.footer {
+    color: rgb(74, 61, 51);
+    width: 100%;
+    padding: 10px 5%;
+    border-top: 2px white solid;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.footer::before {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: rgb(74, 61, 51);
+    display: block;
+}
+
+.footer > h2 {
+    font-size: 25px;
+    margin: 20px 0;
+}
+.footer > p { 
+    margin-left: 10px;
+    line-height: 1.5rem;
+    font-size: 18px;
+    text-indent: 25px;
+    text-align: justify;
+}
