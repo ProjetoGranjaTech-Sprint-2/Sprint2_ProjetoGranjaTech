@@ -96,9 +96,12 @@
   window.onload = listarSensor(), chamarGrafico();
 
   function chamarGrafico() {
-    var sensores = JSON.parse(sessionStorage.ID_SENSOR);
+    // var sensores = JSON.parse(sessionStorage.ID_SENSOR);
     document.getElementById("grafico").innerHTML = `
     <canvas id="myChartTemp${idSensor}"></canvas>
+  `
+    document.getElementById("grafico2").innerHTML = `
+    <canvas id="myChartUmid${idSensor}"></canvas>
   `
   }
 
@@ -237,7 +240,7 @@
         dados.datasets[0].data.push(registro.stats);
       }
       if (registro.uniMedida == `%`) {
-        labelsUmid.push(`Sensor${registro.idHist} + 20H`);
+        labelsUmid.push(`${registro.stats}`);
         dadosUmid.datasets[0].data.push(registro.stats);
       }
       //   dadosUmid.datasets[0].data.push(null);
@@ -267,10 +270,10 @@
       data: dados,
     };
 
-    // const configUmid = {
-    //   type: 'line',
-    //   data: dadosUmid,
-    // };
+    const configUmid = {
+      type: 'line',
+      data: dadosUmid,
+    };
 
     // if (myCh) {
     // ctx.id = `myChartTemp${idSensor}`; // DEIXAR O GRÁFICO DINÂMICO
@@ -295,8 +298,13 @@
       config
     );
 
+    let myChartUmid = new Chart(
+      document.getElementById(`myChartUmid${idSensor}`),
+      configUmid
+    );
 
-    setTimeout(() => atualizarGrafico(idSensor, dados, myChartTemp), 2000);
+
+    setTimeout(() => atualizarGrafico(idSensor, dados, myChartTemp, myChartUmid), 2000);
     // }
     // destruirGrafico();
     // contador = 1;
@@ -306,10 +314,14 @@
     //   configUmid
     // );
 
-    function atualizarGrafico(idSensor, dados, myChartTemp) {
+    function atualizarGrafico(idSensor, dados, myChartTemp, myChartUmid) {
       if (myChartTemp) {
         myChartTemp.destroy();
       }
+      if (myChartUmid) {
+        myChartUmid.destroy();
+      }
+
 
       fetch(`/sensores/dadosTempoReal/${idSensor}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -344,12 +356,12 @@
             }
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChartTemp), 2000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChartTemp, myChartUmid), 2000);
           });
         } else {
           console.error('Nenhum dado encontrado ou erro na API');
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChartTemp), 2000);
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChartTemp, myChartUmid), 2000);
         }
       })
         .catch(function (error) {
