@@ -19,7 +19,9 @@ function listarSensor(req,res) {
 };
 
 function dadosSensor(req, res) {
-    sensoresModel.dadosSensor()
+    // var idGalinheiro = req.params.idGalinheiro;
+    var idSensor = req.params.idSensor;
+    sensoresModel.dadosSensor(idSensor)
         .then((resultado) => {
             res.status(200).json(resultado);
         })

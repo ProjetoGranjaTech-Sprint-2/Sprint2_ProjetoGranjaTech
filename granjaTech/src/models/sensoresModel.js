@@ -8,9 +8,9 @@ function listarSensor(idGalinheiro) {
     return database.executar(instrucao);
 }
 
-function dadosSensor() {
+function dadosSensor(idSensor) {
     var instrucao = `
-    select * from historico;
+    select * from historico where fkSensor = ${idSensor};
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

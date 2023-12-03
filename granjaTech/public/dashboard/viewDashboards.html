@@ -87,17 +87,24 @@
 
 
   let proximaAtualizacao;
+  let idSensor; // Pegar o ID da rota de listar sensores
 
-  window.onload = dadosSensor(), listarSensor();
+  window.onload = listarSensor();
 
   function listarSensor(idGalinheiro){
     var idGalinheiro = sessionStorage.ID_GALINHEIRO;
+    // idSensor; //
+
     fetch(`/sensores/listarSensor/${idGalinheiro}`, {
       method: "GET",
     }).then(function (resposta) {
       resposta.json().then((sensores) => {
+        // if (resposta.length > 0){
+        // }
         sensores.forEach((sensor) => {
           selectCustom.innerHTML += `<option value='${sensor.id}'> S${sensor.id} ${sensor.tipo}</option>`;
+          idSensor = sensor.id; // PEGAR O ID DO SENSOR
+          dadosSensor(idSensor);
         });
       });
     })
@@ -118,16 +125,18 @@
     setTimeout(sumirMensagem, 2000);
   }
 
+  var idHist, fkSensor, timeVrf, stats, uniMedida; // RECEBER VALORES DO HISTÓRICO COMO VARIÁVEIS
 
-  var idHist, fkSensor, timeVrf, stats, uniMedida;
-
-  function dadosSensor() {
+  function dadosSensor(idSensor) {
     // alertRecepcao();
+    var idGalinheiro = sessionStorage.ID_GALINHEIRO;
+    idSensor; // COLOCAR O ID NESSA ROTA
+    console.log(idSensor);
     if (proximaAtualizacao != undefined) {
       clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/sensores/dadosSensor`, { cache: 'no-store' }, {
+    fetch(`/sensores/dadosSensor/${idSensor}`, { cache: 'no-store' }, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -163,7 +172,7 @@
           //   }, 1000);
           // }
         })
-        plotarGrafico(resposta);
+        plotarGrafico(resposta, idGalinheiro);
       });
     }).catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
