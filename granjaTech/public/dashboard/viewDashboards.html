@@ -88,24 +88,23 @@
 
   let proximaAtualizacao;
   let idSensor; // Pegar o ID da rota de listar sensores
-  let myChartTemp = null;
-  var contador = 0;
+  // let myChartTemp = null;
+  // var contador = 0;
 
 
 
-  window.onload = listarSensor();
+  window.onload = listarSensor(), chamarGrafico();
 
-  function chamarGrafico(idSensor) {
+  function chamarGrafico() {
+    var sensores = JSON.parse(sessionStorage.ID_SENSOR);
     document.getElementById("grafico").innerHTML = `
-  <divclass="graph">
     <canvas id="myChartTemp${idSensor}"></canvas>
-  </div>
   `
   }
 
   function listarSensor(idGalinheiro) {
     var idGalinheiro = sessionStorage.ID_GALINHEIRO;
-    // idSensor; //
+    idSensor; //
 
     fetch(`/sensores/listarSensor/${idGalinheiro}`, {
       method: "GET",
@@ -118,7 +117,7 @@
           idSensor = sensor.id; // PEGAR O ID DO SENSOR
           sessionStorage.ID_SENSOR = idSensor;
           dadosSensor(idSensor);
-          chamarGrafico(sensor.id);
+          chamarGrafico();
         });
       });
     })
@@ -239,7 +238,7 @@
       }
       if (registro.uniMedida == `%`) {
         labelsUmid.push(`Sensor${registro.idHist} + 20H`);
-        dadosUmid.datasets[1].data.push(registro.stats);
+        dadosUmid.datasets[0].data.push(registro.stats);
       }
       //   dadosUmid.datasets[0].data.push(null);
       // } else if (registro.uniMedida == '%') {
@@ -288,17 +287,17 @@
     // if (myChartTemp){
     //   myChartTemp.destroy();
     // }
-    if (contador == 0) {
-      myChartTemp = new Chart(
-        document.getElementById(`myChartTemp${idSensor}`),
-        config
-      );
-      // if (myChartTemp) {
-      //   myChartTemp.destroy();
-      // }
+    // if (contador == 0) {
 
-      setTimeout(() => atualizarGrafico(idSensor, dados, `myChartTemp${idSensor}`), 2000);
-    }
+
+    let myChartTemp = new Chart(
+      document.getElementById(`myChartTemp${idSensor}`),
+      config
+    );
+
+
+    setTimeout(() => atualizarGrafico(idSensor, dados, myChartTemp), 2000);
+    // }
     // destruirGrafico();
     // contador = 1;
 
@@ -308,6 +307,9 @@
     // );
 
     function atualizarGrafico(idSensor, dados, myChartTemp) {
+      if (myChartTemp) {
+        myChartTemp.destroy();
+      }
 
       fetch(`/sensores/dadosTempoReal/${idSensor}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
