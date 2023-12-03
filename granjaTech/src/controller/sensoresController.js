@@ -32,10 +32,10 @@ function dadosSensor(req, res) {
 }
 
 function dadosTempoReal(req, res) {
-
+    var idSensor = req.params.idSensor;
     console.log(`Recuperando medidas em tempo real`);
 
-    sensoresModel.dadosTempoReal().then(function (resultado) {
+    sensoresModel.dadosTempoReal(idSensor).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

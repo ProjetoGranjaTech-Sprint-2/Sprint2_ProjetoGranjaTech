@@ -16,9 +16,9 @@ function dadosSensor(idSensor) {
     return database.executar(instrucao);
 }
 
-function dadosTempoReal() {
+function dadosTempoReal(idSensor) {
     var instrucao = `
-    select * from historico order by idHist desc;
+    select stats as stats, timeVrf, date_format (timeVrf, '%H:%i:%s') as momento_grafico from historico where fkSensor = ${idSensor} order by idHist desc limit 1;
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

@@ -11,7 +11,7 @@ router.get("/dadosSensor/:idSensor", function (req, res) {
     sensoresController.dadosSensor(req, res);  
 });
 
-router.get("/dadosTempoReal", function (req, res) {
+router.get("/dadosTempoReal/:idSensor", function (req, res) {
     sensoresController.dadosTempoReal (req, res);
 });
 
