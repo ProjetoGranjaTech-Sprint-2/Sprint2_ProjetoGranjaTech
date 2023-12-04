@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard/Sensores</title>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <link rel="stylesheet"
@@ -77,6 +79,9 @@
       </div>
       <div id="tabela">TABELA</div>
     </section>
+    <div>
+      <button onclick="gerarPDF()">Download Relatório</button>
+    </div>
   </main>
 
 </body>
@@ -94,6 +99,8 @@
 
 
   window.onload = listarSensor(), chamarGrafico();
+  window.jsPDF = window.jspdf.jsPDF;
+
 
   function chamarGrafico() {
     // var sensores = JSON.parse(sessionStorage.ID_SENSOR);
@@ -314,6 +321,8 @@
     //   configUmid
     // );
 
+    
+
     function atualizarGrafico(idSensor, dados, myChartTemp, myChartUmid) {
       if (myChartTemp) {
         myChartTemp.destroy();
@@ -417,6 +426,24 @@
     //   }
     // });
 
+  }
 
+  function gerarPDF() {
+    
+    var doc = new jsPDF();
+
+    var chartTemp = document.getElementById(`myChartTemp${idSensor}`);
+    var imageDataTemp = chartTemp.toDataURL('image/png');
+    
+    doc.addImage(imageDataTemp, 'PNG', 10, 10, 90, 45);
+    
+    let espaçoEntre = 50;
+
+    var chartUmi = document.getElementById(`myChartUmid${idSensor}`);
+    var imageDataUmi = chartUmi.toDataURL('image/png');
+
+    doc.addImage(imageDataUmi, 'PNG', 10, 10 + espaçoEntre, 90, 45);
+
+    doc.save('relatório.pdf');
   }
 </script>
