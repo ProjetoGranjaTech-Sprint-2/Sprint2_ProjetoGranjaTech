@@ -41,60 +41,62 @@ const serial = async (
         const statsUmi = parseFloat(valores[0]); // ISSO É A UMIDADE DO DHT
         const statsTemp = parseFloat(valores[1]); // TEMPERATURA DO LM35
 
-        valoresStatsUmi.push(statsUmi);
+        valoresStatsUmi.push(statsUmi); 
         valoresStatsTemp.push(statsTemp);
 
         if (HABILITAR_OPERACAO_INSERIR) {
             await poolBancoDados.execute(
-                `INSERT INTO historico (fkSensor, stats, uniMedida) VALUES (2, ${statsUmi}, '%'), (1, ${statsTemp}, '°C');`
+                `INSERT INTO historico (fkSensor, stats, uniMedida) VALUES (5, ${statsUmi}, '%'), (4, ${statsTemp}, '°C');`
             );
+            // setInterval(HABILITAR_OPERACAO_INSERIR, 15000)
         }
+
 
         arduino.on('error', (mensagem) => {
             console.error(`Erro no arduino (Mensagem: ${mensagem}`)
         });
     }
-            );
-        }
+    );
+}
 const servidor = (
-        stats,
-        valoresStatsUmi,
+    stats,
+    valoresStatsUmi,
+    valoresStatsTemp,
+) => {
+    const app = express();
+    app.use((request, response, next) => {
+        response.header('Access-Control-Allow-Origin', '*');
+        response.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
+        next();
+    });
+    app.listen(SERVIDOR_PORTA, () => {
+        console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
+    });
+    app.get('/dadosSensor', (_, response) => {
+        return response.json(stats);
+    });
+
+    app.get('/sensores/dht11/umidade', (_, response) => {
+        return response.json(valoresStatsUmi);
+    });
+
+    app.get('/sensores/lm35/temperatura', (_, response) => {
+        return response.json(valoresStatsTemp);
+    });
+}
+
+(async () => {
+    // const stats = [];
+    const valoresStatsTemp = [];
+    const valoresStatsUmi = [];
+    await serial(
+        // stats,
         valoresStatsTemp,
-    ) => {
-        const app = express();
-        app.use((request, response, next) => {
-            response.header('Access-Control-Allow-Origin', '*');
-            response.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
-            next();
-        });
-        app.listen(SERVIDOR_PORTA, () => {
-            console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
-        });
-        app.get('/dadosSensor', (_, response) => {
-            return response.json(stats);
-        });
-
-        app.get('/sensores/dht11/umidade', (_, response) => {
-            return response.json(valoresStatsUmi);
-        });
-
-        app.get('/sensores/lm35/temperatura', (_, response) => {
-            return response.json(valoresStatsTemp);
-        });
-    }
-
-    (async () => {
-        // const stats = [];
-        const valoresStatsTemp = [];
-        const valoresStatsUmi =[];
-        await serial(
-            // stats,
-            valoresStatsTemp,
-            valoresStatsUmi,
-        );
-        servidor(
-            // stats,
-            valoresStatsTemp,
-            valoresStatsUmi,
-        );
-    })();
+        valoresStatsUmi,
+    );
+    servidor(
+        // stats,
+        valoresStatsTemp,
+        valoresStatsUmi,
+    );
+})();
