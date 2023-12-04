@@ -32,11 +32,11 @@ header>nav>ul>li {
     transition: 0.2s;
 }
 
-header > nav > ul > li:hover {
+header>nav>ul>li:hover {
     font-size: 1.2em;
 }
 
-header > nav > ul > li >a {
+header>nav>ul>li>a {
     color: white;
 }
 
@@ -135,7 +135,7 @@ main>.galpao>div>.galpoes>.selecao>.segunda-linha {
     height: 50%;
 }
 
-main > .galpao > div > .galpoes > .selecao > .primeira-linha > .caixas {
+main>.galpao>div>.galpoes>.selecao>.primeira-linha>.caixas {
     list-style: none;
     text-align: center;
     margin: 10px 28px;
@@ -145,7 +145,7 @@ main > .galpao > div > .galpoes > .selecao > .primeira-linha > .caixas {
     border-radius: 25%;
 }
 
-main > .galpao > div > .galpoes > .selecao > .primeira-linha > .botao_sql {
+main>.galpao>div>.galpoes>.selecao>.primeira-linha>.botao_sql {
     width: 30px;
     height: 30px;
     border: 2px solid rgb(74, 61, 51);
@@ -153,10 +153,10 @@ main > .galpao > div > .galpoes > .selecao > .primeira-linha > .botao_sql {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: .1s  normal linear;
+    transition: .1s normal linear;
 }
 
-main > .galpao > div > .galpoes > .selecao > .primeira-linha > .botao_sql:hover {
+main>.galpao>div>.galpoes>.selecao>.primeira-linha>.botao_sql:hover {
     width: 34px;
     height: 34px;
     cursor: pointer;
@@ -221,14 +221,14 @@ main>.galpao>div>.kpi {
     text-shadow: 0.5px 0.5px 0.5px black;
 }
 
-main>.galpao>div>.kpi> div {
+main>.galpao>div>.kpi>div {
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 25px;
 }
 
-main>.galpao>div>.kpi> div >span {
+main>.galpao>div>.kpi>div>span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -242,28 +242,44 @@ main>.galpao>div>.kpi> div >span {
     border-radius: 15px;
 }
 
-main>.galpao>div>.kpi> div:nth-child(1) >span {
-    background-color:  #A41904;
+main>.galpao>div>.kpi>div:nth-child(1)>span {
+    background-color: #A41904;
 }
 
-main>.galpao>div>.kpi> div:nth-child(2) >span {
-    background-color:  #FF914D;
+main>.galpao>div>.kpi>div:nth-child(2)>span {
+    background-color: #FF914D;
 }
 
-main>.galpao>div>.kpi> div:nth-child(3) >span {
-    background-color:  #378F11
+main>.galpao>div>.kpi>div:nth-child(3)>span {
+    background-color: #378F11
 }
 
-main>.galpao>div>.kpi> div:nth-child(4) >span {
-    background-color:  #0E6F99;
+main>.galpao>div>.kpi>div:nth-child(4)>span {
+    background-color: #0E6F99;
 }
 
-main>.galpao>div>.kpi> div:nth-child(5) >span {
-    background-color:  #462489;
+main>.galpao>div>.kpi>div:nth-child(5)>span {
+    background-color: #462489;
 }
 
 
-main>.galpao>div>.kpi> div >p {
+main>.galpao>div>.kpi>div>p {
     padding: 3px;
     font-size: 1.5em;
+}
+
+#manual_usuario {
+    display: flex;
+    position: relative;
+    margin-top: 600px;
+    right: 200px;
+    width: 150px;
+    text-align: center;
+}
+
+#manual_usuario a {
+    font-weight: bold;
+    color: #A41904;
+    text-decoration: underline;
+
 }
