@@ -5,7 +5,8 @@
     text-decoration: none;
 }
 
-body, html {
+body,
+html {
     height: 100%;
     width: 100%;
     display: flex;
@@ -13,16 +14,66 @@ body, html {
     align-items: center;
 }
 
-.card {
-    padding: 25px 30px;
+/* .cardTemp {
+    padding: 50px 150px;
     border: 2px solid black;
     border-radius: 10px;
     position: absolute;
     top: 90px;
-    right: 20px;
-    display: none;
+    right: 15px;
+    display: flex;
     align-items: center;
     justify-content: center;
+} */
+
+.cardUmid {
+    padding: 50px 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    top: 90px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardTemp {
+    padding: 50px 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    top: 90px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crítico1 {
+    background-color: #A41904;
+    border-color: black;
+}
+
+.atenção1 {
+    background-color: #FF914D;
+    border-color: black;
+}
+
+.estável {
+    background-color: #378F11;
+    border-color: greenyellow;
+}
+
+.atenção2 {
+    background-color: #0E6F99;
+    border-color: white;
+
+}
+
+.crítico2 {
+    background-color: #462489;
+    border-color: white;
 }
 
 .mensagem {
@@ -38,18 +89,18 @@ header {
     background-color: rgb(74, 61, 51);
 }
 
-header > .logo {
+header>.logo {
     width: 120px;
 }
 
 
-header > nav > ul {
+header>nav>ul {
     display: flex;
     justify-content: space-between;
     width: 400px;
 }
 
-header > nav > ul > li {
+header>nav>ul>li {
     color: white;
     list-style: none;
     font-weight: 900;
@@ -57,15 +108,15 @@ header > nav > ul > li {
     transition: 0.2s;
 }
 
-header > nav > ul > li:hover {
+header>nav>ul>li:hover {
     font-size: 1.2em;
 }
 
-header > nav > ul > li >a {
+header>nav>ul>li>a {
     color: white;
 }
 
-header > .sair {
+header>.sair {
     display: flex;
     width: 120px;
     color: white;
@@ -73,13 +124,14 @@ header > .sair {
     font-weight: 900;
 }
 
-header > .sair > i,span {
+header>.sair>i,
+span {
     margin-right: 5px;
     font-weight: 900;
 
 }
 
-header > .sair > p {
+header>.sair>p {
     margin-left: 5px;
     font-size: large;
 }
@@ -90,10 +142,10 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
-main > .graficos {
+main>.graficos {
     width: 43%;
     height: 85%;
     display: flex;
@@ -103,15 +155,15 @@ main > .graficos {
     background-color: whitesmoke;
 }
 
-main > .graficos > div {
+main>.graficos>div {
     width: 65%;
 }
 
-main > .graficos > .status > h2 {
+main>.graficos>.status>h2 {
     font-size: 20px;
 }
 
-main > .graficos > .status {
+main>.graficos>.status {
     height: 51%;
     display: flex;
     flex-direction: column;
@@ -119,7 +171,7 @@ main > .graficos > .status {
     justify-content: end;
 }
 
-main > .graficos > .status > .sensores {
+main>.graficos>.status>.sensores {
     display: flex;
     width: 90%;
     height: 60%;
@@ -127,7 +179,7 @@ main > .graficos > .status > .sensores {
     align-items: center;
 }
 
-main > .graficos > .status > .sensores > .kpi_sensores {
+main>.graficos>.status>.sensores>.kpi_sensores {
     display: flex;
     height: 100%;
     width: 33vw;
@@ -145,7 +197,7 @@ main > .graficos > .status > .sensores > .kpi_sensores {
     width: 150px;
 }
 
-main > .graficos > .status > .sensores > .kpi_sensores > .container_dados {
+main>.graficos>.status>.sensores>.kpi_sensores>.container_dados {
     width: 75%;
     display: flex;
     justify-content: space-around;
@@ -154,25 +206,25 @@ main > .graficos > .status > .sensores > .kpi_sensores > .container_dados {
     text-shadow: 1px 1px 1px black;
 }
 
-main > .graficos > .status > .sensores > .kpi_sensores > .container_dados > span {
+main>.graficos>.status>.sensores>.kpi_sensores>.container_dados>span {
     padding: 1px 5px;
     font-size: 75px;
 }
 
-main > .graficos > .status > .sensores > .kpi_sensores > p {
+main>.graficos>.status>.sensores>.kpi_sensores>p {
     margin-top: -30px;
     padding: 1px 3px;
     font-size: 20px;
 }
 
-main > .graficos > #sinalização {
+main>.graficos>#sinalização {
     width: 90%;
     height: 5%;
     display: flex;
     justify-content: space-evenly;
 }
 
-main > .graficos > #tabela {
+main>.graficos>#tabela {
     width: 90%;
     height: 45%;
     display: flex;
@@ -180,18 +232,18 @@ main > .graficos > #tabela {
     align-items: center;
 }
 
-main > .graficos > .grafico {
+main>.graficos>.grafico {
     height: 50%;
     width: 95%;
 }
 
-main > .relatorio {
+main>.relatorio {
     position: absolute;
     bottom: 15px;
     left: 20px;
 }
 
-main > .relatorio > button{
+main>.relatorio>button {
     border: 2px solid rgb(74, 61, 51);
     background-color: white;
     border-color: rgb(74, 61, 51);
@@ -201,14 +253,16 @@ main > .relatorio > button{
     cursor: pointer;
 }
 
-main > .relatorio > button:hover{
+main>.relatorio>button:hover {
     padding: 3px 6px;
     border-radius: 10px;
 }
 
-main > .none {display: none;}
+main>.none {
+    display: none;
+}
 
-main > .none >.kpi {
+main>.none>.kpi {
     height: 90%;
     width: 35%;
     display: grid;
@@ -220,14 +274,14 @@ main > .none >.kpi {
     text-shadow: 0.5px 0.5px 0.5px black;
 }
 
-main > .none > .kpi > div {
+main>.none>.kpi>div {
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 25px;
 }
 
-main > .none > .kpi > div > span {
+main>.none>.kpi>div>span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -241,28 +295,28 @@ main > .none > .kpi > div > span {
     border-radius: 15px;
 }
 
-main > .none > .kpi > div:nth-child(1) >span {
-    background-color:  #A41904;
+main>.none>.kpi>div:nth-child(1)>span {
+    background-color: #A41904;
 }
 
-main > .none > .kpi > div:nth-child(2) >span {
-    background-color:  #FF914D;
+main>.none>.kpi>div:nth-child(2)>span {
+    background-color: #FF914D;
 }
 
-main > .none > .kpi > div:nth-child(3) >span {
-    background-color:  #378F11
+main>.none>.kpi>div:nth-child(3)>span {
+    background-color: #378F11
 }
 
-main > .none > .kpi > div:nth-child(4) >span {
-    background-color:  #0E6F99;
+main>.none>.kpi>div:nth-child(4)>span {
+    background-color: #0E6F99;
 }
 
-main > .none > .kpi > div:nth-child(5) >span {
-    background-color:  #462489;
+main>.none>.kpi>div:nth-child(5)>span {
+    background-color: #462489;
 }
 
 
-main > .none > .kpi > div >p {
+main>.none>.kpi>div>p {
     padding: 3px;
     font-size: 1.5em;
 }

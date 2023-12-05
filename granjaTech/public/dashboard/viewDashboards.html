@@ -20,8 +20,12 @@
 
 <body>
 
-  <div class="card">
-    <div class="mensagem" id="mensagem"></div>
+  <div class="cardUmid" id="cardUmid">
+    <div class="mensagem" id="mensagemUmid"></div>
+  </div>
+
+  <div class="cardTemp" id="cardTemp">
+    <div class="mensagem" id="mensagemTemp"></div>
   </div>
 
   <header>
@@ -42,22 +46,22 @@
 
   <main>
     <section class="graficos">
-      <div id="grafico">
+      <div id="grafico" style="width: 400px; height: 400px;">
         <!-- <canvas id="myChartTemp"></canvas> -->
       </div>
-      <div id="grafico2">
+      <div id="grafico2" style="width: 400px; height: 400px;">
         <!-- <canvas id="graficoUmid"></canvas> -->
       </div>
     </section>
     <section class="graficos">
       <div class="status">
-        <h2>ESTÁVEL</h2>''
+        <h2 id="estadoAtual">ESTÁVEL</h2>''
         <div class="sensores">
           <i class="material-symbols-outlined">chevron_left</i>
           <div class="kpi_sensores">
             <div class="container_dados">
               <span id="temp"></span>
-              <span id="umi"></span>
+              <span id="umid"></span>
             </div>
             <!-- <p id="sensor"></p> -->
             <select name="sensores" id="selectCustom">
@@ -73,34 +77,15 @@
         </div>
       </div>
       <div id="sinalização">
-        <span>cor1</span>
+        <!-- <span>cor1</span>
         <span>cor2</span>
         <span>cor3</span>
         <span>cor4</span>
-        <span>cor5</span>
+        <span>cor5</span> -->
       </div>
-      <div id="tabela">TABELA</div>
+      <!-- <div id="tabela">TABELA</div> -->
     </section>
-    <div class="none">
-      <section class="kpi" id="kpi">
-        CRÍTICO!
-  A partir 28°C ou 70%
-      
-        ATENÇÃO!
-  A partir 25°C ou 65%
-  
-        ESTÁVEL
-  A partir 20°C ou 55%
-  
-        ATENÇÃO!
-   Abaixo 17°C ou 40%
-   
-        CRÍTICO!
-    Abaixo 15°C ou 30%
-    </section>
-    </div>
-
-    <div class="relatorio">
+    <div>
       <button onclick="gerarPDF()">Download Relatório</button>
     </div>
   </main>
@@ -116,8 +101,10 @@
 
   var idGalinheiro = sessionStorage.ID_GALINHEIRO;
 
-  var g1;
-  var g2;
+  var umidValue = 0;
+  var tempValue = 0;
+
+  var estadoAtual = document.getElementById('estadoAtual');
 
 
   window.onload = () => {
@@ -128,9 +115,6 @@
 
 
   function chamarGrafico(sensor1, sensor2) {
-    g1 = sensor1;
-    g2 = sensor2;
-
     document.getElementById("grafico").innerHTML = `
     <canvas id="myChart${sensor1}"></canvas>
   `
@@ -210,7 +194,6 @@
       console.log(`#ERRO: ${error}`);
     });
   }
-
   function dadosSensor2(Sensor2) {
 
     console.log(Sensor2);
@@ -235,6 +218,7 @@
           tempo = result[0].tempo;
           stats = result[0].stats;
           uniMedida = result[0].uniMedida;
+          umid.innerHTML = `<span>${stats}%</span>`
         });
 
         var tamanhoLista = result.length;
@@ -274,8 +258,39 @@
       if (registro.uniMedida == `°C`) {
         labels1.push(`${registro.tempo}`);
         dados1.datasets[0].data.push(registro.stats);
+
       }
     }
+    temp.innerHTML = `<span>${registro.stats}°C</span>`
+    tempValue = Number(registro.stats);
+
+    document.getElementById('cardTemp').addEventListener("click", () => {
+      document.getElementById('cardTemp').classList.remove('cardTemp');
+      document.getElementById('cardUmid').classList.remove('cardUmid');
+    })
+
+    document.getElementById('cardTemp').addEventListener("click", () => {
+      document.getElementById('cardTemp').classList.remove('crítico1', 'atenção1', 'atenção2', 'crítico2');
+      document.getElementById('cardUmid').classList.remove('crítico1', 'atenção1', 'atenção2', 'crítico2');
+    })
+    if (tempValue >= 28) {
+      console.log("Crítico");
+      estadoAtual.innerHTML = `<h1> O estado atual é crítico`;
+      document.getElementById('cardTemp').classList.add('crítico1')
+    } else if (tempValue < 25 && tempValue < 20) {
+      console.log("Atenção");
+      document.getElementById('cardTemp').classList.add('atenção1');
+      // } else if (tempValue >= 20) {
+      //   console.log("Estável");
+      //   document.getElementById('cardTemp').classList.add('estável');
+    } else if (tempValue < 20 && tempValue < 15) {
+      console.log("Atenção");
+      // document.getElementById('cardTemp').classList.add('atenção2');
+    } else if (tempValue < 15) {
+      console.log("Crítico");
+      document.getElementById('cardTemp').classList.add('crítico2');
+    }
+
     console.log('----------------------------------------------')
     console.log('O gráfico será plotado com os respectivos valores:')
 
@@ -287,54 +302,54 @@
     let myChart1 = new Chart(
       document.getElementById(`myChart${Sensor1}`),
       config1
-      );
-      
-      setTimeout(() => atualizarGrafico1(Sensor1, dados1, myChart1), 2000);
-    }
-    
-    function atualizarGrafico1(Sensor1, dados1, myChart1) {
-  
-      fetch(`/sensores/dadosTempoReal/${Sensor1}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-          response.json().then(function (novoRegistro) {
-  
-            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-            console.log(`Dados atuais do gráfico:`);
-            console.log(dados1);
-  
-            if (novoRegistro[0].tempo == dados1.labels[dados1.labels.length - 1]) {
-              console.log("---------------------------------------------------------------")
-              console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-              console.log("Horário do novo dado capturado:")
-              console.log(novoRegistro[0].tempo)
-              console.log("Horário do último dado capturado:")
-              console.log(dados1.labels[dados1.labels.length - 1])
-              console.log("---------------------------------------------------------------")
-            } else {
-              // tirando e colocando valores no gráfico
-              dados1.labels.shift(); // apagar o primeiro
-              dados1.labels.push(novoRegistro[0].tempo); // incluir um novo momento
-  
-              dados1.datasets[0].data.shift();  // apagar o primeiro de umidade
-              dados1.datasets[0].data.push(novoRegistro[0].stats); // incluir uma nova medida de umidade
-  
-  
-              myChart1.update();
-            }
-  
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico1(Sensor1, dados1, myChart1), 2000);
-          });
-        } else {
-          console.error('Nenhum dado encontrado ou erro na API');
+    );
+
+    setTimeout(() => atualizarGrafico1(Sensor1, dados1, myChart1), 2000);
+  }
+
+  function atualizarGrafico1(Sensor1, dados1, myChart1) {
+
+    fetch(`/sensores/dadosTempoReal/${Sensor1}`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados1);
+
+          if (novoRegistro[0].tempo == dados1.labels[dados1.labels.length - 1]) {
+            console.log("---------------------------------------------------------------")
+            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+            console.log("Horário do novo dado capturado:")
+            console.log(novoRegistro[0].tempo)
+            console.log("Horário do último dado capturado:")
+            console.log(dados1.labels[dados1.labels.length - 1])
+            console.log("---------------------------------------------------------------")
+          } else {
+            // tirando e colocando valores no gráfico
+            dados1.labels.shift(); // apagar o primeiro
+            dados1.labels.push(novoRegistro[0].tempo); // incluir um novo momento
+
+            dados1.datasets[0].data.shift();  // apagar o primeiro de umidade
+            dados1.datasets[0].data.push(novoRegistro[0].stats); // incluir uma nova medida de umidade
+
+
+            myChart1.update();
+          }
+
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
           proximaAtualizacao = setTimeout(() => atualizarGrafico1(Sensor1, dados1, myChart1), 2000);
-        }
-      })
-        .catch(function (error) {
-          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
-    }
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico1(Sensor1, dados1, myChart1), 2000);
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+  }
 
   function plotarGrafico2(result, Sensor2) {
 
@@ -362,7 +377,31 @@
       if (registro.uniMedida == `%`) {
         labels2.push(`${registro.tempo}`);
         dados2.datasets[0].data.push(registro.stats);
+
       }
+    }
+    umid.innerHTML = `<span>${registro.stats}%</span>`
+    umidValue = Number(registro.stats);
+
+    if (umidValue >= 70) {
+      console.log("Crítico");
+      document.getElementById('cardUmid').classList.add('crítico1');
+      document.getElementById('mensagemUmid').innerHTML = `<h2>Sua umidade está em ${umidValue}% um valor crítico.</h2>`;
+    } else if (umidValue >= 65) {
+      console.log("Atenção");
+      document.getElementById('cardUmid').classList.add('atenção');
+      document.getElementById('mensagemUmid').innerHTML = `<h2>Sua umidade está em ${umidValue}% um valor crítico.</h2>`
+      // } else if (umidValue >= 55) {
+      //   console.log("Estável");
+      //   document.getElementById('cardUmid').classList.add('estável');
+    } else if (umidValue >= 40) {
+      console.log("Atenção");
+      document.getElementById('cardUmid').classList.add('atenção');
+      document.getElementById('mensagemUmid').innerHTML = `<h2>Sua umidade está em ${umidValue}% um valor crítico.</h2>`
+    } else if (umidValue >= 30) {
+      console.log("Crítico");
+      document.getElementById('cardUmid').classList.add('crítico2');
+      document.getElementById('mensagemUmid').innerHTML = `<h2>Sua umidade está em ${umidValue}% um valor crítico.</h2>`
     }
 
 
@@ -435,7 +474,7 @@
     var doc = new jsPDF();
 
     var titulo = 'RELATÓRIO';
-    
+
     doc.text(85, 10, titulo)
 
     var chartTemp = document.getElementById(`myChart${g1}`);
@@ -449,7 +488,7 @@
     var imageDataUmi = chartUmi.toDataURL('image/png');
 
     doc.addImage(imageDataUmi, 'PNG', 50, 20 + espaçoEntre, 90, 45);
-  
+
     var kpiSection = document.getElementById('kpi');
     var kpis = kpiSection.innerHTML;
     doc.text(65, 30 + espaçoEntre * 2, kpis);
@@ -458,7 +497,7 @@
 
     doc.save('relatório.pdf');
   }
-  
+
 
   function sumirMensagem() {
     let card = document.querySelector('.card')
