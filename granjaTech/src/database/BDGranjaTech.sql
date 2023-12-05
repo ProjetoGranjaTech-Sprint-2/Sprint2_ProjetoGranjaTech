@@ -23,10 +23,13 @@ delete from cadastro_cliente
 	where idCliente = 2;
 
 create table galinheiro(
-idGalinheiro int primary key auto_increment,
+idGalinheiro int auto_increment unique,
 fkCliente int,
-constraint fkCliente foreign key (fkCliente) references cadastro_cliente(idCliente)
+constraint fkCliente foreign key (fkCliente) references cadastro_cliente(idCliente),
+primary key (idGalinheiro, fkCliente)
 );
+
+select * from galinheiro;
 
 
 create table login (
@@ -43,11 +46,17 @@ create table login (
 
 
 create table sensor(
-id int primary key auto_increment,
-tipo varchar(11), constraint chkTipo check(tipo in ('umidade', 'temperatura')),
+id int primary key auto_increment unique,
 fkGalin int,
-constraint fkGalinheiro foreign key (fkGalin) references galinheiro(idGalinheiro)
+constraint fkGalinheiro foreign key (fkGalin) references galinheiro(idGalinheiro),
+tipo varchar(11), constraint chkTipo check(tipo in ('umidade', 'temperatura'))
 );
+
+
+INSERT INTO sensor values 
+	(1, 1, 'temperatura'),
+	(2, 1, 'umidade');
+
 
 
 create table historico(
@@ -55,8 +64,19 @@ idHist int auto_increment,
 fkSensor int,
 constraint fkSensor foreign key (fkSensor) references sensor(id),
 primary key (idHist, fkSensor),
-timeVrf datetime,
+timeVrf TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 stats decimal (3,1),
 -- statsUmi decimal (3,1),
 uniMedida varchar(2), constraint chkUniMedida check (uniMedida in ('%', '°C')) 
 );
+
+select * from historico 
+	where fkSensor = 2
+		order by idHist desc
+			limit 48;
+
+select * from historico;
+
+select * from historico
+	join sensor on fkSensor = id
+		where fkGalin = 'XPTO';
