@@ -81,7 +81,26 @@
       </div>
       <div id="tabela">TABELA</div>
     </section>
-    <div>
+    <div class="none">
+      <section class="kpi" id="kpi">
+        CRÍTICO!
+  A partir 28°C ou 70%
+      
+        ATENÇÃO!
+  A partir 25°C ou 65%
+  
+        ESTÁVEL
+  A partir 20°C ou 55%
+  
+        ATENÇÃO!
+   Abaixo 17°C ou 40%
+   
+        CRÍTICO!
+    Abaixo 15°C ou 30%
+    </section>
+    </div>
+
+    <div class="relatorio">
       <button onclick="gerarPDF()">Download Relatório</button>
     </div>
   </main>
@@ -97,6 +116,9 @@
 
   var idGalinheiro = sessionStorage.ID_GALINHEIRO;
 
+  var g1;
+  var g2;
+
 
   window.onload = () => {
     listarSensor();
@@ -106,6 +128,9 @@
 
 
   function chamarGrafico(sensor1, sensor2) {
+    g1 = sensor1;
+    g2 = sensor2;
+
     document.getElementById("grafico").innerHTML = `
     <canvas id="myChart${sensor1}"></canvas>
   `
@@ -409,22 +434,31 @@
 
     var doc = new jsPDF();
 
-    var chartTemp = document.getElementById(`myChartTemp${idSensor}`);
+    var titulo = 'RELATÓRIO';
+    
+    doc.text(85, 10, titulo)
+
+    var chartTemp = document.getElementById(`myChart${g1}`);
     var imageDataTemp = chartTemp.toDataURL('image/png');
 
-    doc.addImage(imageDataTemp, 'PNG', 10, 10, 90, 45);
+    doc.addImage(imageDataTemp, 'PNG', 50, 20, 90, 45);
 
     let espaçoEntre = 50;
 
-    var chartUmi = document.getElementById(`myChartUmid${idSensor}`);
+    var chartUmi = document.getElementById(`myChart${g2}`);
     var imageDataUmi = chartUmi.toDataURL('image/png');
 
-    doc.addImage(imageDataUmi, 'PNG', 10, 10 + espaçoEntre, 90, 45);
+    doc.addImage(imageDataUmi, 'PNG', 50, 20 + espaçoEntre, 90, 45);
+  
+    var kpiSection = document.getElementById('kpi');
+    var kpis = kpiSection.innerHTML;
+    doc.text(65, 30 + espaçoEntre * 2, kpis);
+
+
 
     doc.save('relatório.pdf');
   }
-
-
+  
 
   function sumirMensagem() {
     let card = document.querySelector('.card')
